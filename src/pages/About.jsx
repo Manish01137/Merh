@@ -3,6 +3,7 @@ import Footer from "../components/common/Footer";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, Target, Handshake, Globe, Zap, Shield, Rocket } from "lucide-react";
 import { ServiceIcon } from "../utils/serviceIcons";
+import logoWhite from "../assets/02_Logo_Reversed_White_3600x3600.png";
 
 const stats = [["1100+","Projects Delivered"],["130+","Expert Engineers"],["70+","Countries Served"],["15+","Years of Expertise"],["500+","Happy Clients"],["98%","Client Satisfaction"]];
 const values = [
@@ -37,8 +38,10 @@ export default function About() {
               <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
                 <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700" alt="MershilTech Team" className="w-full h-72 object-cover"/>
               </div>
-              <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3">
-                <div className="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center text-white font-bold">M</div>
+              <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-2xl p-4 flex items-center gap-3 border border-gray-100">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-700 to-blue-900 flex items-center justify-center shadow-md shadow-blue-200/40">
+                  <img src={logoWhite} alt="MershilTech" className="w-6 h-6 object-contain" />
+                </div>
                 <div><p className="text-xl font-bold text-gray-900">130+</p><p className="text-gray-500 text-xs">Expert Engineers</p></div>
               </div>
             </div>

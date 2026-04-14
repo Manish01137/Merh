@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown, Smartphone, Globe, Code2, Brain, Link2, Building2, Lightbulb } from "lucide-react";
 import { ServiceIcon } from "../../utils/serviceIcons";
+import logoWhite from "../../assets/02_Logo_Reversed_White_3600x3600.png";
 
 const serviceCategories = [
   { name:"Mobile App Development", icon:Smartphone, slug:"mobile", sub:[
@@ -107,8 +108,10 @@ export default function Navbar() {
         <div className="bg-blue-700 text-white text-xs py-1.5 text-center hidden md:block">🚀 Innovating Today, Shaping Tomorrow — Trusted by 500+ global clients | Denver, Colorado | (303) 335-0405</div>
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-blue-700 flex items-center justify-center text-white font-bold text-lg group-hover:bg-blue-800 transition">M</div>
-            <div><h1 className="text-gray-900 font-bold text-lg leading-tight">MershilTech</h1><p className="text-gray-400 text-[10px] -mt-0.5">Innovating Today, Shaping Tomorrow</p></div>
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-700 to-blue-900 flex items-center justify-center group-hover:from-blue-600 group-hover:to-blue-800 transition-all duration-300 shadow-md shadow-blue-200/50 group-hover:shadow-lg group-hover:shadow-blue-300/50">
+              <img src={logoWhite} alt="MershilTech" className="w-6 h-6 object-contain" />
+            </div>
+            <div><h1 className="text-gray-900 font-bold text-lg leading-tight tracking-tight">MershilTech</h1><p className="text-gray-400 text-[10px] -mt-0.5 font-medium tracking-wide">Innovating Today, Shaping Tomorrow</p></div>
           </Link>
           <nav className="hidden lg:flex items-center gap-7">
             <div className="relative" onMouseEnter={onSE} onMouseLeave={onSL}>

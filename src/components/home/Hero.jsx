@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Phone, ArrowRight, CheckCircle, Star, Zap, Globe, Shield } from "lucide-react";
 import { motion } from "framer-motion";
+import logoWhite from "../../assets/02_Logo_Reversed_White_3600x3600.png";
 
 const badges = ["AI-Powered Solutions","15+ Years Experience","500+ Happy Clients","70+ Countries Served"];
 const stats = [{n:"1100+",l:"Projects"},{n:"130+",l:"Engineers"},{n:"70+",l:"Countries"},{n:"98%",l:"Satisfaction"}];
@@ -94,7 +95,12 @@ export default function Hero(){
             className="hidden lg:block">
             <div className="bg-white/[0.06] backdrop-blur-2xl rounded-3xl border border-white/10 p-8 shadow-2xl shadow-black/40">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-white font-bold text-lg">Get A Free Quote</h3>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center">
+                    <img src={logoWhite} alt="MershilTech" className="w-5 h-5 object-contain" />
+                  </div>
+                  <h3 className="text-white font-bold text-lg">Get A Free Quote</h3>
+                </div>
                 <span className="flex items-center gap-1.5 text-xs bg-green-500/80 text-white px-3 py-1 rounded-full font-semibold">
                   <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"/>Live
                 </span>

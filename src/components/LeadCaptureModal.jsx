@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { X, Phone } from "lucide-react";
+import logoWhite from "../assets/02_Logo_Reversed_White_3600x3600.png";
 
 export default function LeadCaptureModal() {
   const [show, setShow] = useState(false);
@@ -11,9 +12,15 @@ export default function LeadCaptureModal() {
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm">
       <div className="relative w-[90%] max-w-md bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
-        <div className="bg-blue-700 p-6 text-white">
+        <div className="bg-gradient-to-br from-blue-700 to-blue-900 p-6 text-white">
           <button onClick={() => setShow(false)} className="absolute top-4 right-4 text-white/70 hover:text-white"><X size={20}/></button>
-          <h2 className="text-xl font-bold mb-1">Let's Build Something Great 🚀</h2>
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-9 h-9 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center backdrop-blur-sm">
+              <img src={logoWhite} alt="MershilTech" className="w-5 h-5 object-contain" />
+            </div>
+            <span className="text-white/70 text-sm font-semibold tracking-wide">MershilTech</span>
+          </div>
+          <h2 className="text-xl font-bold mb-1">Let's Build Something Great</h2>
           <p className="text-blue-100 text-sm">Get a free consultation from our engineering experts.</p>
         </div>
         <div className="p-6 space-y-3">
