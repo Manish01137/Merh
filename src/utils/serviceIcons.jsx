@@ -12,6 +12,7 @@ import {
   FaHospital, FaIndustry, FaBroadcastTower, FaLaptop,
   FaEdit, FaClipboard, FaTh, FaFire, FaClock, FaAngular, FaPhp,
   FaJava, FaChartArea, FaRegMoon, FaPlug,
+  FaShieldAlt, FaUserShield,
 } from "react-icons/fa";
 import { SiNextdotjs, SiFlutter, SiSolidity, SiTensorflow, SiSalesforce } from "react-icons/si";
 import { MdWeb, MdSmartphone, MdPayment, MdSecurity, MdRefresh, MdOutlineScience } from "react-icons/md";
@@ -69,6 +70,8 @@ const iconMap = {
   flutter: SiFlutter,
   lock: FaLock,
   keylock: FaLock,
+  shield: FaShieldAlt,
+  usershield: FaUserShield,
   rocket: FaRocket,
   tools: FaTools,
   payment: MdPayment,

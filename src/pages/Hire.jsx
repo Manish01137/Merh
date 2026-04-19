@@ -6,8 +6,9 @@ import { ArrowRight, Phone, CheckCircle, Users, Clock, Shield, Zap, Star } from 
 import {
   FaAndroid, FaApple, FaReact, FaNodeJs, FaLaravel, FaPhp,
   FaAngular, FaJava, FaCode, FaGlobe, FaRocket, FaLayerGroup, FaDatabase,
+  FaShieldAlt,
 } from "react-icons/fa";
-import { SiFlutter, SiSolidity } from "react-icons/si";
+import { SiFlutter, SiSolidity, SiSalesforce } from "react-icons/si";
 import { MdSmartphone } from "react-icons/md";
 import { BsLightningCharge, BsGear } from "react-icons/bs";
 
@@ -30,6 +31,8 @@ const roles = [
   { Icon: FaRocket,     name:"Hire Offshore Developers",    slug:"offshore-developers",      desc:"Cost-effective offshore teams without quality compromise." },
   { Icon: SiSolidity,   name:"Hire Blockchain Developers",  slug:"blockchain-developers",    desc:"Smart contracts, DeFi, NFT, and Web3 specialists." },
   { Icon: FaLayerGroup, name:"Hire MEAN Stack Developers",  slug:"mean-stack-developers",    desc:"Full MEAN stack for modern web applications." },
+  { Icon: SiSalesforce, name:"Hire Salesforce Developers",  slug:"salesforce-developers",    desc:"Certified Salesforce consultants — Summit-tier partner." },
+  { Icon: FaShieldAlt,  name:"Hire Cybersecurity Experts",  slug:"cybersecurity-experts",    desc:"OSCP, CISSP certified security engineers on 24/7 watch." },
 ];
 
 const models = [

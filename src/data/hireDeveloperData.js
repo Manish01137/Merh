@@ -431,6 +431,50 @@ export const hireDeveloperData = {
     process: stdProcess,
     models: stdModels,
   },
+
+  "salesforce-developers": {
+    title: "Hire Salesforce Developers",
+    heroDesc: "Avail a FREE consultation with MershilTech's certified Salesforce experts. As a Salesforce Summit-tier partner, we help startups and enterprises maximize their Salesforce CRM investment with custom Sales Cloud, Service Cloud, Marketing Cloud, Einstein Analytics, Pardot, CPQ, and Commerce Cloud solutions — built by Salesforce-certified developers with 10+ years of experience.",
+    skills: ["Salesforce Customer 360", "Sales, Service & Marketing Cloud", "Apex, LWC & Lightning Flow", "AppExchange Development", "Salesforce Einstein Analytics", "Pardot, CPQ & Commerce Cloud"],
+    subSkills: [
+      { icon: "salesforce", title: "Salesforce CRM Implementation", desc: "End-to-end Salesforce Customer 360 implementation — Sales Cloud, Service Cloud, and Marketing Cloud configured and customized around your unique sales and service workflows, not the other way around." },
+      { icon: "code", title: "Apex & Lightning Development", desc: "Custom Apex classes, triggers, Lightning Web Components (LWC), Aura components, and Lightning Flow automations that extend Salesforce beyond declarative limits and deliver pixel-perfect UX." },
+      { icon: "link", title: "Salesforce Integrations", desc: "Bi-directional integrations with ERPs (SAP, NetSuite), payment gateways, telephony (CTI), marketing automation, and any third-party system using REST/SOAP APIs, Mulesoft, Informatica, or Jitterbit." },
+      { icon: "chart", title: "Einstein Analytics & AI", desc: "Salesforce Einstein predictions, Tableau CRM dashboards, lead scoring models, next-best-action recommendations, and AI-powered customer insights integrated directly into your Salesforce UI." },
+      { icon: "cloud", title: "AppExchange Development", desc: "Build and publish managed packages on the Salesforce AppExchange — architecture, security review (SFDC SecReview), multi-tenant design, and the go-to-market support you need to launch a commercial app." },
+      { icon: "gear", title: "Lightning Migration & Optimization", desc: "Classic-to-Lightning migration with Lightning Readiness audits, component modernization, and performance optimization so your Salesforce org runs faster, cleaner, and ready for the next decade." },
+    ],
+    tech: ["Apex", "Lightning Web Components", "Salesforce Flow", "Sales Cloud", "Service Cloud", "Marketing Cloud", "Pardot", "Einstein Analytics", "Mulesoft", "Informatica Cloud", "Jitterbit", "CPQ"],
+    whyHire: [
+      { title: "Salesforce Summit Partner Certified", desc: "MershilTech is a Salesforce Summit-tier partner with a team of certified Administrators, Platform Developers (PD1, PD2), Application Architects, and System Architects — the highest recognition Salesforce awards to consulting partners." },
+      { title: "Two Decades of CRM Expertise", desc: "15+ years implementing Salesforce across FinTech, Healthcare, Retail, and B2B SaaS — with deep industry playbooks that accelerate implementation and avoid the common pitfalls." },
+      { title: "ISO 27001 Secure Delivery", desc: "ISO 27001 certified delivery practices with 24/7 consultant availability, signed NDAs before every engagement, and strict access controls on client Salesforce orgs and data." },
+    ],
+    process: ["Free Discovery Workshop", "Solution Design & Roadmap", "Implementation & Configuration", "Customization & Apex Dev", "User Training & Go-Live", "Managed Support & Optimization"],
+    models: stdModels,
+  },
+
+  "cybersecurity-experts": {
+    title: "Hire Cybersecurity Experts",
+    heroDesc: "Protect your business with MershilTech's certified cybersecurity experts — OSCP, CEH, CISSP, and AWS Security Specialists who defend enterprises against modern threats 24/7. From penetration testing and SOC 2 compliance to managed SOC and incident response, our security engineers plug into your team in 48 hours and strengthen your posture from day one.",
+    skills: ["Penetration Testing (OSCP, CEH)", "SIEM & SOAR (Splunk, Sentinel)", "Cloud Security (AWS, Azure, GCP)", "Compliance (SOC 2, ISO 27001, HIPAA)", "Application Security (SAST/DAST)", "Incident Response & Forensics"],
+    subSkills: [
+      { icon: "lock", title: "Penetration Testing", desc: "Black-box and white-box pen-tests on web apps, mobile apps, APIs, and cloud infrastructure. CVSS-scored vulnerabilities, exploitation proof-of-concept, and remediation playbooks your engineering team can actually act on." },
+      { icon: "security", title: "Compliance Engineering", desc: "SOC 2 Type II, ISO 27001, HIPAA, GDPR, and PCI-DSS programs — gap analysis, control design, evidence automation, and auditor-readiness support that gets you certified in months, not years." },
+      { icon: "eye", title: "SOC Analyst & Threat Hunter", desc: "24/7 SIEM monitoring with Splunk, Microsoft Sentinel, or Elastic. Proactive threat hunting, IOC enrichment, incident triage, and a 4-minute average alert-to-response time across client environments." },
+      { icon: "cloud", title: "Cloud Security Engineer", desc: "AWS, Azure, and GCP hardening — IAM least-privilege design, network segmentation, KMS key management, CSPM tooling (Prisma Cloud, Wiz), Kubernetes security, and infrastructure-as-code policy enforcement." },
+      { icon: "code", title: "Application Security Engineer", desc: "Shift-left AppSec — SAST (SonarQube, Semgrep), DAST (Burp, OWASP ZAP), SCA (Snyk), threat modeling, secure code review, and developer training that reduces vulnerabilities in production by 70%+." },
+      { icon: "search", title: "Incident Response Specialist", desc: "Retainer-based IR — breach containment, forensic analysis, chain-of-custody evidence handling, regulatory breach reporting, and post-incident hardening so the same attack never happens twice." },
+    ],
+    tech: ["Splunk", "Microsoft Sentinel", "CrowdStrike", "Burp Suite", "Metasploit", "Kali Linux", "Nessus", "AWS Security Hub", "Prisma Cloud", "Snyk", "HashiCorp Vault", "Okta"],
+    whyHire: [
+      { title: "Certified & Battle-Tested", desc: "Every engineer holds at least one of OSCP, CEH, CISSP, CISM, CCSP, or AWS Security Specialist — backed by years of real-world incident response and red-team experience." },
+      { title: "Offensive & Defensive Mindset", desc: "Our engineers think like attackers and defenders. That dual perspective is why our penetration tests find vulnerabilities automated scanners miss — and why our defenses hold up against real threats." },
+      { title: "Zero Breaches on Our Watch", desc: "500+ security audits completed, 0 breaches in monitored client systems. Our managed SOC, paired with continuous threat hunting, stops attacks before they reach your customers." },
+    ],
+    process: ["Risk Assessment", "Security Architecture Review", "Hardening & Testing", "SIEM & Monitoring Setup", "24/7 SOC Operations", "Continuous Improvement"],
+    models: stdModels,
+  },
 };
 
 export const getHireDeveloperData = (slug) => {

@@ -36,7 +36,7 @@ export default function About() {
             </div>
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700" alt="MershilTech Team" className="w-full h-72 object-cover"/>
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&q=80" alt="MershilTech Team" loading="lazy" decoding="async" className="w-full h-72 object-cover"/>
               </div>
               <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-2xl p-4 flex items-center gap-3 border border-gray-100">
                 <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-700 to-blue-900 flex items-center justify-center shadow-md shadow-blue-200/40">
@@ -78,7 +78,7 @@ export default function About() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               {["https://images.unsplash.com/photo-1556761175-4b46a572b786?w=400","https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400","https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400","https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400"].map((src,i)=>(
-                <img key={i} src={src} className="rounded-2xl h-40 w-full object-cover hover:scale-105 transition duration-500" alt="team"/>
+                <img key={i} src={src} loading="lazy" decoding="async" className="rounded-2xl h-40 w-full object-cover hover:scale-105 transition duration-500" alt="team"/>
               ))}
             </div>
           </div>

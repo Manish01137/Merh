@@ -20,6 +20,17 @@ export default function AISection() {
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-blue-50 blur-3xl opacity-60"/>
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-indigo-50 blur-3xl opacity-60"/>
+        {/* Animated floating dots */}
+        <motion.div
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 right-10 w-3 h-3 rounded-full bg-blue-400/30 blur-sm"
+        />
+        <motion.div
+          animate={{ y: [0, 15, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute top-2/3 left-12 w-2 h-2 rounded-full bg-indigo-400/40 blur-sm"
+        />
       </div>
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="grid lg:grid-cols-2 gap-16 items-center">

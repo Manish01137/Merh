@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 
 const countries = [
-  { name:"United States", city:"Denver, Colorado", img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80", clients:"120+" },
-  { name:"United Kingdom", city:"London, England", img:"https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&q=80", clients:"80+" },
-  { name:"Australia", city:"Sydney, NSW", img:"https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=400&q=80", clients:"60+" },
-  { name:"India", city:"Mumbai & Bangalore", img:"https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&q=80", clients:"200+" },
-  { name:"Europe", city:"Germany, Netherlands", img:"https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=400&q=80", clients:"90+" },
-  { name:"Middle East", city:"Dubai, UAE", img:"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=80", clients:"50+" },
+  { name:"United Kingdom", city:"London, England", img:"https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80", clients:"80+" },
+  { name:"Australia", city:"Sydney, NSW", img:"https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&q=80", clients:"60+" },
+  { name:"India", city:"Mumbai & Bangalore", img:"https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80", clients:"200+" },
+  { name:"Canada", city:"Toronto, Vancouver", img:"https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=600&q=80", clients:"70+" },
+  { name:"Singapore", city:"Marina Bay", img:"https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80", clients:"45+" },
+  { name:"Japan", city:"Tokyo, Osaka", img:"https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80", clients:"40+" },
 ];
 
 const fadeUp = {
@@ -43,7 +43,7 @@ export default function GlobalReach() {
             <motion.div key={i} variants={fadeUp} custom={i}
               whileHover={{y:-6,transition:{duration:0.25}}}
               className="group relative rounded-2xl overflow-hidden cursor-pointer" style={{height:220}}>
-              <img src={c.img} alt={c.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700"/>
+              <img src={c.img} alt={c.name} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-700"/>
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10"/>
               <div className="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/20 transition duration-500"/>
               <div className="relative z-10 h-full flex flex-col justify-end p-5">

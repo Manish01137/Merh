@@ -21,7 +21,8 @@ import {
   FaHandshake, FaDog, FaCar, FaUtensils, FaHome, FaSpa,
   FaHeartbeat, FaBitcoin, FaChartLine,
   FaDesktop, FaWordpressSimple, FaShopify, FaLaravel,
-  FaNodeJs,
+  FaNodeJs, FaBug, FaUserShield, FaSearch as FaSearchIcon, FaFileContract,
+  FaLock as FaLockIcon, FaNetworkWired,
 } from "react-icons/fa";
 import { SiNextdotjs, SiFlutter, SiSolidity, SiTensorflow, SiSalesforce } from "react-icons/si";
 import { MdWeb, MdSmartphone } from "react-icons/md";
@@ -74,6 +75,12 @@ const ICON_MAP = {
   "grocery-delivery-app": FaStore,
   "ewallet-app": FaWallet,
   "dating-app-development": FaHeartbeat,
+  "penetration-testing": FaBug,
+  "security-audit-compliance": FaFileContract,
+  "managed-soc-services": FaUserShield,
+  "cloud-security": FaCloud,
+  "application-security": FaLockIcon,
+  "incident-response": FaNetworkWired,
 };
 
 const getFeatureIcon = (title) => {

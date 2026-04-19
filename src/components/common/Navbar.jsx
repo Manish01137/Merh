@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Menu, X, ChevronDown, Smartphone, Globe, Code2, Brain, Link2, Building2, Lightbulb } from "lucide-react";
+import { Menu, X, ChevronDown, Smartphone, Globe, Code2, Brain, Link2, Building2, Lightbulb, ShieldCheck } from "lucide-react";
 import { ServiceIcon } from "../../utils/serviceIcons";
 import logoWhite from "../../assets/02_Logo_Reversed_White_3600x3600.png";
 
@@ -64,6 +64,14 @@ const serviceCategories = [
     {name:"eWallet App",slug:"ewallet-app"},
     {name:"Dating App Development",slug:"dating-app-development"},
   ]},
+  { name:"Cybersecurity Services", icon:ShieldCheck, slug:"cybersecurity", sub:[
+    {name:"Penetration Testing",slug:"penetration-testing"},
+    {name:"Security Audit & Compliance",slug:"security-audit-compliance"},
+    {name:"Managed SOC Services",slug:"managed-soc-services"},
+    {name:"Cloud Security",slug:"cloud-security"},
+    {name:"Application Security",slug:"application-security"},
+    {name:"Incident Response & Forensics",slug:"incident-response"},
+  ]},
 ];
 
 const hireRoles = [
@@ -86,6 +94,8 @@ const hireRoles = [
   {icon:"rocket",name:"Hire Offshore Developers",slug:"offshore-developers"},
   {icon:"solidity",name:"Hire Blockchain Developers",slug:"blockchain-developers"},
   {icon:"box",name:"Hire MEAN Stack Developers",slug:"mean-stack-developers"},
+  {icon:"salesforce",name:"Hire Salesforce Developers",slug:"salesforce-developers"},
+  {icon:"lock",name:"Hire Cybersecurity Experts",slug:"cybersecurity-experts"},
 ];
 
 export default function Navbar() {
@@ -119,8 +129,8 @@ export default function Navbar() {
               {showSvc&&(<div className="mega" style={{width:"820px"}} onMouseEnter={onSE} onMouseLeave={onSL}><div className="flex"><div className="w-56 bg-gray-50 rounded-l-2xl p-3 border-r border-gray-100 space-y-0.5">{serviceCategories.map((c,i)=>{const Icon=c.icon;return <div key={i} className={`cat-i ${activeCat===i?"active":""}`} onMouseEnter={()=>setActiveCat(i)}><Icon size={15}/>{c.name}</div>;})}</div><div className="flex-1 p-5"><p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{serviceCategories[activeCat].name}</p><div className="grid grid-cols-2 gap-0.5">{serviceCategories[activeCat].sub.map((s,i)=><Link key={i} to={`/services/${serviceCategories[activeCat].slug}/${s.slug}`} className="sub-i" onClick={()=>setShowSvc(false)}>→ {s.name}</Link>)}</div><div className="mt-4 pt-4 border-t border-gray-100"><Link to={`/services/${serviceCategories[activeCat].slug}`} className="text-blue-700 text-sm font-semibold hover:underline flex items-center gap-1" onClick={()=>setShowSvc(false)}>View All {serviceCategories[activeCat].name} →</Link></div></div></div></div>)}
             </div>
             <div className="relative" onMouseEnter={onHE} onMouseLeave={onHL}>
-              <button className="nl" onClick={()=>navigate("/hire")}>Hire Developers <ChevronDown size={13} className={`transition-transform ${showHire?"rotate-180":""}`}/></button>
-              {showHire&&(<div className="mega" style={{width:"760px"}} onMouseEnter={onHE} onMouseLeave={onHL}><div className="p-5"><p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Hire Top 1% Developers</p><div className="grid grid-cols-3 gap-1">{hireRoles.map((r,i)=><Link key={i} to={`/hire/${r.slug}`} className="hire-i"><div className="h-ic"><ServiceIcon name={r.icon} className="w-4 h-4 text-blue-700"/></div><span>{r.name}</span></Link>)}</div></div></div>)}
+              <button className="nl" onClick={()=>navigate("/hire")}>Dedicated Hire Developer <ChevronDown size={13} className={`transition-transform ${showHire?"rotate-180":""}`}/></button>
+              {showHire&&(<div className="mega" style={{width:"760px"}} onMouseEnter={onHE} onMouseLeave={onHL}><div className="p-5"><p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Dedicated Hire Developer — Top 1%</p><div className="grid grid-cols-3 gap-1">{hireRoles.map((r,i)=><Link key={i} to={`/hire/${r.slug}`} className="hire-i"><div className="h-ic"><ServiceIcon name={r.icon} className="w-4 h-4 text-blue-700"/></div><span>{r.name}</span></Link>)}</div></div></div>)}
             </div>
             <Link to="/about" className="nl">About</Link>
             <Link to="/contact" className="nl">Contact</Link>
@@ -134,7 +144,7 @@ export default function Navbar() {
         {mob&&(<div className="lg:hidden bg-white border-t border-gray-100 px-6 py-5 space-y-3 max-h-[80vh] overflow-y-auto">
           <Link to="/services" onClick={()=>setMob(false)} className="block font-semibold text-gray-900">Services</Link>
           {serviceCategories.map((c,i)=><Link key={i} to={`/services/${c.slug}`} onClick={()=>setMob(false)} className="block text-sm text-gray-500 pl-4 hover:text-blue-700">{c.name}</Link>)}
-          <Link to="/hire" onClick={()=>setMob(false)} className="block font-semibold text-gray-900 pt-1">Hire Developers</Link>
+          <Link to="/hire" onClick={()=>setMob(false)} className="block font-semibold text-gray-900 pt-1">Dedicated Hire Developer</Link>
           {hireRoles.slice(0,6).map((r,i)=><Link key={i} to={`/hire/${r.slug}`} onClick={()=>setMob(false)} className="block text-sm text-gray-500 pl-4 hover:text-blue-700">{r.name}</Link>)}
           <Link to="/about" onClick={()=>setMob(false)} className="block font-semibold text-gray-900">About</Link>
           <Link to="/contact" onClick={()=>setMob(false)} className="block font-semibold text-gray-900">Contact</Link>

@@ -348,6 +348,86 @@ export const subServicesData = {
     ["AI-powered compatibility matching", "Swipe / double opt-in mechanics", "Video speed dating rooms (WebRTC)", "Profile photo verification (AI)", "Subscription tiers & boost features", "Trust & safety moderation tools"],
     ["React Native", "Node.js", "WebRTC", "Redis", "PostgreSQL", "Stripe", "Firebase", "AWS Rekognition", "TensorFlow"]
   ),
+
+  // ─── CYBERSECURITY ─────────────────────────────────────────────────────────
+  "penetration-testing": base(
+    "Penetration Testing",
+    "Cybersecurity Services",
+    "Simulated real-world attacks on your web apps, mobile apps, APIs, networks, and cloud infrastructure to find vulnerabilities before attackers do. OSCP and CEH certified pen-testers deliver CVSS-scored reports with proof-of-concept exploits and actionable remediation guidance your engineers can implement immediately.",
+    ["Black-box, gray-box & white-box testing", "OWASP Top 10 & SANS Top 25 coverage", "API, web, mobile & cloud scope", "CVSS 3.1 scoring & exploit PoCs", "Executive & technical reports", "Retest verification included"],
+    ["Burp Suite Pro", "Metasploit", "Nmap", "Kali Linux", "OWASP ZAP", "Nessus", "Nuclei", "Frida"],
+    [
+      { q: "How long does a penetration test take?", a: "A typical web app penetration test takes 1–3 weeks depending on scope, complexity, and attack surface. We scope every engagement to give you a precise timeline before kickoff." },
+      { q: "Do you test in production or staging?", a: "Both — we prefer staging with production-parity data for invasive testing, and production for read-only reconnaissance. We never cause downtime without your explicit approval and scheduled window." },
+      { q: "What's included in the final report?", a: "Executive summary, methodology, CVSS-scored findings, proof-of-concept exploits, business impact analysis, remediation recommendations, and a free retest after fixes." },
+      { q: "Do you sign NDAs before testing?", a: "Always. We sign mutual NDAs before any scoping conversation. We also sign engagement letters with explicit rules of engagement before a single packet is sent." },
+    ]
+  ),
+  "security-audit-compliance": base(
+    "Security Audit & Compliance",
+    "Cybersecurity Services",
+    "End-to-end compliance programs for SOC 2 Type II, ISO 27001, HIPAA, GDPR, and PCI-DSS. We handle gap analysis, control design, policy drafting, evidence collection automation, and auditor-readiness — getting you certified in months, not years, with controls that actually work.",
+    ["SOC 2 Type I & II readiness & audit", "ISO 27001 certification program", "HIPAA & HITECH compliance", "PCI-DSS v4.0 assessment", "GDPR & CCPA privacy programs", "Ongoing compliance monitoring"],
+    ["Vanta", "Drata", "Secureframe", "OneTrust", "TrustCloud", "Tugboat Logic", "AuditBoard", "ServiceNow GRC"],
+    [
+      { q: "How long does SOC 2 certification take?", a: "SOC 2 Type I typically takes 3–4 months; Type II requires an additional 6-month observation window. We accelerate this with pre-built policies, evidence automation, and weekly working sessions." },
+      { q: "Do you bring your own auditor?", a: "We work with a roster of trusted third-party CPA firms for the actual attestation. You're free to bring your own auditor — we prepare you regardless of whom you engage." },
+      { q: "What happens after certification?", a: "We help you build continuous compliance — quarterly control reviews, evidence refresh automation, and annual renewal support so you sustain your certification year after year." },
+      { q: "Can you help with multiple frameworks at once?", a: "Yes. We design unified control frameworks that map to SOC 2, ISO 27001, HIPAA, and GDPR simultaneously — collect evidence once, satisfy multiple auditors." },
+    ]
+  ),
+  "managed-soc-services": base(
+    "Managed SOC Services",
+    "Cybersecurity Services",
+    "24/7/365 Security Operations Center monitoring powered by SIEM (Splunk, Microsoft Sentinel, Elastic), SOAR automation, and certified threat hunters. We deliver an average 4-minute alert-to-response time, proactive threat hunting, and monthly executive reporting tailored to your risk appetite.",
+    ["24/7/365 security monitoring", "SIEM tuning & custom detection rules", "SOAR playbook automation", "Proactive threat hunting", "IOC enrichment & threat intel", "Monthly executive reporting"],
+    ["Splunk Enterprise", "Microsoft Sentinel", "Elastic Security", "CrowdStrike Falcon", "Wazuh", "TheHive", "Cortex XSOAR", "MISP"],
+    [
+      { q: "How fast can you deploy a SOC?", a: "Initial deployment takes 2–4 weeks — log source onboarding, baseline detection rules, and runbook development. Full optimization with custom use-case coverage follows over 60–90 days." },
+      { q: "What's your average response time?", a: "Our L1 analysts triage alerts in under 4 minutes, with L2 escalation within 15 minutes for high-severity events. SOAR playbooks auto-contain common threats (phishing, malware) in seconds." },
+      { q: "Do you use AI / ML for detection?", a: "Yes — we layer UEBA (User Entity Behavior Analytics) and ML-based anomaly detection on top of rule-based detection to catch novel threats, insider risk, and low-and-slow attacks." },
+      { q: "Can you integrate with our existing tools?", a: "Absolutely. Our SOC integrates with your existing EDR, firewall, identity provider, and ticketing systems via API. We don't require a rip-and-replace." },
+    ]
+  ),
+  "cloud-security": base(
+    "Cloud Security",
+    "Cybersecurity Services",
+    "Enterprise cloud security engineering for AWS, Azure, and Google Cloud. IAM least-privilege design, network segmentation, encryption strategy, container and Kubernetes hardening, and Cloud Security Posture Management (CSPM) with continuous compliance monitoring — built to stop misconfigurations before they become breaches.",
+    ["AWS / Azure / GCP security architecture", "IAM & privileged access management", "Kubernetes & container security", "CSPM & CWPP deployment", "Encryption at rest & in transit", "Cloud-native SIEM integration"],
+    ["AWS Security Hub", "Prisma Cloud", "Wiz", "Lacework", "HashiCorp Vault", "Falco", "Open Policy Agent", "Terraform Sentinel"],
+    [
+      { q: "Do you support multi-cloud environments?", a: "Yes — we design unified security control planes across AWS, Azure, GCP, and on-prem. We implement CSPM, SIEM, and policy-as-code that spans every cloud consistently." },
+      { q: "Can you help with Kubernetes security?", a: "Yes. We harden the control plane, implement admission controllers (OPA Gatekeeper, Kyverno), network policies (Cilium, Calico), image signing (Cosign), and runtime protection (Falco)." },
+      { q: "What about serverless security?", a: "We cover Lambda, Azure Functions, and Cloud Functions with runtime protection, IAM minimization, dependency scanning, and observability for serverless-specific threats like event injection." },
+      { q: "How do you handle cloud incident response?", a: "We maintain cloud-specific IR runbooks for AWS GuardDuty, Azure Defender, and Chronicle alerts — with automated containment playbooks using SOAR + Lambda/Function Apps." },
+    ]
+  ),
+  "application-security": base(
+    "Application Security",
+    "Cybersecurity Services",
+    "Shift-left AppSec program integrating SAST, DAST, SCA, IAST, and secret scanning directly into your CI/CD pipelines. We deliver secure-code review, threat modeling, OWASP ASVS assessments, and developer security training — reducing vulnerabilities in production by 70%+ within 90 days.",
+    ["SAST, DAST, SCA & IAST integration", "Threat modeling (STRIDE, PASTA)", "Secure code review (manual & automated)", "OWASP ASVS compliance", "Secret scanning & SBOM management", "Developer security training"],
+    ["Snyk", "Semgrep", "SonarQube", "Checkmarx", "Veracode", "GitHub Advanced Security", "Trufflehog", "Dependabot"],
+    [
+      { q: "How do you integrate security into CI/CD?", a: "We add SAST, DAST, SCA, and secret scanning as pipeline stages with configurable severity gates. Developers get vulnerability feedback in pull requests — not weeks later in a report." },
+      { q: "What frameworks do you use for threat modeling?", a: "Primarily STRIDE and PASTA. For mobile, we use OWASP MASVS. For high-risk systems, we also run LINDDUN privacy threat modeling." },
+      { q: "Do you train developers?", a: "Yes — our secure code training covers OWASP Top 10, language-specific pitfalls (Java, Python, JS, Go), threat modeling, and hands-on CTF-style labs. Measurable reduction in bug reintroduction." },
+      { q: "Can you help us pass third-party security reviews?", a: "Absolutely. We prep you for enterprise security questionnaires (SIG, CAIQ), pentest requirements, and SBOM disclosures required by enterprise and federal customers." },
+    ]
+  ),
+  "incident-response": base(
+    "Incident Response & Forensics",
+    "Cybersecurity Services",
+    "Retainer-based incident response with guaranteed response SLAs. When breaches happen, our certified DFIR team delivers rapid containment, forensic root-cause analysis, chain-of-custody evidence handling, regulatory breach reporting (GDPR, HIPAA, state AG), and post-incident hardening to ensure the same attack never happens twice.",
+    ["24/7 IR retainer with 1hr SLA", "Ransomware response & negotiation", "Digital forensics (host, network, cloud)", "Chain-of-custody evidence handling", "Regulatory breach notification support", "Post-incident hardening & tabletop exercises"],
+    ["Magnet Axiom", "EnCase", "FTK", "Volatility", "Velociraptor", "CrowdStrike Falcon", "Cellebrite", "Wireshark"],
+    [
+      { q: "How fast can you respond to an active incident?", a: "Retainer clients get a 1-hour response SLA 24/7. Without a retainer, we typically engage within 4–8 hours. A pre-signed MSA and retainer ensure we can activate instantly — no procurement delay during a crisis." },
+      { q: "Do you handle ransomware?", a: "Yes — containment, decryption assessment, threat-actor negotiation (where legal and ethical), cryptocurrency recovery coordination, and restoration planning. We work closely with cyber insurance carriers and law enforcement." },
+      { q: "Will you help with breach notifications?", a: "Yes. We work with your legal counsel to meet GDPR (72hr), HIPAA, state AG, and sector-specific notification deadlines. We draft technical sections, quantify impact, and prepare regulator-ready documentation." },
+      { q: "What happens after the incident?", a: "Post-incident review, root-cause analysis, control improvement roadmap, purple-team exercise to validate fixes, and optional ongoing threat hunting to ensure the attacker doesn't return." },
+    ]
+  ),
 };
 
 export const getSubServiceData = (subSlug) => subServicesData[subSlug] || null;
