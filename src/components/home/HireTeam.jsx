@@ -4,9 +4,37 @@ import { motion } from "framer-motion";
 import TextReveal from "../effects/TextReveal";
 
 const models = [
-  { icon: Users, title: "Staff Augmentation", desc: "Instantly plug top-tier developers into your existing team.", points: ["Dedicated to your project", "Daily standups", "Works your timezone"], highlight: false },
-  { icon: Layers, title: "Dedicated Team", desc: "A fully managed offshore team working exclusively on your product.", points: ["Full team ownership", "Sprint-based delivery", "Tech lead included"], highlight: true, badge: "MOST POPULAR" },
-  { icon: Building2, title: "Offshore Dev Center", desc: "Build your own branded engineering hub with our full infrastructure.", points: ["Your brand, our ops", "IP fully yours", "Scale from 5 to 500"], highlight: false },
+  {
+    icon: Users,
+    title: "Staff Augmentation",
+    desc: "Instantly plug top-tier developers into your existing team.",
+    price: "$3,000",
+    priceUnit: "/ developer / month",
+    saveLabel: "Save 60% vs in-house",
+    points: ["160 hrs/month per developer", "Daily standups + Slack access", "Works your timezone", "Cancel with 30-day notice"],
+    highlight: false,
+  },
+  {
+    icon: Layers,
+    title: "Dedicated Team",
+    desc: "A fully managed offshore team working exclusively on your product.",
+    price: "$12,000",
+    priceUnit: "/ team of 3 / month",
+    saveLabel: "Best value · Tech lead included",
+    points: ["Full team ownership", "Sprint-based delivery (2-week)", "Tech lead + PM included", "Scale up/down anytime"],
+    highlight: true,
+    badge: "MOST POPULAR",
+  },
+  {
+    icon: Building2,
+    title: "Offshore Dev Center",
+    desc: "Build your own branded engineering hub with our full infrastructure.",
+    price: "Custom",
+    priceUnit: "starts at $40,000 / mo",
+    saveLabel: "For 8+ engineers",
+    points: ["Your brand, our operations", "IP fully owned by you", "Dedicated office + infrastructure", "Scale from 5 to 500 engineers"],
+    highlight: false,
+  },
 ];
 
 const fadeUp = {
@@ -38,7 +66,7 @@ export default function HireTeam() {
             variants={fadeUp}
             className="inline-block text-blue-700 text-xs font-bold uppercase tracking-widest mb-4 bg-blue-100 px-4 py-2 rounded-full"
           >
-            Engagement Models
+            Engagement Models & Pricing
           </motion.span>
           <motion.h2
             variants={fadeUp}
@@ -47,7 +75,7 @@ export default function HireTeam() {
             <TextReveal>Flexible Ways to Work With Us</TextReveal>
           </motion.h2>
           <motion.p variants={fadeUp} className="text-gray-500 max-w-xl mx-auto text-lg">
-            Choose the model that fits your project, budget, and timeline. No lock-in, no hidden costs.
+            Transparent, fixed monthly pricing. No recruitment fees, no benefits overhead, no surprises.
           </motion.p>
         </motion.div>
 
@@ -92,8 +120,34 @@ export default function HireTeam() {
                 >
                   <Icon size={22} className={m.highlight ? "text-white" : "text-blue-700"} />
                 </motion.div>
-                <h3 className={`text-xl font-bold mb-3 ${m.highlight ? "text-white" : "text-gray-900"}`}>{m.title}</h3>
-                <p className={`text-sm leading-relaxed mb-6 ${m.highlight ? "text-blue-100" : "text-gray-500"}`}>{m.desc}</p>
+
+                <h3 className={`text-xl font-bold mb-2 ${m.highlight ? "text-white" : "text-gray-900"}`}>
+                  {m.title}
+                </h3>
+                <p className={`text-sm leading-relaxed mb-5 ${m.highlight ? "text-blue-100" : "text-gray-500"}`}>
+                  {m.desc}
+                </p>
+
+                {/* Pricing */}
+                <div className={`mb-5 pb-5 border-b ${m.highlight ? "border-white/20" : "border-gray-100"}`}>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className={`text-[10px] font-bold uppercase tracking-[0.15em] ${m.highlight ? "text-blue-200" : "text-gray-400"}`}>
+                      from
+                    </span>
+                    <span className={`text-4xl font-extrabold tracking-tight ${m.highlight ? "text-white" : "text-gray-900"}`}>
+                      {m.price}
+                    </span>
+                  </div>
+                  <p className={`text-xs mt-1 ${m.highlight ? "text-blue-200" : "text-gray-500"}`}>
+                    {m.priceUnit}
+                  </p>
+                  <p className={`text-[11px] font-semibold mt-2 inline-flex items-center gap-1 px-2 py-0.5 rounded-full ${
+                    m.highlight ? "bg-white/15 text-blue-100" : "bg-green-50 text-green-700"
+                  }`}>
+                    ✓ {m.saveLabel}
+                  </p>
+                </div>
+
                 <ul className="space-y-2.5 mb-7">
                   {m.points.map((p, j) => (
                     <motion.li
@@ -102,9 +156,9 @@ export default function HireTeam() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.3 + j * 0.08, duration: 0.4 }}
-                      className={`flex items-center gap-2 text-sm ${m.highlight ? "text-blue-100" : "text-gray-600"}`}
+                      className={`flex items-start gap-2 text-sm ${m.highlight ? "text-blue-100" : "text-gray-600"}`}
                     >
-                      <CheckCircle2 size={15} className={m.highlight ? "text-blue-300" : "text-blue-600"} />
+                      <CheckCircle2 size={15} className={`mt-0.5 flex-shrink-0 ${m.highlight ? "text-blue-300" : "text-blue-600"}`} />
                       {p}
                     </motion.li>
                   ))}
@@ -120,6 +174,20 @@ export default function HireTeam() {
               </motion.div>
             );
           })}
+        </motion.div>
+
+        {/* Pricing footer note */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-10 flex flex-wrap justify-center gap-6 text-sm text-gray-500"
+        >
+          <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-blue-600" /> 1-week risk-free trial</span>
+          <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-blue-600" /> Free replacement guarantee</span>
+          <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-blue-600" /> No lock-in contracts</span>
+          <span className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-blue-600" /> NDA before any work</span>
         </motion.div>
       </div>
     </section>

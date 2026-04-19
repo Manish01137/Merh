@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import logoWhite from "../../assets/02_Logo_Reversed_White_3600x3600.png";
 import CountUp from "../effects/CountUp";
 import MagneticButton from "../effects/MagneticButton";
+import AIBadge from "../effects/AIBadge";
 
 const badges = ["AI-Powered Solutions","15+ Years Experience","500+ Happy Clients","70+ Countries Served"];
 const stats = [{n:"1100+",l:"Projects"},{n:"130+",l:"Engineers"},{n:"70+",l:"Countries"},{n:"98%",l:"Satisfaction"}];
@@ -22,20 +23,17 @@ export default function Hero(){
           <defs><pattern id="hg" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="1"/></pattern></defs>
           <rect width="100%" height="100%" fill="url(#hg)"/>
         </svg>
-        {/* Floating orbs */}
-        <motion.div animate={{y:[0,-20,0]}} transition={{duration:6,repeat:Infinity,ease:"easeInOut"}}
-          className="absolute top-1/4 right-1/4 w-4 h-4 rounded-full bg-blue-400/40 blur-sm"/>
-        <motion.div animate={{y:[0,15,0]}} transition={{duration:8,repeat:Infinity,ease:"easeInOut",delay:2}}
-          className="absolute top-2/3 right-1/3 w-3 h-3 rounded-full bg-cyan-400/30 blur-sm"/>
-        <motion.div animate={{y:[0,-12,0]}} transition={{duration:7,repeat:Infinity,ease:"easeInOut",delay:1}}
-          className="absolute top-1/2 right-1/6 w-2 h-2 rounded-full bg-indigo-400/40 blur-sm"/>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <div>
-            <motion.div initial="hidden" animate="visible" variants={{visible:{transition:{staggerChildren:0.08}}}}
+            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.05 }}
+              className="mb-5">
+              <AIBadge label="Powered by Advanced AI" dark />
+            </motion.div>
+            <motion.div initial="hidden" animate="visible" variants={{visible:{transition:{staggerChildren:0.08,delayChildren:0.15}}}}
               className="flex flex-wrap gap-2 mb-6">
               {badges.map((b,i)=>(
                 <motion.span key={i} variants={fadeUp} custom={i}

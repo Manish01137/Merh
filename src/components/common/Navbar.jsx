@@ -180,19 +180,19 @@ export default function Navbar() {
         {/* Main bar */}
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
+          <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
             <div className="relative">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-300/40">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-400/50">
                 <img
                   src={logoWhite}
                   alt="MershilTech"
-                  className="w-7 h-7 object-contain transition-transform duration-500 group-hover:scale-110"
+                  className="w-10 h-10 object-contain transition-transform duration-500 group-hover:scale-110"
                   style={{ filter: "invert(1) brightness(2)", mixBlendMode: "screen" }}
                 />
               </div>
-              <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-tr from-blue-500/0 via-blue-400/30 to-cyan-400/0 opacity-0 group-hover:opacity-100 blur-md transition duration-500 pointer-events-none -z-10" />
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-blue-500/0 via-blue-400/40 to-cyan-400/20 opacity-0 group-hover:opacity-100 blur-lg transition duration-500 pointer-events-none -z-10" />
             </div>
-            <span className="text-gray-900 font-extrabold text-[18px] leading-none tracking-tight">
+            <span className="text-gray-900 font-extrabold text-[22px] leading-none tracking-tight">
               Mershil<span className="text-blue-700">Tech</span>
             </span>
           </Link>
