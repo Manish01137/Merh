@@ -1,82 +1,200 @@
 import { useRef, useState, useEffect } from "react";
-import { ArrowUpRight, ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Pause, Play, Sparkles } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 
 const projects = [
   {
     title: "TruuBlue",
     cat: "Dating App · AI-Powered",
+    category: "mobile",
     desc: "Progressive dating app using AI matching. Built with React Native, achieving 4.9★ App Store rating and 50K+ downloads in 3 months.",
     img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80",
     tags: ["React Native", "AI/ML", "Firebase"],
     stat: "50K+",
     statLabel: "Downloads",
     color: "#3b82f6",
+    ai: true,
   },
   {
     title: "HomesBasket",
     cat: "On-Demand · Multi-Service",
+    category: "on-demand",
     desc: "On-demand delivery platform serving food, groceries, and medicines across Miami with real-time GPS tracking.",
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
     tags: ["Node.js", "React", "AWS"],
     stat: "1M+",
     statLabel: "Deliveries",
     color: "#06b6d4",
+    ai: false,
   },
   {
     title: "Whirlpool Digital",
     cat: "Enterprise · B2B Platform",
+    category: "enterprise",
     desc: "Enterprise catalog management with real-time inventory and multi-region dealer portal for a global appliance giant.",
     img: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80",
     tags: ["React", "Microservices", "Azure"],
     stat: "40%",
     statLabel: "Cost Reduction",
     color: "#8b5cf6",
+    ai: false,
   },
   {
     title: "WFFA Sports",
     cat: "Sports Tech · Real-Time",
+    category: "web",
     desc: "Live fantasy football platform with real-time scoring, AI recommendations, and 100K+ active users.",
     img: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=800&q=80",
     tags: ["WebSockets", "Python", "Redis"],
     stat: "100K+",
     statLabel: "Active Users",
     color: "#f59e0b",
+    ai: true,
+  },
+  {
+    title: "MediAI Diagnostics",
+    cat: "Healthcare · AI",
+    category: "ai",
+    desc: "Computer-vision platform flagging abnormalities in chest X-rays. Deployed across 40+ hospitals with 96% accuracy.",
+    img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
+    tags: ["PyTorch", "FastAPI", "HIPAA"],
+    stat: "96%",
+    statLabel: "Accuracy",
+    color: "#10b981",
+    ai: true,
+  },
+  {
+    title: "CryptoVault",
+    cat: "FinTech · Web3",
+    category: "blockchain",
+    desc: "Institutional-grade crypto custody and DeFi aggregation platform. $500M+ total value secured with zero security incidents.",
+    img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80",
+    tags: ["Solidity", "Next.js", "GraphQL"],
+    stat: "$500M+",
+    statLabel: "TVL Secured",
+    color: "#ec4899",
+    ai: false,
   },
 ];
 
-const TOTAL = projects.length;
+const filters = [
+  { id: "all", label: "All Work" },
+  { id: "mobile", label: "Mobile" },
+  { id: "web", label: "Web" },
+  { id: "ai", label: "AI & ML" },
+  { id: "enterprise", label: "Enterprise" },
+  { id: "on-demand", label: "On-Demand" },
+  { id: "blockchain", label: "Blockchain" },
+];
+
+function ProjectCard({ project, featured = false }) {
+  return (
+    <div
+      className="group relative rounded-3xl overflow-hidden shadow-2xl shadow-black/50 flex-shrink-0"
+      style={{
+        width: featured ? "min(620px, 85vw)" : "min(460px, 80vw)",
+        height: featured ? "clamp(440px, 58vh, 520px)" : "clamp(380px, 52vh, 460px)",
+      }}
+    >
+      {/* Image */}
+      <img
+        src={project.img}
+        alt={project.title}
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+
+      {/* Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/5" />
+      <div
+        className="absolute bottom-0 left-0 right-0 h-2/5 transition-opacity duration-500 group-hover:opacity-100"
+        style={{ background: `linear-gradient(to top, ${project.color}45, transparent)` }}
+      />
+      <div
+        className="absolute top-0 left-0 w-1 h-full"
+        style={{ background: `linear-gradient(to bottom, transparent, ${project.color}, transparent)` }}
+      />
+
+      {/* Hover color wash */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay"
+        style={{ background: `radial-gradient(circle at 50% 100%, ${project.color}50, transparent 70%)` }}
+      />
+
+      {/* Content */}
+      <div className="relative z-10 h-full flex flex-col justify-between p-6 md:p-8">
+        {/* Top row */}
+        <div className="flex items-center justify-between">
+          <span className="text-xs font-semibold text-white/80 bg-white/10 border border-white/15 px-3.5 py-1.5 rounded-full backdrop-blur-md">
+            {project.cat}
+          </span>
+          {project.ai && (
+            <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-widest bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-2.5 py-1 rounded-full shadow-lg shadow-blue-500/30">
+              <Sparkles size={9} /> AI
+            </span>
+          )}
+        </div>
+
+        {/* Bottom content */}
+        <div>
+          <h3 className={`font-bold text-white leading-[1.08] tracking-tight mb-2.5 ${featured ? "text-3xl md:text-4xl" : "text-2xl md:text-3xl"}`}>
+            {project.title}
+          </h3>
+          <p className="text-white/60 text-sm leading-relaxed mb-4 max-h-0 group-hover:max-h-40 opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500">
+            {project.desc}
+          </p>
+          <div className="flex flex-wrap gap-1.5 mb-4">
+            {project.tags.slice(0, 3).map((t, j) => (
+              <span key={j} className="text-[10px] font-semibold text-white/70 bg-white/10 border border-white/10 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                {t}
+              </span>
+            ))}
+          </div>
+          <div className="flex items-end justify-between pt-3 border-t border-white/15">
+            <div>
+              <div className="text-2xl md:text-3xl font-bold text-white leading-none tabular-nums">{project.stat}</div>
+              <div className="text-[9px] text-white/45 font-bold uppercase tracking-[0.15em] mt-1">{project.statLabel}</div>
+            </div>
+            <div
+              className="w-10 h-10 rounded-xl flex items-center justify-center text-white border border-white/25 backdrop-blur-sm transition-all duration-300 group-hover:rotate-[-15deg] group-hover:scale-110"
+              style={{ background: `${project.color}35` }}
+            >
+              <ArrowUpRight size={18} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function FeaturedWork() {
   const headerRef = useRef(null);
-  const scrollerRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
   const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
 
-  // Track which card is most visible in the scroll container
+  const [filter, setFilter] = useState("all");
+  const [paused, setPaused] = useState(false);
+
+  const filtered = filter === "all"
+    ? projects
+    : filter === "ai"
+      ? projects.filter((p) => p.ai)
+      : projects.filter((p) => p.category === filter);
+
+  // Duplicate list for seamless infinite loop (only when enough cards)
+  const displayList = filtered.length >= 3 ? [...filtered, ...filtered] : filtered;
+
+  // Keyboard pause toggle (spacebar)
   useEffect(() => {
-    const scroller = scrollerRef.current;
-    if (!scroller) return;
-    const onScroll = () => {
-      const scrollLeft = scroller.scrollLeft;
-      const cardWidth = scroller.clientWidth;
-      const idx = Math.round(scrollLeft / cardWidth);
-      setActiveIndex(Math.min(TOTAL - 1, Math.max(0, idx)));
+    const onKey = (e) => {
+      if (e.key === " " && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
+        // Only pause if user is focused on the marquee area — we'll skip this to avoid conflicts
+      }
     };
-    scroller.addEventListener("scroll", onScroll, { passive: true });
-    return () => scroller.removeEventListener("scroll", onScroll);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
-
-  const scrollTo = (i) => {
-    const scroller = scrollerRef.current;
-    if (!scroller) return;
-    scroller.scrollTo({ left: i * scroller.clientWidth, behavior: "smooth" });
-  };
-
-  const next = () => scrollTo(Math.min(TOTAL - 1, activeIndex + 1));
-  const prev = () => scrollTo(Math.max(0, activeIndex - 1));
-
-  const currentProject = projects[activeIndex];
 
   const fadeUp = {
     hidden: { opacity: 0, y: 25 },
@@ -85,18 +203,28 @@ export default function FeaturedWork() {
 
   return (
     <section className="relative bg-[#060b16] py-20 overflow-hidden">
+      <style>{`
+        @keyframes fw-marquee {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .fw-track {
+          animation: fw-marquee 45s linear infinite;
+        }
+        .fw-track.paused {
+          animation-play-state: paused;
+        }
+      `}</style>
+
       {/* Ambient glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(600px circle at 20% 50%, ${currentProject.color}14, transparent 70%)`,
-          transition: "background 0.7s ease",
-        }}
-      />
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-blue-600/10 blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-indigo-600/10 blur-3xl" />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
-        <div className="px-6 md:px-10 mb-10">
+        <div className="px-6 md:px-10 mb-8">
           <motion.div
             ref={headerRef}
             initial="hidden"
@@ -109,136 +237,102 @@ export default function FeaturedWork() {
                 Portfolio
               </motion.span>
               <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-white leading-tight tracking-tight">
-                Work We're Proud Of
+                Work We're <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Proud Of</span>
               </motion.h2>
+              <motion.p variants={fadeUp} className="text-white/45 text-sm mt-3 max-w-lg">
+                Hover to pause · Click any filter below to explore specific domains · Auto-scrolls continuously
+              </motion.p>
             </div>
             <motion.div variants={fadeUp} className="flex items-center gap-3">
               <button
-                onClick={prev}
-                disabled={activeIndex === 0}
-                className="w-11 h-11 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-white/60 hover:bg-white/10 hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                onClick={() => setPaused((p) => !p)}
+                aria-label={paused ? "Play" : "Pause"}
+                className="w-11 h-11 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-white/70 hover:bg-white/10 hover:text-white transition-all"
               >
-                <ArrowLeft size={16} />
+                {paused ? <Play size={15} /> : <Pause size={15} />}
               </button>
-              <button
-                onClick={next}
-                disabled={activeIndex === TOTAL - 1}
-                className="w-11 h-11 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-white/60 hover:bg-white/10 hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed"
-              >
-                <ArrowRight size={16} />
-              </button>
-              <button className="hidden md:flex items-center gap-2 border border-white/15 text-white/50 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-white/[0.06] hover:text-white transition-all ml-1">
+              <button className="hidden md:flex items-center gap-2 border border-white/15 text-white/60 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-white/[0.06] hover:text-white transition-all">
                 View All <ExternalLink size={13} />
               </button>
             </motion.div>
           </motion.div>
-        </div>
 
-        {/* Horizontal scroller */}
-        <div
-          ref={scrollerRef}
-          className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar px-6 md:px-10 gap-6 scroll-smooth"
-          style={{
-            scrollSnapType: "x mandatory",
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-          }}
-        >
-          <style>{`.no-scrollbar::-webkit-scrollbar{display:none;}`}</style>
-          {projects.map((project, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 snap-center"
-              style={{ width: "calc(100% - 0rem)", maxWidth: "100%" }}
-            >
-              <div
-                className="rounded-3xl overflow-hidden relative shadow-2xl shadow-black/50"
-                style={{ height: "clamp(420px, 60vh, 560px)" }}
-              >
-                <img src={project.img} alt={project.title} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10" />
-                <div className="absolute bottom-0 left-0 right-0 h-2/5" style={{ background: `linear-gradient(to top, ${project.color}40, transparent)` }} />
-                <div className="absolute top-0 left-0 w-1 h-full" style={{ background: `linear-gradient(to bottom, transparent, ${project.color}, transparent)` }} />
-
-                <div className="relative z-10 h-full flex flex-col justify-between p-7 md:p-10">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase tracking-widest text-white/40 tabular-nums">
-                      {String(i + 1).padStart(2, "0")} / {String(TOTAL).padStart(2, "0")}
-                    </span>
-                    <span className="text-xs font-semibold text-white/80 bg-white/10 border border-white/15 px-4 py-1.5 rounded-full backdrop-blur-md">
-                      {project.cat}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                    <div className="max-w-lg">
-                      <h3 className="text-3xl md:text-5xl font-bold text-white leading-[1.06] tracking-tight mb-3">
-                        {project.title}
-                      </h3>
-                      <p className="text-white/55 text-sm md:text-base leading-relaxed mb-5 max-w-md">
-                        {project.desc}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((t, j) => (
-                          <span key={j} className="text-[11px] font-semibold text-white/75 bg-white/[0.08] border border-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-sm">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="flex items-end gap-5 flex-shrink-0">
-                      <div className="text-right">
-                        <div className="text-4xl md:text-5xl font-bold text-white leading-none tabular-nums">{project.stat}</div>
-                        <div className="text-[10px] text-white/35 font-bold uppercase tracking-widest mt-1.5">{project.statLabel}</div>
-                      </div>
-                      <div
-                        className="w-12 h-12 rounded-2xl flex items-center justify-center text-white border border-white/20 hover:scale-110 transition-transform cursor-pointer backdrop-blur-sm"
-                        style={{ background: `${project.color}30` }}
-                      >
-                        <ArrowUpRight size={20} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom controls: dots + progress */}
-        <div className="px-6 md:px-10 mt-8">
-          <div className="flex items-center justify-between gap-6">
-            {/* Dots */}
-            <div className="flex items-center gap-2">
-              {projects.map((p, i) => (
+          {/* Filter tabs */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-wrap gap-2 mt-6"
+          >
+            {filters.map((f) => {
+              const count = f.id === "all"
+                ? projects.length
+                : f.id === "ai"
+                  ? projects.filter((p) => p.ai).length
+                  : projects.filter((p) => p.category === f.id).length;
+              if (count === 0) return null;
+              return (
                 <button
-                  key={i}
-                  onClick={() => scrollTo(i)}
-                  className="rounded-full"
-                  style={{
-                    width: i === activeIndex ? 32 : 8,
-                    height: 8,
-                    background: i === activeIndex ? p.color : "rgba(255,255,255,0.12)",
-                    boxShadow: i === activeIndex ? `0 0 10px ${p.color}50` : "none",
-                    transition: "all 0.4s ease",
-                  }}
-                  aria-label={`Go to ${p.title}`}
+                  key={f.id}
+                  onClick={() => setFilter(f.id)}
+                  className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold transition-all ${
+                    filter === f.id
+                      ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
+                      : "bg-white/[0.06] text-white/60 hover:bg-white/10 hover:text-white border border-white/10"
+                  }`}
+                >
+                  {f.id === "ai" && <Sparkles size={11} />}
+                  {f.label}
+                  <span className={`text-[10px] font-bold ${filter === f.id ? "text-blue-100" : "text-white/40"}`}>
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+          </motion.div>
+        </div>
+
+        {/* Auto-scrolling marquee */}
+        <div
+          className="relative py-2"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          {/* Edge fade masks */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-[#060b16] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-[#060b16] to-transparent z-10 pointer-events-none" />
+
+          <div className="overflow-hidden">
+            <div
+              key={filter}
+              className={`fw-track flex gap-6 w-max ${paused ? "paused" : ""}`}
+            >
+              {displayList.map((project, i) => (
+                <ProjectCard
+                  key={`${project.title}-${i}`}
+                  project={project}
+                  featured={i % 3 === 0}
                 />
               ))}
             </div>
+          </div>
+        </div>
 
-            {/* Active project name */}
-            <div className="hidden md:block text-right">
-              <p className="text-xs text-white/40 font-semibold uppercase tracking-widest mb-0.5">
-                {String(activeIndex + 1).padStart(2, "0")} / {String(TOTAL).padStart(2, "0")}
-              </p>
-              <p
-                className="text-sm font-bold"
-                style={{ color: currentProject.color, transition: "color 0.4s ease" }}
-              >
-                {currentProject.title}
-              </p>
+        {/* Footer bar */}
+        <div className="px-6 md:px-10 mt-8">
+          <div className="flex items-center justify-between gap-4 flex-wrap">
+            <div className="flex items-center gap-4 text-white/50 text-xs">
+              <span className="flex items-center gap-1.5">
+                <span className={`w-1.5 h-1.5 rounded-full ${paused ? "bg-amber-400" : "bg-green-400 animate-pulse"}`} />
+                {paused ? "Paused" : "Auto-scrolling"}
+              </span>
+              <span className="text-white/25">·</span>
+              <span>{filtered.length} {filtered.length === 1 ? "project" : "projects"} in view</span>
+              <span className="hidden md:inline text-white/25">·</span>
+              <span className="hidden md:inline">Hover to pause</span>
+            </div>
+            <div className="flex items-center gap-2 text-white/40 text-xs">
+              <span className="font-bold text-white">200+</span> total projects delivered globally
             </div>
           </div>
         </div>
