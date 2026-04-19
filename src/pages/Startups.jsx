@@ -176,7 +176,8 @@ export default function Startups() {
                 <img
                   src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1000&q=80"
                   alt="Startup team"
-                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   className="w-full h-96 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/70 via-transparent to-transparent" />

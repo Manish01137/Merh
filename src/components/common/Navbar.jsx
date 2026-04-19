@@ -5,7 +5,7 @@ import {
   Smartphone, Globe, Code2, Brain, Link2, Building2, Lightbulb, ShieldCheck,
 } from "lucide-react";
 import { ServiceIcon } from "../../utils/serviceIcons";
-import logoWhite from "../../assets/02_Logo_Reversed_White_3600x3600.png";
+import logoWhite from "../../assets/logo.png";
 
 const serviceCategories = [
   { name: "Mobile App Development", icon: Smartphone, slug: "mobile", sub: [
@@ -186,6 +186,10 @@ export default function Navbar() {
                 <img
                   src={logoWhite}
                   alt="MershilTech"
+                  width="40"
+                  height="40"
+                  decoding="async"
+                  fetchPriority="high"
                   className="w-10 h-10 object-contain transition-transform duration-500 group-hover:scale-110"
                   style={{ filter: "invert(1) brightness(2)", mixBlendMode: "screen" }}
                 />

@@ -142,7 +142,8 @@ export default function Cybersecurity() {
                 <img
                   src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1000&q=80"
                   alt="Cybersecurity operations"
-                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   className="w-full h-96 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-950/70 via-transparent to-transparent" />

@@ -1,4 +1,4 @@
-import logoWhite from "../../assets/02_Logo_Reversed_White_3600x3600.png";
+import logoWhite from "../../assets/logo.png";
 
 /**
  * Subtle tiled-monogram pattern background for dark sections.

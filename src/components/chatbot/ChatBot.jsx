@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Sparkles, Bot, User, RefreshCw, ArrowRight } from "lucide-react";
 import { respond, quickActions } from "./chatbotKnowledge";
-import logoWhite from "../../assets/02_Logo_Reversed_White_3600x3600.png";
+import logoWhite from "../../assets/logo.png";
 
 const INITIAL_MESSAGE = {
   from: "bot",

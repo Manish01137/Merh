@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaLinkedinIn, FaTwitter, FaGithub, FaInstagram } from "react-icons/fa";
 import { Mail, Phone, MapPin } from "lucide-react";
-import logoWhite from "../../assets/02_Logo_Reversed_White_3600x3600.png";
+import logoWhite from "../../assets/logo.png";
 import MonogramPattern from "../effects/MonogramPattern";
 export default function Footer() {
   return (
@@ -15,6 +15,10 @@ export default function Footer() {
                 <img
                   src={logoWhite}
                   alt="MershilTech"
+                  width="28"
+                  height="28"
+                  loading="lazy"
+                  decoding="async"
                   className="w-7 h-7 object-contain"
                   style={{ filter: "invert(1) brightness(2)", mixBlendMode: "screen" }}
                 />

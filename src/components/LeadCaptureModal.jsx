@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { X, Phone } from "lucide-react";
-import logoWhite from "../assets/02_Logo_Reversed_White_3600x3600.png";
+import logoWhite from "../assets/logo.png";
 
 export default function LeadCaptureModal() {
   const [show, setShow] = useState(false);
@@ -19,6 +19,10 @@ export default function LeadCaptureModal() {
               <img
                 src={logoWhite}
                 alt="MershilTech"
+                width="24"
+                height="24"
+                loading="lazy"
+                decoding="async"
                 className="w-6 h-6 object-contain"
                 style={{ filter: "invert(1) brightness(2)", mixBlendMode: "screen" }}
               />

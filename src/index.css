@@ -8,6 +8,8 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -16,6 +18,13 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, svg, video {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Remove default input/select/textarea appearance */
@@ -24,22 +33,60 @@ select {
   appearance: auto;
 }
 
+/* Tap highlight + touch feedback on mobile */
+a, button, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
 /* Smooth transitions globally */
 a, button {
   transition: all 0.2s ease;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+/* Custom scrollbar (desktop only) */
+@media (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #93c5fd;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1d4ed8;
+  }
 }
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
+
+/* Reduce GPU-heavy blur on low-power / touch devices — keeps premium feel, saves battery */
+@media (max-width: 768px), (pointer: coarse) {
+  .blur-3xl  { --tw-blur: blur(24px); }
+  .blur-2xl  { --tw-blur: blur(20px); }
+  .blur-\[120px\] { --tw-blur: blur(48px); }
+  .blur-\[100px\] { --tw-blur: blur(40px); }
+  .blur-\[80px\]  { --tw-blur: blur(32px); }
 }
-::-webkit-scrollbar-thumb {
-  background: #93c5fd;
-  border-radius: 3px;
+
+/* Pause infinite marquees on touch devices (no hover → can never pause) */
+@media (hover: none) {
+  .testi-track,
+  .marquee-track,
+  [data-marquee] {
+    animation-play-state: paused !important;
+  }
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #1d4ed8;
+
+/* Respect OS accessibility setting */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

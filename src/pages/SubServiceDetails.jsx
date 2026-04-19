@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { getSubServiceData } from "../data/subServicesData";
+import { getSubServiceImages } from "../data/subServiceImages";
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import { motion, AnimatePresence } from "framer-motion";
@@ -208,8 +209,15 @@ const SHOWCASE_IMAGE = {
 export default function SubServiceDetails() {
   const { slug, sub } = useParams();
   const s = getSubServiceData(sub);
-  const galleryImgs = CATEGORY_IMAGES[slug] || CATEGORY_IMAGES["software"];
-  const showcaseImg = SHOWCASE_IMAGE[slug] || SHOWCASE_IMAGE["software"];
+  const subImgs = getSubServiceImages(sub, slug);
+  const fallbackGallery = CATEGORY_IMAGES[slug] || CATEGORY_IMAGES["software"];
+  const fallbackShowcase = SHOWCASE_IMAGE[slug] || SHOWCASE_IMAGE["software"];
+  const galleryImgs = subImgs.gallery;
+  const showcaseImg = subImgs.showcase;
+  const onImgFallback = (e, i) => {
+    e.currentTarget.onerror = null;
+    e.currentTarget.src = i != null ? fallbackGallery[i % fallbackGallery.length] : fallbackShowcase;
+  };
 
   if (!s) return (
     <div className="bg-white min-h-screen flex items-center justify-center">
@@ -390,6 +398,7 @@ export default function SubServiceDetails() {
                   alt={`${s.title} showcase ${i + 1}`}
                   loading="lazy"
                   decoding="async"
+                  onError={(e) => onImgFallback(e, i)}
                   className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500" />
@@ -466,6 +475,7 @@ export default function SubServiceDetails() {
                 alt={`${s.title} in action`}
                 loading="lazy"
                 decoding="async"
+                onError={(e) => onImgFallback(e)}
                 className="w-full h-96 object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-950/40 via-transparent to-transparent" />

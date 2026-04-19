@@ -3,7 +3,7 @@ import Footer from "../components/common/Footer";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, Target, Handshake, Globe, Zap, Shield, Rocket } from "lucide-react";
 import { ServiceIcon } from "../utils/serviceIcons";
-import logoWhite from "../assets/02_Logo_Reversed_White_3600x3600.png";
+import logoWhite from "../assets/logo.png";
 import MonogramPattern from "../components/effects/MonogramPattern";
 
 const stats = [["1100+","Projects Delivered"],["130+","Expert Engineers"],["70+","Countries Served"],["15+","Years of Expertise"],["500+","Happy Clients"],["98%","Client Satisfaction"]];
@@ -45,6 +45,10 @@ export default function About() {
                   <img
                     src={logoWhite}
                     alt="MershilTech"
+                    width="28"
+                    height="28"
+                    loading="lazy"
+                    decoding="async"
                     className="w-7 h-7 object-contain"
                     style={{ filter: "invert(1) brightness(2)", mixBlendMode: "screen" }}
                   />

@@ -27,7 +27,7 @@ export default function GlobalReach() {
             Global Presence
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
-            We Work in <span className="text-blue-400">70+ Countries</span>
+            Engineering Excellence, <span className="text-blue-400">Delivered Worldwide</span>
           </h2>
           <p className="text-white/40 max-w-xl mx-auto text-base">
             From startups in Silicon Valley to enterprises in Europe and the Middle East — MershilTech delivers world-class software globally.

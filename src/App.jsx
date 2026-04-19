@@ -7,7 +7,8 @@ import ScrollProgress from "./components/effects/ScrollProgress";
 import PageTransition from "./components/effects/PageTransition";
 import SearchModal from "./components/effects/SearchModal";
 import PageSkeleton from "./components/effects/PageSkeleton";
-import ChatBot from "./components/chatbot/ChatBot";
+
+const ChatBot = lazy(() => import("./components/chatbot/ChatBot"));
 
 // Lazy-load secondary routes
 const Hire = lazy(() => import("./pages/Hire"));
@@ -50,6 +51,7 @@ function AnimatedRoutes() {
 
 function AppShell() {
   const [searchOpen, setSearchOpen] = useState(false);
+  const [chatReady, setChatReady] = useState(false);
 
   // Cmd+K / Ctrl+K to open search
   useEffect(() => {
@@ -69,12 +71,24 @@ function AppShell() {
     };
   }, []);
 
+  // Defer ChatBot mount until browser is idle — keeps it off the critical path
+  useEffect(() => {
+    const schedule = window.requestIdleCallback || ((cb) => setTimeout(cb, 1500));
+    const cancel = window.cancelIdleCallback || clearTimeout;
+    const id = schedule(() => setChatReady(true), { timeout: 3000 });
+    return () => cancel(id);
+  }, []);
+
   return (
     <>
       <ScrollProgress />
       <LeadCaptureModal />
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
-      <ChatBot />
+      {chatReady && (
+        <Suspense fallback={null}>
+          <ChatBot />
+        </Suspense>
+      )}
       <Suspense fallback={<PageSkeleton />}>
         <AnimatedRoutes />
       </Suspense>

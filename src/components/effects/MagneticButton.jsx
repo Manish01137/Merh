@@ -1,10 +1,15 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 /**
  * Magnetic button that subtly follows the cursor on hover.
  * Accepts `as` prop to render as any element (e.g. Link, a, button).
  * Passes through all other props.
+ *
+ * Fixes:
+ *  - Memoizes `motion.create(Component)` so it isn't rebuilt each render (prevented clicks landing cleanly).
+ *  - Suspends magnetism on press so the button can't slide out from under the cursor mid-click.
+ *  - Disables magnetism on touch / coarse pointers (no hover → no benefit, only jitter).
  */
 export default function MagneticButton({
   as: Component = "button",
@@ -15,8 +20,24 @@ export default function MagneticButton({
 }) {
   const ref = useRef(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [enabled, setEnabled] = useState(true);
+  const pressingRef = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const mq = window.matchMedia("(hover: none), (pointer: coarse)");
+    const apply = () => setEnabled(!mq.matches);
+    apply();
+    mq.addEventListener?.("change", apply);
+    return () => mq.removeEventListener?.("change", apply);
+  }, []);
+
+  const MotionComp = useMemo(() => motion.create(Component), [Component]);
+
+  const reset = () => setOffset({ x: 0, y: 0 });
 
   const handleMove = (e) => {
+    if (!enabled || pressingRef.current) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -25,27 +46,29 @@ export default function MagneticButton({
     setOffset({ x: (e.clientX - cx) * strength, y: (e.clientY - cy) * strength });
   };
 
-  const handleLeave = () => setOffset({ x: 0, y: 0 });
+  const handlePressStart = () => {
+    pressingRef.current = true;
+    reset();
+  };
 
-  const MotionComp = motion(Component);
+  const handlePressEnd = () => {
+    pressingRef.current = false;
+  };
 
   return (
     <MotionComp
       ref={ref}
       onMouseMove={handleMove}
-      onMouseLeave={handleLeave}
+      onMouseLeave={reset}
+      onPointerDown={handlePressStart}
+      onPointerUp={handlePressEnd}
+      onPointerCancel={handlePressEnd}
       animate={{ x: offset.x, y: offset.y }}
-      transition={{ type: "spring", stiffness: 250, damping: 18, mass: 0.4 }}
+      transition={{ type: "spring", stiffness: 250, damping: 22, mass: 0.5 }}
       className={className}
       {...rest}
     >
-      <motion.span
-        animate={{ x: offset.x * 0.35, y: offset.y * 0.35 }}
-        transition={{ type: "spring", stiffness: 250, damping: 18, mass: 0.4 }}
-        style={{ display: "inline-flex", alignItems: "center", gap: "inherit" }}
-      >
-        {children}
-      </motion.span>
+      {children}
     </MotionComp>
   );
 }
