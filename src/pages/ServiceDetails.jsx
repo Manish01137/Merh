@@ -61,10 +61,87 @@ function FAQItem({ q, a, isOpen, onToggle }) {
   );
 }
 
+// Per-service imagery — shown in hero and gallery
+const SERVICE_IMAGES = {
+  mobile: {
+    hero: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1000&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
+      "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=600&q=80",
+      "https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=600&q=80",
+      "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=600&q=80",
+    ],
+  },
+  website: {
+    hero: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1000&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80",
+      "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+      "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80",
+    ],
+  },
+  software: {
+    hero: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1000&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80",
+      "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&q=80",
+      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80",
+    ],
+  },
+  ai: {
+    hero: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1000&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80",
+      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80",
+      "https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=600&q=80",
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80",
+    ],
+  },
+  blockchain: {
+    hero: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1000&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=80",
+      "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&q=80",
+      "https://images.unsplash.com/photo-1605792657660-596af9009e82?w=600&q=80",
+      "https://images.unsplash.com/photo-1518544866330-95a2bec01a25?w=600&q=80",
+    ],
+  },
+  enterprise: {
+    hero: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1000&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&q=80",
+      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=600&q=80",
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80",
+      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80",
+    ],
+  },
+  "on-demand": {
+    hero: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1000&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
+      "https://images.unsplash.com/photo-1526367790999-0150786686a2?w=600&q=80",
+      "https://images.unsplash.com/photo-1572177812156-58036aae439c?w=600&q=80",
+      "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=600&q=80",
+    ],
+  },
+  cybersecurity: {
+    hero: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1000&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80",
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80",
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80",
+      "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&q=80",
+    ],
+  },
+};
+
 export default function ServiceDetails() {
   const { slug } = useParams();
   const s = servicesData.find(x => x.slug === slug);
   const [openFaq, setOpenFaq] = useState(null);
+  const imgSet = SERVICE_IMAGES[slug] || SERVICE_IMAGES.software;
 
   const faqs = [
     { q:`How long does a typical ${s?.title?.split(" ")[0]} project take?`, a:"Most projects take 8–16 weeks depending on scope and complexity. We provide a detailed timeline after the discovery phase with milestones and deliverables clearly defined." },
@@ -206,6 +283,34 @@ export default function ServiceDetails() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── IMAGE GALLERY ── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={stagger}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {imgSet.gallery.map((src, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                custom={i}
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/3] group"
+              >
+                <img
+                  src={src}
+                  alt={`${s.title} showcase ${i + 1}`}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500" />
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 

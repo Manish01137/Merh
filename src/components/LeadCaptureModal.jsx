@@ -15,10 +15,17 @@ export default function LeadCaptureModal() {
         <div className="bg-gradient-to-br from-blue-700 to-blue-900 p-6 text-white">
           <button onClick={() => setShow(false)} className="absolute top-4 right-4 text-white/70 hover:text-white"><X size={20}/></button>
           <div className="flex items-center gap-3 mb-3">
-            <div className="w-9 h-9 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center backdrop-blur-sm">
-              <img src={logoWhite} alt="MershilTech" className="w-5 h-5 object-contain" />
+            <div className="w-10 h-10 rounded-xl bg-white/15 border border-white/20 flex items-center justify-center backdrop-blur-sm overflow-hidden">
+              <img
+                src={logoWhite}
+                alt="MershilTech"
+                className="w-6 h-6 object-contain"
+                style={{ filter: "invert(1) brightness(2)", mixBlendMode: "screen" }}
+              />
             </div>
-            <span className="text-white/70 text-sm font-semibold tracking-wide">MershilTech</span>
+            <span className="text-white font-extrabold text-sm tracking-tight">
+              Mershil<span className="text-blue-300">Tech</span>
+            </span>
           </div>
           <h2 className="text-xl font-bold mb-1">Let's Build Something Great</h2>
           <p className="text-blue-100 text-sm">Get a free consultation from our engineering experts.</p>

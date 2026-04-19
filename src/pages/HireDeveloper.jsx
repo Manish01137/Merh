@@ -57,9 +57,147 @@ function HireFAQ({ role }) {
   );
 }
 
+// Per-developer imagery — shown as gallery
+const DEVELOPER_IMAGES = {
+  "ai-developers": [
+    "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80",
+    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80",
+    "https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=600&q=80",
+    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80",
+  ],
+  "dedicated-developers": [
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80",
+    "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80",
+    "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80",
+  ],
+  "mobile-app-developers": [
+    "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
+    "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=600&q=80",
+    "https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=600&q=80",
+    "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=600&q=80",
+  ],
+  "android-developers": [
+    "https://images.unsplash.com/photo-1611175694989-4870fafa4494?w=600&q=80",
+    "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=600&q=80",
+    "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=600&q=80",
+    "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
+  ],
+  "ios-developers": [
+    "https://images.unsplash.com/photo-1585202900225-6d3ac20a6962?w=600&q=80",
+    "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&q=80",
+    "https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=600&q=80",
+    "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=600&q=80",
+  ],
+  "react-native-developers": [
+    "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&q=80",
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80",
+    "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=600&q=80",
+    "https://images.unsplash.com/photo-1607706189992-eae578626c86?w=600&q=80",
+  ],
+  "flutter-developers": [
+    "https://images.unsplash.com/photo-1607706189992-eae578626c86?w=600&q=80",
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80",
+    "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
+    "https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=600&q=80",
+  ],
+  "software-developers": [
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80",
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+    "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&q=80",
+    "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80",
+  ],
+  "web-developers": [
+    "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80",
+    "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80",
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+    "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80",
+  ],
+  "php-developers": [
+    "https://images.unsplash.com/photo-1599507593499-a3f7d7d97667?w=600&q=80",
+    "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80",
+    "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80",
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+  ],
+  "angular-developers": [
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80",
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+    "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80",
+    "https://images.unsplash.com/photo-1503386471526-70ade70a36fb?w=600&q=80",
+  ],
+  "react-developers": [
+    "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&q=80",
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80",
+    "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80",
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+  ],
+  "node-developers": [
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+    "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&q=80",
+    "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=600&q=80",
+    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80",
+  ],
+  "java-developers": [
+    "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=600&q=80",
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+    "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80",
+    "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&q=80",
+  ],
+  "laravel-developers": [
+    "https://images.unsplash.com/photo-1599507593499-a3f7d7d97667?w=600&q=80",
+    "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80",
+    "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80",
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80",
+  ],
+  "remote-developers": [
+    "https://images.unsplash.com/photo-1584949091598-c31daaaa4aa9?w=600&q=80",
+    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80",
+    "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600&q=80",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80",
+  ],
+  "offshore-developers": [
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80",
+    "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80",
+    "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80",
+    "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80",
+  ],
+  "blockchain-developers": [
+    "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=80",
+    "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&q=80",
+    "https://images.unsplash.com/photo-1605792657660-596af9009e82?w=600&q=80",
+    "https://images.unsplash.com/photo-1518544866330-95a2bec01a25?w=600&q=80",
+  ],
+  "mean-stack-developers": [
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80",
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+    "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80",
+    "https://images.unsplash.com/photo-1503386471526-70ade70a36fb?w=600&q=80",
+  ],
+  "salesforce-developers": [
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80",
+    "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&q=80",
+    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80",
+  ],
+  "cybersecurity-experts": [
+    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80",
+    "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80",
+    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80",
+    "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&q=80",
+  ],
+};
+
+const DEFAULT_DEV_IMAGES = [
+  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80",
+  "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80",
+  "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80",
+  "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80",
+];
+
 export default function HireDeveloper() {
   const { role } = useParams();
   const d = getHireDeveloperData(role);
+  const devImgs = DEVELOPER_IMAGES[role] || DEFAULT_DEV_IMAGES;
 
   const otherRoles = [
     ["dedicated-developers","laptop","Hire Dedicated Developers"],
@@ -210,6 +348,41 @@ export default function HireDeveloper() {
         </div>
       </section>
 
+      {/* ── IMAGE GALLERY ── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+          >
+            {devImgs.map((src, i) => (
+              <motion.div
+                key={i}
+                variants={{
+                  hidden: { opacity: 0, y: 25 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+                }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/3] group"
+              >
+                <img
+                  src={src}
+                  alt={`${d.title} developer ${i + 1}`}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500" />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── CAPABILITIES ── */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
@@ -239,6 +412,85 @@ export default function HireDeveloper() {
                 <p className="text-gray-500 text-sm leading-relaxed">{sk.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TEAM SHOWCASE ── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="relative"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/10">
+                <img
+                  src={devImgs[0]}
+                  alt={`${d.title} team`}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-96 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-950/50 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5 mb-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                    <span className="text-white text-xs font-semibold uppercase tracking-widest">Available Now</span>
+                  </div>
+                  <p className="text-white font-bold text-xl">Ready to join your team in 48 hours</p>
+                </div>
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-2xl p-4 flex items-center gap-3 border border-gray-100">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-700 to-indigo-800 flex items-center justify-center">
+                  <Star size={22} className="text-white fill-white" />
+                </div>
+                <div>
+                  <p className="text-lg font-bold text-gray-900">Top 3%</p>
+                  <p className="text-gray-500 text-xs">Vetted Talent</p>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <span className="inline-block text-blue-700 text-sm font-semibold uppercase tracking-wider mb-3 bg-blue-50 px-4 py-1.5 rounded-full">
+                Our Talent Pool
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+                Rigorously Vetted,<br />
+                <span className="text-blue-700">Production-Ready From Day One</span>
+              </h2>
+              <p className="text-gray-500 leading-relaxed mb-8">
+                Our developers have been through a 5-stage screening: coding challenge, system design, code review, communication assessment, and cultural fit. Only the top 3% make it — so you get engineers who hit the ground running and deliver value from the first sprint.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { n: "500+", l: "Engineers Available" },
+                  { n: "48hr", l: "Average Onboarding" },
+                  { n: "5+ yrs", l: "Avg Experience" },
+                  { n: "98%", l: "Retention Rate" },
+                ].map((st, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + i * 0.08, duration: 0.5 }}
+                    className="bg-gray-50 rounded-2xl p-5 border border-gray-100"
+                  >
+                    <p className="text-2xl font-bold text-blue-700 mb-0.5">{st.n}</p>
+                    <p className="text-gray-500 text-sm">{st.l}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

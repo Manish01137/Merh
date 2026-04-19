@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Brain, Zap, BarChart3, Shield, Bot, Sparkles } from "lucide-react";
+import CountUp from "../effects/CountUp";
+import TextReveal from "../effects/TextReveal";
 
 const capabilities = [
   { icon: Bot, title:"AI Chatbots & Agents", desc:"Context-aware chatbots that resolve 70%+ queries automatically with intelligent escalation." },
@@ -40,8 +42,9 @@ export default function AISection() {
               <Sparkles size={12}/> AI-First Development
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-5 leading-tight">
-              Bring AI Into Your<br/>
-              <span className="text-blue-700">Business the Right Way</span>
+              <TextReveal>Bring AI Into Your</TextReveal>
+              <br/>
+              <TextReveal delay={0.25} className="text-blue-700">Business the Right Way</TextReveal>
             </h2>
             <p className="text-slate-500 text-base leading-relaxed mb-8 max-w-lg">
               We don't just add AI features — we identify where AI creates genuine ROI, build production systems that stay accurate over time, and deliver measurable business outcomes from the first sprint.
@@ -89,12 +92,12 @@ export default function AISection() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-blue-200 text-xs font-semibold uppercase tracking-wider mb-1">Average AI ROI</p>
-                  <p className="text-4xl font-bold">3x</p>
+                  <CountUp value="3x" className="text-4xl font-bold block tabular-nums" />
                   <p className="text-blue-200 text-sm mt-1">return for AI clients in year one</p>
                 </div>
                 <div className="text-right">
                   <p className="text-blue-200 text-xs font-semibold uppercase tracking-wider mb-1">Automation Rate</p>
-                  <p className="text-4xl font-bold">60%</p>
+                  <CountUp value="60%" className="text-4xl font-bold block tabular-nums" />
                   <p className="text-blue-200 text-sm mt-1">average process automation</p>
                 </div>
               </div>

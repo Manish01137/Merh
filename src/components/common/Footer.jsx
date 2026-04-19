@@ -8,11 +8,18 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-10 pb-12 border-b border-gray-700">
           <div>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center shadow-lg shadow-blue-900/40">
-                <img src={logoWhite} alt="MershilTech" className="w-6 h-6 object-contain" />
+            <div className="flex items-center gap-3 mb-5 group">
+              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-500/40">
+                <img
+                  src={logoWhite}
+                  alt="MershilTech"
+                  className="w-7 h-7 object-contain"
+                  style={{ filter: "invert(1) brightness(2)", mixBlendMode: "screen" }}
+                />
               </div>
-              <span className="text-white font-bold text-lg tracking-tight">MershilTech</span>
+              <span className="text-white font-extrabold text-lg tracking-tight">
+                Mershil<span className="text-blue-400">Tech</span>
+              </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-5">AI-powered agency delivering world-class web, mobile & software platforms. Trusted by 500+ clients in 70+ countries.</p>
             <div className="flex gap-3">{[FaLinkedinIn,FaTwitter,FaGithub,FaInstagram].map((Icon,i)=><div key={i} className="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition cursor-pointer"><Icon size={15}/></div>)}</div>

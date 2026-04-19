@@ -140,10 +140,75 @@ function FAQ({ faqs }) {
   );
 }
 
+// Per-category imagery — used as gallery on sub-service pages
+const CATEGORY_IMAGES = {
+  "mobile": [
+    "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
+    "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=600&q=80",
+    "https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=600&q=80",
+    "https://images.unsplash.com/photo-1556656793-08538906a9f8?w=600&q=80",
+  ],
+  "website": [
+    "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&q=80",
+    "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=80",
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+    "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=600&q=80",
+  ],
+  "software": [
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80",
+    "https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&q=80",
+    "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80",
+  ],
+  "ai": [
+    "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80",
+    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80",
+    "https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=600&q=80",
+    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80",
+  ],
+  "blockchain": [
+    "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=80",
+    "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=600&q=80",
+    "https://images.unsplash.com/photo-1605792657660-596af9009e82?w=600&q=80",
+    "https://images.unsplash.com/photo-1518544866330-95a2bec01a25?w=600&q=80",
+  ],
+  "enterprise": [
+    "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&q=80",
+    "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=600&q=80",
+    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80",
+    "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80",
+  ],
+  "on-demand": [
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
+    "https://images.unsplash.com/photo-1526367790999-0150786686a2?w=600&q=80",
+    "https://images.unsplash.com/photo-1572177812156-58036aae439c?w=600&q=80",
+    "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=600&q=80",
+  ],
+  "cybersecurity": [
+    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80",
+    "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80",
+    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600&q=80",
+    "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&q=80",
+  ],
+};
+
+const SHOWCASE_IMAGE = {
+  "mobile": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1000&q=80",
+  "website": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1000&q=80",
+  "software": "https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=1000&q=80",
+  "ai": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1000&q=80",
+  "blockchain": "https://images.unsplash.com/photo-1642104704074-907c0698cbd9?w=1000&q=80",
+  "enterprise": "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=1000&q=80",
+  "on-demand": "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=1000&q=80",
+  "cybersecurity": "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=1000&q=80",
+};
+
 // ─── Main ─────────────────────────────────────────────────────────────────────
 export default function SubServiceDetails() {
   const { slug, sub } = useParams();
   const s = getSubServiceData(sub);
+  const galleryImgs = CATEGORY_IMAGES[slug] || CATEGORY_IMAGES["software"];
+  const showcaseImg = SHOWCASE_IMAGE[slug] || SHOWCASE_IMAGE["software"];
 
   if (!s) return (
     <div className="bg-white min-h-screen flex items-center justify-center">
@@ -299,6 +364,39 @@ export default function SubServiceDetails() {
         </div>
       </section>
 
+      {/* ── IMAGE GALLERY ── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+          >
+            {galleryImgs.map((src, i) => (
+              <motion.div
+                key={i}
+                variants={scaleIn}
+                custom={i}
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/3] group"
+              >
+                <img
+                  src={src}
+                  alt={`${s.title} showcase ${i + 1}`}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500" />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── WHAT WE OFFER ── */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
@@ -347,6 +445,65 @@ export default function SubServiceDetails() {
               </motion.span>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* ── SHOWCASE IMAGE ── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/10"
+            >
+              <img
+                src={showcaseImg}
+                alt={`${s.title} in action`}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-96 object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-950/40 via-transparent to-transparent" />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <span className="inline-block bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5">Our Approach</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 leading-tight">
+                Engineering Excellence<br />
+                <span className="text-blue-700">Built to Scale</span>
+              </h2>
+              <p className="text-slate-500 leading-relaxed mb-6">
+                We combine deep technical expertise with proven delivery frameworks to ship software that performs under load, survives edge cases, and evolves with your business. Every project is treated as if we were building it for ourselves.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { n: "98%", l: "On-time delivery" },
+                  { n: "4.9★", l: "Client satisfaction" },
+                  { n: "80%+", l: "Test coverage" },
+                  { n: "24/7", l: "Support availability" },
+                ].map((st, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + i * 0.08, duration: 0.5 }}
+                    className="bg-slate-50 rounded-2xl p-5 border border-slate-100"
+                  >
+                    <p className="text-2xl font-bold text-blue-700 mb-0.5">{st.n}</p>
+                    <p className="text-slate-500 text-sm">{st.l}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

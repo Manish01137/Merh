@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { Phone, ArrowRight, CheckCircle, Star, Zap, Globe, Shield } from "lucide-react";
 import { motion } from "framer-motion";
 import logoWhite from "../../assets/02_Logo_Reversed_White_3600x3600.png";
+import CountUp from "../effects/CountUp";
+import MagneticButton from "../effects/MagneticButton";
 
 const badges = ["AI-Powered Solutions","15+ Years Experience","500+ Happy Clients","70+ Countries Served"];
 const stats = [{n:"1100+",l:"Projects"},{n:"130+",l:"Engineers"},{n:"70+",l:"Countries"},{n:"98%",l:"Satisfaction"}];
@@ -59,13 +61,15 @@ export default function Hero(){
 
             <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.6,delay:0.45}}
               className="flex flex-wrap gap-4 mb-10">
-              <Link to="/contact" className="group flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-7 py-4 rounded-xl font-bold transition shadow-xl shadow-blue-900/40 text-base">
+              <MagneticButton as={Link} to="/contact" strength={0.3}
+                className="group flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-7 py-4 rounded-xl font-bold transition shadow-xl shadow-blue-900/40 text-base">
                 <Phone size={18}/> Book Free Consultation
                 <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform"/>
-              </Link>
-              <Link to="/services" className="flex items-center gap-2 border border-white/15 text-white px-7 py-4 rounded-xl font-bold hover:bg-white/8 transition text-base">
+              </MagneticButton>
+              <MagneticButton as={Link} to="/services" strength={0.25}
+                className="flex items-center gap-2 border border-white/15 text-white px-7 py-4 rounded-xl font-bold hover:bg-white/8 transition text-base">
                 Explore Services <ArrowRight size={18}/>
-              </Link>
+              </MagneticButton>
             </motion.div>
 
             {/* Trust badges */}
@@ -83,7 +87,7 @@ export default function Hero(){
               className="grid grid-cols-4 gap-4 border-t border-white/8 pt-8">
               {stats.map((s,i)=>(
                 <div key={i}>
-                  <p className="text-2xl font-bold text-white">{s.n}</p>
+                  <CountUp value={s.n} className="text-2xl font-bold text-white tabular-nums" />
                   <p className="text-white/40 text-xs mt-0.5">{s.l}</p>
                 </div>
               ))}
@@ -96,8 +100,13 @@ export default function Hero(){
             <div className="bg-white/[0.06] backdrop-blur-2xl rounded-3xl border border-white/10 p-8 shadow-2xl shadow-black/40">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center">
-                    <img src={logoWhite} alt="MershilTech" className="w-5 h-5 object-contain" />
+                  <div className="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center overflow-hidden">
+                    <img
+                      src={logoWhite}
+                      alt="MershilTech"
+                      className="w-6 h-6 object-contain"
+                      style={{ filter: "invert(1) brightness(2)", mixBlendMode: "screen" }}
+                    />
                   </div>
                   <h3 className="text-white font-bold text-lg">Get A Free Quote</h3>
                 </div>

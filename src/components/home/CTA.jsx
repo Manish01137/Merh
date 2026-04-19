@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { Phone, ArrowRight } from "lucide-react";
+import MagneticButton from "../effects/MagneticButton";
+import TextReveal from "../effects/TextReveal";
+
 export default function CTA() {
   return (
     <section className="py-24 bg-blue-700 relative overflow-hidden">
@@ -9,11 +12,19 @@ export default function CTA() {
       </div>
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <span className="inline-block text-blue-200 text-sm font-semibold uppercase tracking-wider mb-4 bg-blue-600/50 px-4 py-1.5 rounded-full">Ready to Start?</span>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">Start Building With The Best Engineers Today</h2>
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+          <TextReveal>Start Building With The Best Engineers Today</TextReveal>
+        </h2>
         <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">Don't let your competition outpace you. Partner with MershilTech's world-class engineers and ship your product faster, better, and more reliably than ever before.</p>
         <div className="flex flex-wrap justify-center gap-4">
-          <Link to="/contact" className="flex items-center gap-2 bg-white text-blue-700 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition shadow-xl text-base"><Phone size={18}/> Schedule Discovery Call</Link>
-          <Link to="/hire" className="flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-blue-700 transition text-base">Hire Developers <ArrowRight size={18}/></Link>
+          <MagneticButton as={Link} to="/contact" strength={0.3}
+            className="flex items-center gap-2 bg-white text-blue-700 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition shadow-xl text-base">
+            <Phone size={18} /> Schedule Discovery Call
+          </MagneticButton>
+          <MagneticButton as={Link} to="/hire" strength={0.25}
+            className="flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-xl font-bold hover:bg-white hover:text-blue-700 transition text-base">
+            Hire Developers <ArrowRight size={18} />
+          </MagneticButton>
         </div>
         <p className="text-blue-200 text-sm mt-8">✔ No Obligation &nbsp;✔ Respond in 24H &nbsp;✔ Secure NDA &nbsp;✔ Free Consultation</p>
       </div>

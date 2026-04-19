@@ -2,6 +2,8 @@ import { ShieldCheck, Zap, Users, Award, Clock, HeartHandshake, Code2, Globe, Ar
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import CountUp from "../effects/CountUp";
+import TextReveal from "../effects/TextReveal";
 
 const features = [
   { icon: ShieldCheck, title: "Enterprise-Grade Security", desc: "Bank-level security with encryption, compliance frameworks, and penetration testing on every product we ship.", col: "text-blue-600 bg-blue-50" },
@@ -57,10 +59,11 @@ export default function WhyChoose() {
               variants={fadeUp}
               className="text-3xl md:text-5xl font-bold text-gray-900 mb-5 leading-tight tracking-tight"
             >
-              The Engineering Partner<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-700">
+              <TextReveal>The Engineering Partner</TextReveal>
+              <br />
+              <TextReveal delay={0.3} className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-700">
                 You've Been Looking For
-              </span>
+              </TextReveal>
             </motion.h2>
             <motion.p
               variants={fadeUp}
@@ -105,7 +108,7 @@ export default function WhyChoose() {
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
                   className="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm hover:shadow-md transition"
                 >
-                  <p className="text-2xl font-bold text-blue-700 mb-0.5">{n}</p>
+                  <CountUp value={n} className="text-2xl font-bold text-blue-700 mb-0.5 block tabular-nums" />
                   <p className="text-gray-500 text-sm">{l}</p>
                 </motion.div>
               ))}

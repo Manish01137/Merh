@@ -39,8 +39,13 @@ export default function About() {
                 <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&q=80" alt="MershilTech Team" loading="lazy" decoding="async" className="w-full h-72 object-cover"/>
               </div>
               <div className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-2xl p-4 flex items-center gap-3 border border-gray-100">
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-700 to-blue-900 flex items-center justify-center shadow-md shadow-blue-200/40">
-                  <img src={logoWhite} alt="MershilTech" className="w-6 h-6 object-contain" />
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 flex items-center justify-center overflow-hidden shadow-md shadow-blue-200/40">
+                  <img
+                    src={logoWhite}
+                    alt="MershilTech"
+                    className="w-7 h-7 object-contain"
+                    style={{ filter: "invert(1) brightness(2)", mixBlendMode: "screen" }}
+                  />
                 </div>
                 <div><p className="text-xl font-bold text-gray-900">130+</p><p className="text-gray-500 text-xs">Expert Engineers</p></div>
               </div>

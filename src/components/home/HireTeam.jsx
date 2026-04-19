@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, Users, Layers, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
+import TextReveal from "../effects/TextReveal";
 
 const models = [
   { icon: Users, title: "Staff Augmentation", desc: "Instantly plug top-tier developers into your existing team.", points: ["Dedicated to your project", "Daily standups", "Works your timezone"], highlight: false },
@@ -43,7 +44,7 @@ export default function HireTeam() {
             variants={fadeUp}
             className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight"
           >
-            Flexible Ways to Work With Us
+            <TextReveal>Flexible Ways to Work With Us</TextReveal>
           </motion.h2>
           <motion.p variants={fadeUp} className="text-gray-500 max-w-xl mx-auto text-lg">
             Choose the model that fits your project, budget, and timeline. No lock-in, no hidden costs.
