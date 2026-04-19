@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, Target, Handshake, Globe, Zap, Shield, Rocket } from "lucide-react";
 import { ServiceIcon } from "../utils/serviceIcons";
 import logoWhite from "../assets/02_Logo_Reversed_White_3600x3600.png";
+import MonogramPattern from "../components/effects/MonogramPattern";
 
 const stats = [["1100+","Projects Delivered"],["130+","Expert Engineers"],["70+","Countries Served"],["15+","Years of Expertise"],["500+","Happy Clients"],["98%","Client Satisfaction"]];
 const values = [
@@ -22,8 +23,9 @@ export default function About() {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-36 pb-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 text-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="pt-36 pb-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 text-white relative overflow-hidden">
+        <MonogramPattern opacity={0.04} size={110} />
+        <div className="max-w-7xl mx-auto px-6 relative">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <div className="inline-flex items-center gap-2 bg-blue-800/60 border border-blue-700/50 text-blue-200 text-sm font-medium px-4 py-2 rounded-full mb-6">About MershilTech</div>
@@ -55,8 +57,9 @@ export default function About() {
       </section>
 
       {/* Stats */}
-      <section className="py-16 bg-blue-700">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 bg-blue-700 relative overflow-hidden">
+        <MonogramPattern opacity={0.05} size={110} />
+        <div className="max-w-7xl mx-auto px-6 relative">
           <div className="grid grid-cols-3 md:grid-cols-6 gap-6 text-center">
             {stats.map(([n,l],i) => (
               <div key={i}><p className="text-3xl font-bold text-white mb-1">{n}</p><p className="text-blue-200 text-xs">{l}</p></div>
@@ -111,6 +114,7 @@ export default function About() {
 
       {/* CTA */}
       <section className="py-20 bg-blue-700 relative overflow-hidden">
+        <MonogramPattern opacity={0.06} size={120} />
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-0 left-0 w-80 h-80 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/3 translate-y-1/3"></div>

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import { motion } from "framer-motion";
+import MonogramPattern from "../components/effects/MonogramPattern";
 import {
   Rocket, Zap, Target, TrendingUp, Users, DollarSign,
   ArrowRight, Phone, CheckCircle2, Lightbulb, Clock, Award,
@@ -116,6 +117,7 @@ export default function Startups() {
 
       {/* HERO */}
       <section className="pt-32 pb-20 bg-gradient-to-br from-indigo-950 via-blue-950 to-slate-950 text-white relative overflow-hidden">
+        <MonogramPattern opacity={0.04} size={110} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-blue-600/15 blur-3xl" />
           <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-indigo-600/10 blur-3xl" />
@@ -310,8 +312,9 @@ export default function Startups() {
       </section>
 
       {/* BENEFITS */}
-      <section className="py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-950 text-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-950 text-white relative overflow-hidden">
+        <MonogramPattern opacity={0.04} size={100} />
+        <div className="max-w-7xl mx-auto px-6 relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
               <span className="inline-block text-blue-300 text-xs font-bold uppercase tracking-widest mb-4 bg-blue-800/50 border border-blue-700/30 px-4 py-2 rounded-full">Why Startups Pick Us</span>
@@ -339,6 +342,7 @@ export default function Startups() {
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 relative overflow-hidden">
+        <MonogramPattern opacity={0.06} size={120} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-white/5 blur-3xl" />
           <div className="absolute -bottom-20 -left-20 w-96 h-96 rounded-full bg-indigo-600/20 blur-3xl" />

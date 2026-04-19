@@ -6,6 +6,7 @@ import {
   Shield, Eye, Cloud, ArrowRight, Phone, Zap, Users, AlertTriangle,
 } from "lucide-react";
 import { FaUserShield, FaBug, FaLock, FaNetworkWired, FaFileContract } from "react-icons/fa";
+import MonogramPattern from "../components/effects/MonogramPattern";
 
 const stats = [
   { n: "500+", l: "Security Audits" },
@@ -86,6 +87,7 @@ export default function Cybersecurity() {
 
       {/* HERO */}
       <section className="pt-32 pb-20 bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 text-white relative overflow-hidden">
+        <MonogramPattern opacity={0.04} size={110} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-600/10 blur-3xl" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-indigo-600/10 blur-3xl" />
@@ -236,6 +238,7 @@ export default function Cybersecurity() {
 
       {/* PROCESS */}
       <section className="py-20 bg-slate-950 text-white relative overflow-hidden">
+        <MonogramPattern opacity={0.035} size={100} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-blue-600/10 blur-3xl" />
         </div>
@@ -284,6 +287,7 @@ export default function Cybersecurity() {
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 relative overflow-hidden">
+        <MonogramPattern opacity={0.06} size={120} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-white/5 blur-3xl" />
           <div className="absolute -bottom-20 -left-20 w-96 h-96 rounded-full bg-indigo-600/20 blur-3xl" />

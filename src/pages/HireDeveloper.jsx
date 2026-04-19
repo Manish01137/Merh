@@ -6,6 +6,7 @@ import { Phone, MessageSquare, CheckCircle2, Star, ArrowRight, Users, Clock, Shi
 import { ServiceIcon } from "../utils/serviceIcons";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import MonogramPattern from "../components/effects/MonogramPattern";
 
 const ratings = [
   { name:"Clutch", score:"5.0" },
@@ -213,8 +214,9 @@ export default function HireDeveloper() {
       <Navbar />
 
       {/* ── HERO ── */}
-      <section className="pt-28 pb-0 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 text-white">
-        <div className="max-w-7xl mx-auto px-6 py-16">
+      <section className="pt-28 pb-0 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 text-white relative overflow-hidden">
+        <MonogramPattern opacity={0.04} size={110} />
+        <div className="max-w-7xl mx-auto px-6 py-16 relative">
           <div className="grid lg:grid-cols-2 gap-14 items-start">
 
             {/* Left */}
@@ -572,8 +574,9 @@ export default function HireDeveloper() {
       </section>
 
       {/* ── HIRING MODELS ── */}
-      <section className="py-20 bg-gray-900">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-20 bg-gray-900 relative overflow-hidden">
+        <MonogramPattern opacity={0.035} size={100} />
+        <div className="max-w-7xl mx-auto px-6 relative">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-3">Our Flexible Hiring Models</h2>
             <p className="text-gray-400 max-w-xl mx-auto">
@@ -689,6 +692,7 @@ export default function HireDeveloper() {
 
       {/* ── CTA ── */}
       <section className="py-20 bg-blue-700 relative overflow-hidden">
+        <MonogramPattern opacity={0.06} size={120} />
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-0 left-0 w-80 h-80 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/3 translate-y-1/3"></div>

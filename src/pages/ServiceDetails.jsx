@@ -10,6 +10,7 @@ import {
   Globe, Clock, Users, TrendingUp
 } from "lucide-react";
 import { ServiceIcon } from "../utils/serviceIcons";
+import MonogramPattern from "../components/effects/MonogramPattern";
 
 const ratings = [
   { name:"Clutch", score:"5.0" },
@@ -167,6 +168,7 @@ export default function ServiceDetails() {
 
       {/* ── HERO ── */}
       <section className="pt-24 bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 text-white overflow-hidden relative">
+        <MonogramPattern opacity={0.04} size={110} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-600/10 blur-3xl"/>
           <div className="absolute top-1/2 -left-20 w-[400px] h-[400px] rounded-full bg-indigo-600/10 blur-3xl"/>
@@ -437,8 +439,9 @@ export default function ServiceDetails() {
       </section>
 
       {/* ── INDUSTRIES ── */}
-      <section className="py-20 bg-blue-950">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-20 bg-blue-950 relative overflow-hidden">
+        <MonogramPattern opacity={0.04} size={100} />
+        <div className="max-w-7xl mx-auto px-6 relative">
           <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={fadeUp} className="mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Industries We Serve</h2>
             <p className="text-blue-300/70">Deep domain expertise across the industries that matter most.</p>
@@ -541,6 +544,7 @@ export default function ServiceDetails() {
 
       {/* ── CTA ── */}
       <section className="py-24 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 relative overflow-hidden">
+        <MonogramPattern opacity={0.06} size={120} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-white/5 blur-3xl"/>
           <div className="absolute -bottom-20 -left-20 w-96 h-96 rounded-full bg-indigo-600/20 blur-3xl"/>

@@ -1,24 +1,46 @@
-import CountUp from "../effects/CountUp";
+import CircularStat from "../effects/CircularStat";
+import MonogramPattern from "../effects/MonogramPattern";
 
 const stats = [
-  { n: "1100+", l: "Projects Delivered" },
-  { n: "130+", l: "Expert Engineers" },
-  { n: "70+", l: "Countries Served" },
-  { n: "15+", l: "Years of Expertise" },
-  { n: "98%", l: "Client Satisfaction" },
-  { n: "500+", l: "Happy Clients" },
+  { n: "1100+", l: "Projects Delivered", fill: 95, color: "#60a5fa" },
+  { n: "130+", l: "Expert Engineers", fill: 85, color: "#38bdf8" },
+  { n: "70+", l: "Countries Served", fill: 75, color: "#22d3ee" },
+  { n: "15+", l: "Years of Expertise", fill: 80, color: "#a78bfa" },
+  { n: "98%", l: "Client Satisfaction", fill: 98, color: "#34d399" },
+  { n: "500+", l: "Happy Clients", fill: 90, color: "#fbbf24" },
 ];
 
-export function StatsSection() {
+export default function StatsSection() {
   return (
-    <section className="py-14 bg-blue-700">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-8 text-center">
+    <section className="py-20 bg-gradient-to-br from-blue-800 via-blue-700 to-indigo-800 relative overflow-hidden">
+      <MonogramPattern opacity={0.05} size={110} />
+      {/* Ambient effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-blue-400/10 blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-indigo-400/10 blur-3xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 relative">
+        <div className="text-center mb-12">
+          <span className="inline-block text-blue-200 text-xs font-bold uppercase tracking-widest mb-3 bg-blue-600/40 border border-blue-400/30 px-4 py-2 rounded-full backdrop-blur-sm">
+            By The Numbers
+          </span>
+          <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+            Measurable Outcomes, Proven Scale
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-4">
           {stats.map((s, i) => (
-            <div key={i}>
-              <CountUp value={s.n} className="text-3xl md:text-4xl font-bold text-white mb-1 block tabular-nums" />
-              <p className="text-blue-200 text-xs font-medium">{s.l}</p>
-            </div>
+            <CircularStat
+              key={i}
+              value={s.n}
+              label={s.l}
+              fillPercent={s.fill}
+              color={s.color}
+              size={130}
+              stroke={5}
+            />
           ))}
         </div>
       </div>
@@ -26,4 +48,4 @@ export function StatsSection() {
   );
 }
 
-export default StatsSection;
+export { StatsSection };

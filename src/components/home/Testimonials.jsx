@@ -1,4 +1,5 @@
 import { Quote } from "lucide-react";
+import MonogramPattern from "../effects/MonogramPattern";
 
 const testimonials = [
   {
@@ -42,6 +43,7 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section className="py-24 bg-blue-950 overflow-hidden relative">
+      <MonogramPattern opacity={0.04} size={100} />
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-blue-600/10 blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-indigo-600/10 blur-3xl" />

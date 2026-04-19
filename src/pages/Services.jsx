@@ -3,14 +3,16 @@ import { servicesData } from "../data/servicesData";
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import { ArrowRight } from "lucide-react";
+import MonogramPattern from "../components/effects/MonogramPattern";
 
 export default function Services() {
   const navigate = useNavigate();
   return (
     <div className="bg-white text-gray-900 overflow-hidden">
       <Navbar />
-      <section className="pt-36 pb-16 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 text-white text-center">
-        <div className="max-w-3xl mx-auto px-6">
+      <section className="pt-36 pb-16 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 text-white text-center relative overflow-hidden">
+        <MonogramPattern opacity={0.04} size={110} />
+        <div className="max-w-3xl mx-auto px-6 relative">
           <span className="inline-block text-blue-300 text-sm font-semibold uppercase tracking-wider mb-4 bg-blue-800/60 px-4 py-1.5 rounded-full border border-blue-700/50">What We Build</span>
           <h1 className="text-4xl md:text-6xl font-bold mb-5">Our <span className="text-blue-300">Services</span></h1>
           <p className="text-blue-100/80 text-lg max-w-xl mx-auto">Comprehensive digital solutions across mobile, web, AI, blockchain, and enterprise — built to scale.</p>

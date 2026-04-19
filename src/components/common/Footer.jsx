@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import { FaLinkedinIn, FaTwitter, FaGithub, FaInstagram } from "react-icons/fa";
 import { Mail, Phone, MapPin } from "lucide-react";
 import logoWhite from "../../assets/02_Logo_Reversed_White_3600x3600.png";
+import MonogramPattern from "../effects/MonogramPattern";
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="bg-gray-900 text-gray-300 pt-16 pb-8 relative overflow-hidden">
+      <MonogramPattern opacity={0.035} size={100} />
+      <div className="max-w-7xl mx-auto px-6 relative">
         <div className="grid md:grid-cols-4 gap-10 pb-12 border-b border-gray-700">
           <div>
             <div className="flex items-center gap-3 mb-5 group">

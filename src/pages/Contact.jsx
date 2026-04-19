@@ -3,6 +3,7 @@ import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Linkedin, Twitter, Github } from "lucide-react";
+import MonogramPattern from "../components/effects/MonogramPattern";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -17,8 +18,9 @@ export default function Contact() {
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-36 pb-16 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 text-white text-center">
-        <div className="max-w-3xl mx-auto px-6">
+      <section className="pt-36 pb-16 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-900 text-white text-center relative overflow-hidden">
+        <MonogramPattern opacity={0.04} size={110} />
+        <div className="max-w-3xl mx-auto px-6 relative">
           <div className="inline-flex items-center gap-2 bg-blue-800/60 border border-blue-700/50 text-blue-200 text-sm font-medium px-4 py-2 rounded-full mb-6">Contact MershilTech</div>
           <h1 className="text-4xl md:text-5xl font-bold mb-5">Let's Build the <span className="text-blue-300">Future</span> Together</h1>
           <p className="text-blue-100/80 text-lg max-w-xl mx-auto mb-10">Have an idea, project, or challenge? Our expert engineers and consultants are ready to help you turn it into reality.</p>

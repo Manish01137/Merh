@@ -6,6 +6,7 @@ import LeadCaptureModal from "./components/LeadCaptureModal";
 import ScrollProgress from "./components/effects/ScrollProgress";
 import PageTransition from "./components/effects/PageTransition";
 import SearchModal from "./components/effects/SearchModal";
+import PageSkeleton from "./components/effects/PageSkeleton";
 
 // Lazy-load secondary routes
 const Hire = lazy(() => import("./pages/Hire"));
@@ -17,14 +18,7 @@ const ServiceDetails = lazy(() => import("./pages/ServiceDetails"));
 const SubServiceDetails = lazy(() => import("./pages/SubServiceDetails"));
 const Cybersecurity = lazy(() => import("./pages/Cybersecurity"));
 const Startups = lazy(() => import("./pages/Startups"));
-
-function PageLoader() {
-  return (
-    <div className="min-h-screen bg-white flex items-center justify-center">
-      <div className="w-10 h-10 border-4 border-blue-200 border-t-blue-700 rounded-full animate-spin" />
-    </div>
-  );
-}
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -47,6 +41,7 @@ function AnimatedRoutes() {
         <Route path="/cybersecurity" element={<PageTransition><Cybersecurity /></PageTransition>} />
         <Route path="/startups" element={<PageTransition><Startups /></PageTransition>} />
         <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+        <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>
   );
@@ -78,7 +73,7 @@ function AppShell() {
       <ScrollProgress />
       <LeadCaptureModal />
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
-      <Suspense fallback={<PageLoader />}>
+      <Suspense fallback={<PageSkeleton />}>
         <AnimatedRoutes />
       </Suspense>
     </>

@@ -11,6 +11,7 @@ import {
 import { SiFlutter, SiSolidity, SiSalesforce } from "react-icons/si";
 import { MdSmartphone } from "react-icons/md";
 import { BsLightningCharge, BsGear } from "react-icons/bs";
+import MonogramPattern from "../components/effects/MonogramPattern";
 
 const roles = [
   { Icon: FaCode,       name:"Hire Dedicated Developers",  slug:"dedicated-developers",    desc:"Full-stack engineers dedicated exclusively to your project." },
@@ -62,6 +63,7 @@ export default function Hire() {
 
       {/* HERO */}
       <section className="pt-24 pb-0 bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 text-white relative overflow-hidden">
+        <MonogramPattern opacity={0.04} size={110} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-600/10 blur-3xl" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-indigo-600/10 blur-3xl" />
@@ -138,8 +140,9 @@ export default function Hire() {
       </section>
 
       {/* HIRING MODELS */}
-      <section className="py-20 bg-slate-950">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-20 bg-slate-950 relative overflow-hidden">
+        <MonogramPattern opacity={0.035} size={100} />
+        <div className="max-w-7xl mx-auto px-6 relative">
           <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={fadeUp} className="text-center mb-14">
             <h2 className="text-3xl font-bold text-white mb-3">Flexible Hiring Models</h2>
             <p className="text-slate-400 max-w-xl mx-auto">Full-time, part-time, or hourly — you choose the model that fits.</p>
@@ -201,6 +204,7 @@ export default function Hire() {
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 relative overflow-hidden">
+        <MonogramPattern opacity={0.06} size={120} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-white/5 blur-3xl"/>
           <div className="absolute -bottom-20 -left-20 w-96 h-96 rounded-full bg-indigo-600/20 blur-3xl"/>
