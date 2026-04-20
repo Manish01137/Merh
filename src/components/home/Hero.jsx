@@ -4,9 +4,8 @@ import { motion } from "framer-motion";
 import logoWhite from "../../assets/logo.png";
 import CountUp from "../effects/CountUp";
 import MagneticButton from "../effects/MagneticButton";
-import AIBadge from "../effects/AIBadge";
 
-const badges = ["AI-Powered Solutions","15+ Years Experience","Sydney HQ","350+ Projects Completed"];
+const badges = ["Sydney-Based Team","15+ Years Experience","Sydney HQ","350+ Projects Completed"];
 const stats = [{n:"350+",l:"Projects"},{n:"130+",l:"Engineers"},{n:"15+",l:"Years"},{n:"98%",l:"Satisfaction"}];
 const fadeUp = { hidden:{opacity:0,y:24}, visible:(i=0)=>({opacity:1,y:0,transition:{duration:0.6,delay:i*0.1,ease:[0.22,1,0.36,1]}}) };
 
@@ -29,10 +28,6 @@ export default function Hero(){
         <div className="grid lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center">
           {/* Left */}
           <div>
-            <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.05 }}
-              className="mb-5">
-              <AIBadge label="Powered by Advanced AI" dark />
-            </motion.div>
             <motion.div initial="hidden" animate="visible" variants={{visible:{transition:{staggerChildren:0.08,delayChildren:0.15}}}}
               className="flex flex-wrap gap-2 mb-6">
               {badges.map((b,i)=>(
@@ -54,7 +49,7 @@ export default function Hero(){
 
             <motion.p initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.6,delay:0.35}}
               className="text-white/60 text-base sm:text-lg leading-relaxed mb-8 max-w-lg">
-              MershilTech is a Sydney-based AI-powered software agency delivering world-class mobile apps, web platforms, and enterprise software. 350+ projects completed for companies scaling faster.
+              MershilTech is a Sydney-based software agency delivering world-class mobile apps, web platforms, and enterprise software. 350+ projects completed for companies scaling faster.
             </motion.p>
 
             <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.6,delay:0.45}}

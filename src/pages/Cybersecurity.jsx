@@ -7,6 +7,8 @@ import {
 } from "lucide-react";
 import { FaUserShield, FaBug, FaLock, FaNetworkWired, FaFileContract } from "react-icons/fa";
 import MonogramPattern from "../components/effects/MonogramPattern";
+import ProblemFitSection from "../components/common/ProblemFitSection";
+import { cybersecurityProblemsFit } from "../data/problemFitContent";
 
 const stats = [
   { n: "500+", l: "Security Audits" },
@@ -285,6 +287,9 @@ export default function Cybersecurity() {
           </motion.div>
         </div>
       </section>
+
+      {/* Problems AU businesses face + how MershilTech security fits */}
+      <ProblemFitSection {...cybersecurityProblemsFit} id="cyber-fit" />
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 relative overflow-hidden">

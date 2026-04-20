@@ -9,6 +9,7 @@ import SearchModal from "./components/effects/SearchModal";
 import PageSkeleton from "./components/effects/PageSkeleton";
 
 const ChatBot = lazy(() => import("./components/chatbot/ChatBot"));
+const CookieConsent = lazy(() => import("./components/CookieConsent"));
 
 // Lazy-load secondary routes
 const Hire = lazy(() => import("./pages/Hire"));
@@ -87,6 +88,7 @@ function AppShell() {
       {chatReady && (
         <Suspense fallback={null}>
           <ChatBot />
+          <CookieConsent />
         </Suspense>
       )}
       <Suspense fallback={<PageSkeleton />}>

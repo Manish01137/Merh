@@ -1,6 +1,14 @@
 import { useParams, Link } from "react-router-dom";
 import { getSubServiceData } from "../data/subServicesData";
 import { getSubServiceImages } from "../data/subServiceImages";
+import ProblemFitSection from "../components/common/ProblemFitSection";
+import OurExpertsSection from "../components/common/OurExpertsSection";
+import { salesforceProblemsFit } from "../data/problemFitContent";
+
+// Sub-services that get a tailored Problem/Fit section before the FAQ.
+const PROBLEM_FIT_BY_SUB = {
+  "salesforce-consulting": salesforceProblemsFit,
+};
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import { motion, AnimatePresence } from "framer-motion";
@@ -210,6 +218,7 @@ export default function SubServiceDetails() {
   const { slug, sub } = useParams();
   const s = getSubServiceData(sub);
   const subImgs = getSubServiceImages(sub, slug);
+  const problemFit = PROBLEM_FIT_BY_SUB[sub];
   const fallbackGallery = CATEGORY_IMAGES[slug] || CATEGORY_IMAGES["software"];
   const fallbackShowcase = SHOWCASE_IMAGE[slug] || SHOWCASE_IMAGE["software"];
   const galleryImgs = subImgs.gallery;
@@ -408,7 +417,15 @@ export default function SubServiceDetails() {
         </div>
       </section>
 
-      {/* ── WHAT WE OFFER ── */}
+      {/* ── OUR EXPERTS (sub-service specific, dotsquares-style) ── */}
+      <OurExpertsSection
+        title={s.title}
+        description={s.desc}
+        bullets={s.bullets}
+        tech={[]}
+      />
+
+      {/* ── WHAT WE OFFER (generic delivery guarantees) ── */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
@@ -587,6 +604,9 @@ export default function SubServiceDetails() {
       </section>
 
       {/* ── FAQ ── */}
+      {/* ── Optional Problem/Fit section for specific sub-services (e.g. Salesforce) ── */}
+      {problemFit && <ProblemFitSection {...problemFit} id={`${sub}-fit`} />}
+
       <section className="py-24 bg-white">
         <div className="max-w-3xl mx-auto px-6">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-14">

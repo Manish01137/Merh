@@ -1,6 +1,5 @@
 import CircularStat from "../effects/CircularStat";
 import MonogramPattern from "../effects/MonogramPattern";
-import AIBadge from "../effects/AIBadge";
 
 const stats = [
   { n: "350+", l: "Projects Completed", fill: 92, color: "#60a5fa" },
@@ -23,9 +22,9 @@ export default function StatsSection() {
 
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="text-center mb-12">
-          <div className="flex justify-center mb-4">
-            <AIBadge label="AI-Driven Results" dark />
-          </div>
+          <span className="inline-block text-blue-200 text-xs font-bold uppercase tracking-widest bg-white/10 border border-white/15 px-4 py-2 rounded-full mb-5">
+            By the Numbers
+          </span>
           <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
             Measurable Outcomes, Proven Scale
           </h2>

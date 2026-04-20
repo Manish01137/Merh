@@ -349,7 +349,7 @@ export default function ChatBot() {
                 </button>
               </div>
               <p className="text-[10px] text-gray-400 text-center mt-2">
-                Powered by MershilTech AI · For instant human support,{" "}
+                For instant human support,{" "}
                 <Link
                   to="/contact"
                   onClick={() => setOpen(false)}

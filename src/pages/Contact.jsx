@@ -2,7 +2,7 @@ import { useState } from "react";
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Linkedin, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Linkedin, Instagram, ExternalLink } from "lucide-react";
 import MonogramPattern from "../components/effects/MonogramPattern";
 
 export default function Contact() {
@@ -131,6 +131,111 @@ export default function Contact() {
                   <p className="text-center text-gray-400 text-xs">We typically respond within 30 minutes during business hours</p>
                 </form>
               )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Visit Our Sydney Office */}
+      <section className="relative overflow-hidden py-20 md:py-24 bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 text-white">
+        <MonogramPattern opacity={0.04} size={110} />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 -left-10 w-[500px] aspect-square rounded-full bg-blue-600/10 blur-[90px]" />
+          <div className="absolute bottom-0 -right-10 w-[400px] aspect-square rounded-full bg-indigo-500/10 blur-[80px]" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-6">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="inline-block text-blue-300 text-xs font-bold uppercase tracking-widest bg-blue-400/10 border border-blue-400/20 px-4 py-2 rounded-full mb-5">
+              🇦🇺 Visit Us
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
+              Our <span className="text-blue-400">Sydney Office</span>
+            </h2>
+            <p className="text-white/60 text-base md:text-lg leading-relaxed">
+              A short walk from Central Station. Come meet the team for a workshop,
+              discovery session, or a coffee.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-5 gap-8 items-stretch">
+            {/* Photo */}
+            <div className="lg:col-span-3 relative rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/40 aspect-[16/10]">
+              <img
+                src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=1400&q=85&auto=format&fit=crop&dpr=2"
+                alt="Sydney — MershilTech HQ city"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute top-5 left-5 bg-black/50 backdrop-blur-xl border border-white/10 rounded-full px-4 py-2 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                <span className="text-white text-xs font-semibold uppercase tracking-widest">
+                  Chippendale, NSW
+                </span>
+              </div>
+            </div>
+
+            {/* Info card */}
+            <div className="lg:col-span-2 rounded-3xl bg-white/[0.05] backdrop-blur-md border border-white/10 p-7 md:p-8 flex flex-col">
+              <div className="flex items-start gap-3 mb-5">
+                <div className="w-11 h-11 rounded-xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-5 h-5 text-blue-300" />
+                </div>
+                <div>
+                  <p className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-1">
+                    Address
+                  </p>
+                  <p className="text-white font-bold text-base leading-snug">
+                    54 Regent Street, Chippendale
+                  </p>
+                  <p className="text-white/60 text-sm">Sydney NSW 2008, Australia</p>
+                </div>
+              </div>
+
+              <a
+                href="https://maps.google.com/?q=54+Regent+Street+Chippendale+Sydney+NSW+2008"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between gap-2 bg-blue-600 hover:bg-blue-500 text-white px-5 py-3 rounded-xl font-semibold transition shadow-lg shadow-blue-900/40 mb-4"
+              >
+                <span className="flex items-center gap-2">
+                  <MapPin size={15} /> Open in Google Maps
+                </span>
+                <ExternalLink size={14} />
+              </a>
+
+              <div className="space-y-3 text-sm">
+                <div className="flex items-center gap-3 text-white/75">
+                  <Clock size={15} className="text-blue-300 flex-shrink-0" />
+                  <span>Mon – Fri, 9:00 AM – 6:00 PM AEST</span>
+                </div>
+                <div className="flex items-center gap-3 text-white/75">
+                  <Phone size={15} className="text-blue-300 flex-shrink-0" />
+                  <a href="tel:+61452565421" className="hover:text-white transition">
+                    +61 452 565 421
+                  </a>
+                </div>
+                <div className="flex items-center gap-3 text-white/75">
+                  <Mail size={15} className="text-blue-300 flex-shrink-0" />
+                  <a href="mailto:info@mershiltech.com" className="hover:text-white transition">
+                    info@mershiltech.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-5 border-t border-white/10 flex items-center gap-3 text-xs text-white/50">
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 size={12} className="text-blue-300" /> AU contract
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 size={12} className="text-blue-300" /> GST invoiced
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 size={12} className="text-blue-300" /> NDA on day 1
+                </span>
+              </div>
             </div>
           </div>
         </div>

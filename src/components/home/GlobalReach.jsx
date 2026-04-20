@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
-import CountUp from "../effects/CountUp";
 
 const countries = [
   { name: "Australia", city: "Sydney, NSW (HQ)", img: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=800&q=80", clients: "Headquarters" },
@@ -66,18 +65,6 @@ export default function GlobalReach() {
           </p>
         </motion.div>
 
-        {/* Stats row — 70+ countries removed */}
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}
-          variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-12">
-          {[["350+", "Projects Completed"], ["350+", "Global Clients"], ["24/7", "Support Coverage"], ["3", "Continents Active"]].map(([n, l], i) => (
-            <motion.div key={i} variants={fadeUp} custom={i}
-              className="bg-white/5 border border-white/8 rounded-2xl p-6 text-center">
-              <CountUp value={n} className="text-3xl font-bold text-white mb-1 block tabular-nums" />
-              <div className="text-white/40 text-sm">{l}</div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

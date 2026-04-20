@@ -7,6 +7,7 @@ import { ServiceIcon } from "../utils/serviceIcons";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import MonogramPattern from "../components/effects/MonogramPattern";
+import FlexibleHiringModels from "../components/common/FlexibleHiringModels";
 
 const ratings = [
   { name:"Clutch", score:"5.0" },
@@ -573,67 +574,6 @@ export default function HireDeveloper() {
         </div>
       </section>
 
-      {/* ── HIRING MODELS ── */}
-      <section className="py-20 bg-gray-900 relative overflow-hidden">
-        <MonogramPattern opacity={0.035} size={100} />
-        <div className="max-w-7xl mx-auto px-6 relative">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-3">Our Flexible Hiring Models</h2>
-            <p className="text-gray-400 max-w-xl mx-auto">
-              Choose the engagement model that fits your project scope, timeline, and budget. No lock-in.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {d.models.map((m, i) => (
-              <div
-                key={i}
-                className={`rounded-2xl p-7 border transition hover:-translate-y-1 ${
-                  i === 1
-                    ? "border-blue-500 bg-gray-800 shadow-xl shadow-blue-900/20"
-                    : "border-gray-700 bg-gray-800"
-                }`}
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-12 h-12 rounded-full border-2 border-blue-500 flex items-center justify-center text-blue-400 font-bold text-lg">
-                    {m.title[0]}
-                  </div>
-                  <h3 className="text-white font-bold text-xl">{m.title}</h3>
-                  {i === 1 && (
-                    <span className="ml-auto text-xs bg-blue-600 text-white px-2.5 py-1 rounded-full font-semibold">
-                      Popular
-                    </span>
-                  )}
-                </div>
-                {/* Price */}
-                <div className="mb-4">
-                  <span className="text-2xl font-bold text-white">{m.price}</span>
-                  <p className="text-blue-400 text-xs mt-0.5 font-medium">{m.savings}</p>
-                </div>
-                <div className="w-full h-px bg-gray-700 mb-4"></div>
-                <div className="space-y-2 mb-6">
-                  {[
-                    { l: "Hours", v: m.hours },
-                    { l: "Schedule", v: m.days },
-                    { l: "Billing", v: m.billing },
-                  ].map((item, j) => (
-                    <div key={j} className="flex items-center gap-2 text-gray-300 text-sm">
-                      <CheckCircle2 size={14} className="text-blue-400 flex-shrink-0" />
-                      <span className="text-gray-500">{item.l}:</span> {item.v}
-                    </div>
-                  ))}
-                </div>
-                <Link
-                  to="/contact"
-                  className="block w-full text-center bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition text-sm"
-                >
-                  Hire Now
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── PROCESS ── */}
       <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-6">
@@ -663,6 +603,9 @@ export default function HireDeveloper() {
           </div>
         </div>
       </section>
+
+      {/* ── Flexible Hiring Models + Developer Tiers ── */}
+      <FlexibleHiringModels roleName={d.title} />
 
       {/* ── FAQ ── */}
       <HireFAQ role={d.title} />

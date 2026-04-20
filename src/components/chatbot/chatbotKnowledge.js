@@ -13,7 +13,7 @@
 // Core company context used across answers
 const CONTEXT = {
   name: "MershilTech",
-  tagline: "AI-powered software agency",
+  tagline: "Sydney-based software agency",
   hq: "Sydney, Australia",
   address: "54 Regent Street, Chippendale, Sydney NSW 2008",
   offices: ["Australia (Sydney HQ)", "UK (London)", "India (Mumbai & Bangalore)"],

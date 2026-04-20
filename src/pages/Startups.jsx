@@ -3,6 +3,8 @@ import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import { motion } from "framer-motion";
 import MonogramPattern from "../components/effects/MonogramPattern";
+import ProblemFitSection from "../components/common/ProblemFitSection";
+import { startupProblemsFit } from "../data/problemFitContent";
 import {
   Rocket, Zap, Target, TrendingUp, Users, DollarSign,
   ArrowRight, Phone, CheckCircle2, Lightbulb, Clock, Award,
@@ -340,6 +342,9 @@ export default function Startups() {
           </div>
         </div>
       </section>
+
+      {/* Problems AU startups face + how MershilTech offshore fits */}
+      <ProblemFitSection {...startupProblemsFit} id="startup-fit" />
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 relative overflow-hidden">

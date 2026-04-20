@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Smartphone, Globe, Code2, Brain, Link2, Building2, Lightbulb, ArrowRight, Sparkles } from "lucide-react";
-import AIBadge from "../effects/AIBadge";
 
 const services = [
   { icon: Smartphone, title: "Mobile App Development", desc: "Native iOS & Android apps plus React Native and Flutter cross-platform solutions. High-performance apps used by millions.", slug: "mobile", count: "200+", aiEnhanced: true },
@@ -23,9 +22,9 @@ export default function Services() {
 
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="text-center mb-16">
-          <div className="flex justify-center mb-4">
-            <AIBadge label="AI-Enhanced Services" />
-          </div>
+          <span className="inline-block text-blue-700 text-xs font-bold uppercase tracking-widest bg-blue-50 border border-blue-100 px-4 py-2 rounded-full mb-5">
+            What We Build
+          </span>
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
             Comprehensive Digital Solutions<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-cyan-600 to-indigo-700">

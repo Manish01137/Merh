@@ -12,6 +12,7 @@ import { SiFlutter, SiSolidity, SiSalesforce } from "react-icons/si";
 import { MdSmartphone } from "react-icons/md";
 import { BsLightningCharge, BsGear } from "react-icons/bs";
 import MonogramPattern from "../components/effects/MonogramPattern";
+import FlexibleHiringModels from "../components/common/FlexibleHiringModels";
 
 const roles = [
   { Icon: FaCode,       name:"Hire Dedicated Developers",  slug:"dedicated-developers",    desc:"Full-stack engineers dedicated exclusively to your project." },
@@ -34,12 +35,6 @@ const roles = [
   { Icon: FaLayerGroup, name:"Hire MEAN Stack Developers",  slug:"mean-stack-developers",    desc:"Full MEAN stack for modern web applications." },
   { Icon: SiSalesforce, name:"Hire Salesforce Developers",  slug:"salesforce-developers",    desc:"Certified Salesforce consultants — Summit-tier partner." },
   { Icon: FaShieldAlt,  name:"Hire Cybersecurity Experts",  slug:"cybersecurity-experts",    desc:"OSCP, CISSP certified security engineers on 24/7 watch." },
-];
-
-const models = [
-  { title:"Full-Time",  Icon: Clock,  desc:"8 hrs/day, 5 days/week. Monthly billing. Ideal for ongoing projects.", points:["160 hrs/month","Daily standups","Monthly billing"] },
-  { title:"Part-Time",  Icon: Zap,    desc:"4 hrs/day, flexible schedule. Weekly billing. For maintenance & smaller builds.", points:["80 hrs/month","Flexible slots","Weekly billing"], highlight:true },
-  { title:"Hourly",     Icon: Star,   desc:"Pay only for hours worked. For urgent tasks, quick fixes, or short support.", points:["As needed","Pay-per-hour","Fast delivery"] },
 ];
 
 const steps = [
@@ -139,45 +134,6 @@ export default function Hire() {
         </div>
       </section>
 
-      {/* HIRING MODELS */}
-      <section className="py-20 bg-slate-950 relative overflow-hidden">
-        <MonogramPattern opacity={0.035} size={100} />
-        <div className="max-w-7xl mx-auto px-6 relative">
-          <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={fadeUp} className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-white mb-3">Flexible Hiring Models</h2>
-            <p className="text-slate-400 max-w-xl mx-auto">Full-time, part-time, or hourly — you choose the model that fits.</p>
-          </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={stagger}
-            className="grid md:grid-cols-3 gap-6">
-            {models.map((m,i) => (
-              <motion.div key={i} variants={fadeUp} custom={i}
-                whileHover={{y:-6,transition:{duration:0.25}}}
-                className={`rounded-2xl p-8 border transition ${m.highlight?"border-blue-500 bg-slate-800 shadow-2xl shadow-blue-900/30":"border-slate-700 bg-slate-800"}`}>
-                <div className="flex items-center gap-3 mb-5">
-                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${m.highlight?"bg-blue-600":"bg-slate-700"}`}>
-                    <m.Icon size={20} className={m.highlight?"text-white":"text-slate-300"}/>
-                  </div>
-                  <h3 className="text-white font-bold text-xl">{m.title}</h3>
-                  {m.highlight && <span className="ml-auto text-xs bg-blue-600 text-white px-2.5 py-1 rounded-full font-semibold">Popular</span>}
-                </div>
-                <div className="h-px bg-slate-700 mb-5"/>
-                <p className="text-slate-400 text-sm mb-5 leading-relaxed">{m.desc}</p>
-                <ul className="space-y-2.5 mb-7">
-                  {m.points.map((p,j) => (
-                    <li key={j} className="flex items-center gap-2.5 text-slate-300 text-sm">
-                      <CheckCircle size={14} className="text-blue-400 shrink-0"/>{p}
-                    </li>
-                  ))}
-                </ul>
-                <Link to="/contact" className="block w-full text-center bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-xl font-bold transition text-sm">
-                  Hire Now
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* PROCESS */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
@@ -201,6 +157,9 @@ export default function Hire() {
           </motion.div>
         </div>
       </section>
+
+      {/* Flexible Hiring Models + Developer Tiers */}
+      <FlexibleHiringModels roleName="Developers" />
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 relative overflow-hidden">

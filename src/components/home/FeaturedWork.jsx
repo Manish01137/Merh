@@ -5,7 +5,7 @@ import { motion, useInView } from "framer-motion";
 const projects = [
   {
     title: "TruuBlue",
-    cat: "Dating App · AI-Powered",
+    cat: "Dating App · Mobile",
     category: "mobile",
     desc: "Progressive dating app using AI matching. Built with React Native, achieving 4.9★ App Store rating and 50K+ downloads in 3 months.",
     img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80",
