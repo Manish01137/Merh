@@ -6,8 +6,8 @@ import CountUp from "../effects/CountUp";
 import MagneticButton from "../effects/MagneticButton";
 import AIBadge from "../effects/AIBadge";
 
-const badges = ["AI-Powered Solutions","15+ Years Experience","500+ Happy Clients","70+ Countries Served"];
-const stats = [{n:"1100+",l:"Projects"},{n:"130+",l:"Engineers"},{n:"70+",l:"Countries"},{n:"98%",l:"Satisfaction"}];
+const badges = ["AI-Powered Solutions","15+ Years Experience","Sydney HQ","350+ Projects Completed"];
+const stats = [{n:"350+",l:"Projects"},{n:"130+",l:"Engineers"},{n:"15+",l:"Years"},{n:"98%",l:"Satisfaction"}];
 const fadeUp = { hidden:{opacity:0,y:24}, visible:(i=0)=>({opacity:1,y:0,transition:{duration:0.6,delay:i*0.1,ease:[0.22,1,0.36,1]}}) };
 
 export default function Hero(){
@@ -54,7 +54,7 @@ export default function Hero(){
 
             <motion.p initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.6,delay:0.35}}
               className="text-white/60 text-base sm:text-lg leading-relaxed mb-8 max-w-lg">
-              MershilTech is an AI-powered software agency delivering world-class mobile apps, web platforms, and enterprise software. 500+ companies in 70+ countries trust us to scale faster.
+              MershilTech is a Sydney-based AI-powered software agency delivering world-class mobile apps, web platforms, and enterprise software. 350+ projects completed for companies scaling faster.
             </motion.p>
 
             <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.6,delay:0.45}}
@@ -73,7 +73,7 @@ export default function Hero(){
             {/* Trust badges */}
             <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.6,delay:0.6}}
               className="flex flex-wrap items-center gap-x-5 gap-y-2 mb-10">
-              {[{Icon:Shield,label:"NDA Protected"},{Icon:Zap,label:"48hr Onboarding"},{Icon:Globe,label:"70+ Countries"}].map(({Icon,label},i)=>(
+              {[{Icon:Shield,label:"NDA Protected"},{Icon:Zap,label:"48hr Onboarding"},{Icon:Globe,label:"Sydney-Based"}].map(({Icon,label},i)=>(
                 <div key={i} className="flex items-center gap-2">
                   <Icon size={14} className="text-blue-400"/>
                   <span className="text-xs text-white/50 font-medium">{label}</span>

@@ -3,12 +3,12 @@ import MonogramPattern from "../effects/MonogramPattern";
 import AIBadge from "../effects/AIBadge";
 
 const stats = [
-  { n: "1100+", l: "Projects Delivered", fill: 95, color: "#60a5fa" },
+  { n: "350+", l: "Projects Completed", fill: 92, color: "#60a5fa" },
   { n: "130+", l: "Expert Engineers", fill: 85, color: "#38bdf8" },
-  { n: "70+", l: "Countries Served", fill: 75, color: "#22d3ee" },
+  { n: "350+", l: "Happy Clients", fill: 88, color: "#fbbf24" },
   { n: "15+", l: "Years of Expertise", fill: 80, color: "#a78bfa" },
   { n: "98%", l: "Client Satisfaction", fill: 98, color: "#34d399" },
-  { n: "500+", l: "Happy Clients", fill: 90, color: "#fbbf24" },
+  { n: "24/7", l: "Support Coverage", fill: 100, color: "#22d3ee" },
 ];
 
 export default function StatsSection() {

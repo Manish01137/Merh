@@ -14,15 +14,17 @@
 const CONTEXT = {
   name: "MershilTech",
   tagline: "AI-powered software agency",
-  hq: "Denver, Colorado, USA",
-  offices: ["UK (London)", "India (Mumbai & Bangalore)", "Australia (Sydney)"],
-  phone: "(303) 335-0405",
+  hq: "Sydney, Australia",
+  address: "54 Regent Street, Chippendale, Sydney NSW 2008",
+  offices: ["Australia (Sydney HQ)", "UK (London)", "India (Mumbai & Bangalore)"],
+  phone: "+61 452 565 421",
   email: "info@mershiltech.com",
-  projects: "1100+",
+  linkedin: "https://www.linkedin.com/company/mershil-technologies/",
+  instagram: "https://www.instagram.com/mershiltech",
+  projects: "350+",
   engineers: "130+",
-  countries: "70+",
   satisfaction: "98%",
-  clients: "500+",
+  clients: "350+",
   experience: "15+",
 };
 
@@ -56,7 +58,7 @@ export const intents = [
     priority: 6,
     match: (t) => has(t, ["about", "who are you", "who are they", "company", "tell me about"]),
     answer: () => ({
-      text: `${CONTEXT.name} is an ${CONTEXT.tagline} with ${CONTEXT.experience} years of experience. We've delivered ${CONTEXT.projects} projects for ${CONTEXT.clients} clients across ${CONTEXT.countries} countries, with a ${CONTEXT.satisfaction} client satisfaction rate. Our team of ${CONTEXT.engineers} engineers works from offices in ${CONTEXT.offices.join(", ")}.`,
+      text: `${CONTEXT.name} is an ${CONTEXT.tagline} headquartered in Sydney, Australia with ${CONTEXT.experience} years of experience. We've delivered ${CONTEXT.projects} projects worldwide, with a ${CONTEXT.satisfaction} client satisfaction rate. Our team of ${CONTEXT.engineers} engineers works from offices in ${CONTEXT.offices.join(", ")}.`,
       actions: [
         { label: "About Us", to: "/about" },
         { label: "Our Work", to: "/" },
@@ -240,7 +242,7 @@ export const intents = [
     priority: 6,
     match: (t) => has(t, ["location", "office", "offices", "where", "based", "country", "city", "timezone", "india", "uk", "australia", "london", "sydney", "mumbai", "bangalore", "global"]),
     answer: () => ({
-      text: `We operate globally across 3 primary hubs:\n\n🇬🇧 **London, UK** — 80+ clients\n🇮🇳 **Mumbai & Bangalore, India** — 200+ clients\n🇦🇺 **Sydney, Australia** — 60+ clients\n\nOur follow-the-sun delivery model provides **round-the-clock engineering coverage** across every timezone. Total reach: ${CONTEXT.countries} countries, ${CONTEXT.clients} clients.`,
+      text: `Our HQ is in **Sydney, Australia** — 54 Regent Street, Chippendale.\n\n🇦🇺 **Sydney, Australia** — HQ\n🇬🇧 **London, UK** — European clients\n🇮🇳 **Mumbai & Bangalore, India** — Offshore engineering hub\n\nOur follow-the-sun delivery model provides **round-the-clock engineering coverage** across every timezone.`,
       actions: [
         { label: "About MershilTech", to: "/about" },
       ],
@@ -253,7 +255,7 @@ export const intents = [
     priority: 5,
     match: (t) => has(t, ["stats", "numbers", "metrics", "how many", "projects done", "clients", "portfolio"]),
     answer: () => ({
-      text: `Here are our numbers at a glance:\n\n• **${CONTEXT.projects}** projects delivered\n• **${CONTEXT.engineers}** expert engineers\n• **${CONTEXT.clients}** happy clients\n• **${CONTEXT.countries}** countries served\n• **${CONTEXT.satisfaction}** client satisfaction\n• **${CONTEXT.experience}** years of expertise\n• **4.9★** avg rating on Clutch, Google, DesignRush`,
+      text: `Here are our numbers at a glance:\n\n• **${CONTEXT.projects}** projects delivered\n• **${CONTEXT.engineers}** expert engineers\n• **${CONTEXT.clients}** happy clients\n• **${CONTEXT.satisfaction}** client satisfaction\n• **${CONTEXT.experience}** years of expertise\n• **4.9★** avg rating on Clutch, Google, DesignRush`,
     }),
   },
 

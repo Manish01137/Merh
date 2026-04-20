@@ -6,7 +6,7 @@ import { ServiceIcon } from "../utils/serviceIcons";
 import logoWhite from "../assets/logo.png";
 import MonogramPattern from "../components/effects/MonogramPattern";
 
-const stats = [["1100+","Projects Delivered"],["130+","Expert Engineers"],["70+","Countries Served"],["15+","Years of Expertise"],["500+","Happy Clients"],["98%","Client Satisfaction"]];
+const stats = [["350+","Projects Completed"],["130+","Expert Engineers"],["350+","Happy Clients"],["15+","Years of Expertise"],["98%","Client Satisfaction"],["24/7","Support Coverage"]];
 const values = [
   { icon:"rocket", title:"Excellence", desc:"We set the bar high and consistently deliver solutions that exceed client expectations in quality, performance, and reliability." },
   { icon:"handshake", title:"Integrity", desc:"Honest and transparent in every interaction. We build trust through clear communication and doing what we say, every time." },
@@ -30,7 +30,7 @@ export default function About() {
             <div>
               <div className="inline-flex items-center gap-2 bg-blue-800/60 border border-blue-700/50 text-blue-200 text-sm font-medium px-4 py-2 rounded-full mb-6">About MershilTech</div>
               <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">Engineering the <span className="text-blue-300">Future Together</span></h1>
-              <p className="text-blue-100/80 text-lg leading-relaxed mb-8 max-w-lg">Founded with a mission to democratize access to world-class software development, MershilTech has grown into a global engineering powerhouse trusted by startups and enterprises across 70+ countries.</p>
+              <p className="text-blue-100/80 text-lg leading-relaxed mb-8 max-w-lg">Founded with a mission to democratize access to world-class software development, MershilTech is a Sydney-headquartered engineering powerhouse trusted by startups and enterprises — with 350+ projects completed worldwide.</p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/contact" className="flex items-center gap-2 bg-white text-blue-900 px-6 py-3 rounded-xl font-bold hover:bg-blue-50 transition shadow-lg">Get In Touch <ArrowRight size={16}/></Link>
                 <Link to="/hire" className="flex items-center gap-2 border-2 border-white/30 text-white px-6 py-3 rounded-xl font-bold hover:border-white hover:bg-white/10 transition">Hire Our Team</Link>
@@ -81,7 +81,7 @@ export default function About() {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-5">Built by Engineers, for Engineers</h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>MershilTech was founded by engineers who understood the pain of finding reliable, skilled development partners. We started with a single mission: deliver exceptional software on time, every time.</p>
-                <p>Today, we operate across 70+ countries with 130+ engineers specializing in mobile apps, web development, AI, blockchain, and cloud infrastructure. Our clients range from Y Combinator-backed startups to Fortune 500 enterprises.</p>
+                <p>Today, from our Sydney headquarters, we operate with 130+ engineers specializing in mobile apps, web development, AI, blockchain, and cloud infrastructure — having completed 350+ projects. Our clients range from Y Combinator-backed startups to Fortune 500 enterprises.</p>
                 <p>We're more than a development company — we're your technology partner, invested in your long-term success. Every project is treated with the same care and urgency as our own.</p>
               </div>
               <div className="mt-8 flex flex-wrap gap-2">

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaLinkedinIn, FaTwitter, FaGithub, FaInstagram } from "react-icons/fa";
+import { FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { Mail, Phone, MapPin } from "lucide-react";
 import logoWhite from "../../assets/logo.png";
 import MonogramPattern from "../effects/MonogramPattern";
@@ -27,8 +27,18 @@ export default function Footer() {
                 Mershil<span className="text-blue-400">Tech</span>
               </span>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed mb-5">AI-powered agency delivering world-class web, mobile & software platforms. Trusted by 500+ clients in 70+ countries.</p>
-            <div className="flex gap-3">{[FaLinkedinIn,FaTwitter,FaGithub,FaInstagram].map((Icon,i)=><div key={i} className="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition cursor-pointer"><Icon size={15}/></div>)}</div>
+            <p className="text-gray-400 text-sm leading-relaxed mb-5">AI-powered agency delivering world-class web, mobile & software platforms. Trusted by 350+ clients worldwide.</p>
+            <div className="flex gap-3">
+              {[
+                { Icon: FaLinkedinIn, href: "https://www.linkedin.com/company/mershil-technologies/", label: "LinkedIn" },
+                { Icon: FaInstagram, href: "https://www.instagram.com/mershiltech", label: "Instagram" },
+              ].map(({ Icon, href, label }, i) => (
+                <a key={i} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+                  className="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition">
+                  <Icon size={15}/>
+                </a>
+              ))}
+            </div>
           </div>
           <div>
             <h3 className="text-white font-semibold mb-5">Services</h3>
@@ -41,9 +51,9 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-5">Contact Us</h3>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-sm text-gray-400"><MapPin size={15} className="mt-0.5 text-blue-400 flex-shrink-0"/>Denver, Colorado, USA</li>
-              <li className="flex items-center gap-3 text-sm text-gray-400"><Mail size={15} className="text-blue-400"/>info@mershiltech.com</li>
-              <li className="flex items-center gap-3 text-sm text-gray-400"><Phone size={15} className="text-blue-400"/>(303) 335-0405</li>
+              <li className="flex items-start gap-3 text-sm text-gray-400"><MapPin size={15} className="mt-0.5 text-blue-400 flex-shrink-0"/>54 Regent Street, Chippendale,<br/>Sydney NSW 2008, Australia</li>
+              <li className="flex items-center gap-3 text-sm text-gray-400"><Mail size={15} className="text-blue-400"/><a href="mailto:info@mershiltech.com" className="hover:text-blue-400 transition">info@mershiltech.com</a></li>
+              <li className="flex items-center gap-3 text-sm text-gray-400"><Phone size={15} className="text-blue-400"/><a href="tel:+61452565421" className="hover:text-blue-400 transition">+61 452 565 421</a></li>
             </ul>
             <Link to="/contact" className="mt-6 inline-block px-5 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition">Get In Touch</Link>
           </div>

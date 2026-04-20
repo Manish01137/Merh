@@ -2,15 +2,15 @@ import { useState } from "react";
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Linkedin, Twitter, Github } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, Linkedin, Instagram } from "lucide-react";
 import MonogramPattern from "../components/effects/MonogramPattern";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const offices = [
-    { flag:"US", city:"Denver, Colorado", addr:"3033 East First Avenue, Suite 415, Denver, CO 80206" },
-    { flag:"AU", city:"Sydney, Australia", addr:"Level 12, 123 Pitt Street, Sydney NSW 2000" },
+    { flag:"AU", city:"Sydney, Australia (HQ)", addr:"54 Regent Street, Chippendale, Sydney NSW 2008" },
     { flag:"GB", city:"London, UK", addr:"45 Old Street, Shoreditch, London EC1V 9HW" },
+    { flag:"IN", city:"Mumbai, India", addr:"Offshore Engineering Center" },
   ];
 
   return (
@@ -25,7 +25,7 @@ export default function Contact() {
           <h1 className="text-4xl md:text-5xl font-bold mb-5">Let's Build the <span className="text-blue-300">Future</span> Together</h1>
           <p className="text-blue-100/80 text-lg max-w-xl mx-auto mb-10">Have an idea, project, or challenge? Our expert engineers and consultants are ready to help you turn it into reality.</p>
           <div className="grid md:grid-cols-3 gap-4 max-w-2xl mx-auto">
-            {[{ icon:Phone, l:"(303) 335-0405", s:"We answer our phones!" },{ icon:Mail, l:"sales@mershiltech.com", s:"Reply within 30 minutes" },{ icon:MapPin, l:"Denver, Colorado", s:"Headquarters" }].map((item,i) => {
+            {[{ icon:Phone, l:"+61 452 565 421", s:"We answer our phones!" },{ icon:Mail, l:"info@mershiltech.com", s:"Reply within 30 minutes" },{ icon:MapPin, l:"Sydney, Australia", s:"Chippendale NSW 2008" }].map((item,i) => {
               const Icon = item.icon;
               return (
                 <div key={i} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/10 text-left">
@@ -68,8 +68,14 @@ export default function Contact() {
               <div>
                 <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Follow Us</p>
                 <div className="flex gap-3">
-                  {[Linkedin,Twitter,Github].map((Icon,i)=>(
-                    <div key={i} className="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 hover:bg-blue-700 hover:text-white transition cursor-pointer"><Icon size={17}/></div>
+                  {[
+                    { Icon: Linkedin, href: "https://www.linkedin.com/company/mershil-technologies/", label: "LinkedIn" },
+                    { Icon: Instagram, href: "https://www.instagram.com/mershiltech", label: "Instagram" },
+                  ].map(({ Icon, href, label }, i) => (
+                    <a key={i} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+                      className="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 hover:bg-blue-700 hover:text-white transition">
+                      <Icon size={17}/>
+                    </a>
                   ))}
                 </div>
               </div>

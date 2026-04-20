@@ -496,7 +496,7 @@ export default function ServiceDetails() {
                 <div className="flex gap-0.5 mb-4">
                   {[1,2,3,4,5].map(n=><Star key={n} size={14} className="text-yellow-400 fill-yellow-400"/>)}
                 </div>
-                <p className="text-slate-600 text-sm leading-relaxed mb-6 italic">"{t.text}"</p>
+                <p className="text-slate-600 text-sm leading-relaxed mb-6 italic">{t.text}</p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-blue-700 text-white text-xs font-bold flex items-center justify-center shrink-0">{t.avatar}</div>
                   <div>

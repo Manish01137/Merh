@@ -16,7 +16,7 @@ const features = [
   { icon: Clock, title: "On-Time, Every Time", desc: "98% of projects delivered on schedule with full transparency throughout.", col: "text-orange-600 bg-orange-50" },
 ];
 
-const stats = [["1100+", "Projects Shipped"], ["98%", "On-Time Delivery"], ["4.9/5", "Client Rating"], ["0", "Hidden Fees"]];
+const stats = [["350+", "Projects Completed"], ["98%", "On-Time Delivery"], ["4.9/5", "Client Rating"], ["0", "Hidden Fees"]];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },

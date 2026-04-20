@@ -159,24 +159,6 @@ export default function Navbar() {
           ? "bg-white/95 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.06)]"
           : "bg-white border-b border-gray-100"
       }`}>
-        {/* Slim top bar */}
-        <div className="bg-gradient-to-r from-blue-800 via-blue-700 to-indigo-800 text-white text-[11.5px] hidden md:block">
-          <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-1.5">
-            <span className="flex items-center gap-2 text-white/90">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-              <span className="font-medium">Trusted by 500+ clients across 70+ countries</span>
-            </span>
-            <div className="flex items-center gap-5">
-              <a href="tel:+13033350405" className="flex items-center gap-1.5 text-white/90 hover:text-white transition">
-                <Phone size={11} /> (303) 335-0405
-              </a>
-              <a href="mailto:info@mershiltech.com" className="hidden lg:flex items-center gap-1.5 text-white/90 hover:text-white transition">
-                <Mail size={11} /> info@mershiltech.com
-              </a>
-            </div>
-          </div>
-        </div>
-
         {/* Main bar */}
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
           {/* Logo */}
@@ -431,8 +413,8 @@ export default function Navbar() {
                 Hire Now
               </Link>
               <div className="flex items-center justify-between pt-3 px-1 text-xs text-gray-500">
-                <a href="tel:+13033350405" className="flex items-center gap-1.5 hover:text-blue-700">
-                  <Phone size={12} /> (303) 335-0405
+                <a href="tel:+61452565421" className="flex items-center gap-1.5 hover:text-blue-700">
+                  <Phone size={12} /> +61 452 565 421
                 </a>
                 <a href="mailto:info@mershiltech.com" className="flex items-center gap-1.5 hover:text-blue-700">
                   <Mail size={12} /> Email us

@@ -81,7 +81,7 @@ export default function Testimonials() {
               </div>
 
               {/* Text */}
-              <p className="text-blue-100 mb-6 leading-relaxed text-sm">"{item.text}"</p>
+              <p className="text-blue-100 mb-6 leading-relaxed text-sm">{item.text}</p>
 
               {/* Profile */}
               <div className="flex items-center gap-3 pt-5 border-t border-white/10">

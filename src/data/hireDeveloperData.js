@@ -382,7 +382,7 @@ export const hireDeveloperData = {
     whyHire: [
       { title: "Remote-Native Culture", desc: "We've operated 100% remotely since day one — our processes, tools, and communication norms are built for distributed teams, not adapted from an office model." },
       { title: "4-Hour Overlap Guaranteed", desc: "Every remote developer provides at least 4 hours of daily timezone overlap with your core team — enabling real collaboration, not just async file exchanges." },
-      { title: "Proven Remote Track Record", desc: "500+ engineers, 70+ countries served, 1100+ projects delivered 100% remotely — with the same quality, accountability, and communication as an in-house team." },
+      { title: "Proven Remote Track Record", desc: "130+ engineers from our Sydney HQ and offshore hubs, 350+ projects delivered 100% remotely — with the same quality, accountability, and communication as an in-house team." },
     ],
     process: stdProcess,
     models: stdModels,
