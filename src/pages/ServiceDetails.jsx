@@ -10,6 +10,7 @@ import {
   Globe, Clock, Users, TrendingUp
 } from "lucide-react";
 import { ServiceIcon } from "../utils/serviceIcons";
+import AnimatedProcessTimeline from "../components/common/AnimatedProcessTimeline";
 import MonogramPattern from "../components/effects/MonogramPattern";
 
 const ratings = [
@@ -397,46 +398,8 @@ export default function ServiceDetails() {
         </div>
       </section>
 
-      {/* ── PROCESS (animated timeline) ── */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl"/>
-        <div className="max-w-6xl mx-auto px-6 relative">
-          <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={fadeUp} className="text-center mb-16">
-            <span className="inline-block bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5">Our Process</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">How We Deliver Excellence</h2>
-            <p className="text-slate-500 max-w-xl mx-auto">A proven, transparent process with full visibility at every step — from first conversation to production launch.</p>
-          </motion.div>
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-blue-100 -translate-x-1/2 hidden md:block"/>
-            <div className="space-y-12">
-              {s.process.map((step,i)=>(
-                <motion.div key={i} initial="hidden" whileInView="visible" viewport={{once:true,margin:"-60px"}}
-                  variants={fadeUp} custom={i}
-                  className={`relative flex items-start gap-8 ${i%2===0?"md:flex-row":"md:flex-row-reverse"}`}>
-                  <div className={`w-full md:w-[45%] ${i%2===0?"md:pr-10":"md:pl-10"}`}>
-                    <motion.div whileHover={{y:-4,transition:{duration:0.25}}}
-                      className="group bg-white rounded-2xl p-7 border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-100/40 hover:border-blue-100 transition-all duration-300">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="w-11 h-11 rounded-xl bg-blue-700 group-hover:bg-blue-600 text-white font-bold text-base flex items-center justify-center shrink-0 shadow-lg shadow-blue-700/30 group-hover:scale-110 transition duration-300">
-                          {String(i+1).padStart(2,"0")}
-                        </div>
-                        <h3 className="font-bold text-slate-900 text-lg group-hover:text-blue-700 transition">{step.title}</h3>
-                      </div>
-                      <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
-                    </motion.div>
-                  </div>
-                  {/* Center dot */}
-                  <div className="absolute left-1/2 top-6 -translate-x-1/2 w-5 h-5 rounded-full border-4 border-blue-700 bg-white z-10 hidden md:block"/>
-                  <div className="hidden md:flex w-[45%] items-center justify-center">
-                    <span className="text-6xl font-black text-slate-100">{String(i+1).padStart(2,"0")}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ── PROCESS (animated zig-zag timeline — shared with SubServiceDetails) ── */}
+      <AnimatedProcessTimeline steps={s.process} />
 
       {/* ── INDUSTRIES ── */}
       <section className="py-20 bg-blue-950 relative overflow-hidden">

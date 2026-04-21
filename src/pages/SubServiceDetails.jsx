@@ -3,6 +3,7 @@ import { getSubServiceData } from "../data/subServicesData";
 import { getSubServiceImages } from "../data/subServiceImages";
 import ProblemFitSection from "../components/common/ProblemFitSection";
 import OurExpertsSection from "../components/common/OurExpertsSection";
+import AnimatedProcessTimeline from "../components/common/AnimatedProcessTimeline";
 import { salesforceProblemsFit } from "../data/problemFitContent";
 
 // Sub-services that get a tailored Problem/Fit section before the FAQ.
@@ -536,37 +537,12 @@ export default function SubServiceDetails() {
         </div>
       </section>
 
-      {/* ── PROCESS ── */}
-      <section className="py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-indigo-50 rounded-full translate-y-1/2 -translate-x-1/3 blur-3xl" />
-        <div className="max-w-7xl mx-auto px-6 relative">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
-            <span className="inline-block bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5">Our Process</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              How We Deliver <span className="text-blue-700">{s.title}</span>
-            </h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">Proven, transparent process with full visibility at every step.</p>
-          </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {s.process.map((step, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                variants={fadeUp} custom={i}
-                whileHover={{ y: -5, transition: { duration: 0.25 } }}
-                className="group bg-white border border-slate-100 rounded-2xl p-7 shadow-sm hover:shadow-xl hover:shadow-blue-100/40 transition-all duration-300">
-                <div className="flex items-center gap-4 mb-5">
-                  <div className="w-11 h-11 rounded-xl bg-blue-700 group-hover:bg-blue-600 text-white font-bold text-base flex items-center justify-center shrink-0 shadow-lg shadow-blue-700/30 group-hover:scale-110 transition duration-300">
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <div className="h-px flex-1 bg-slate-100 group-hover:bg-blue-100 transition" />
-                </div>
-                <h3 className="font-bold text-slate-900 mb-2.5 text-lg group-hover:text-blue-700 transition">{step.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed">{step.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── PROCESS (animated zig-zag timeline — same layout as ServiceDetails) ── */}
+      <AnimatedProcessTimeline
+        steps={s.process}
+        heading={<>How We Deliver <span className="text-blue-700">{s.title}</span></>}
+        subtitle="Proven, transparent process with full visibility at every step — from first conversation to production launch."
+      />
 
       {/* ── WHY CHOOSE US ── */}
       <section className="py-20 bg-blue-950 text-white relative overflow-hidden">
