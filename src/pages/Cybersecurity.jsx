@@ -8,6 +8,7 @@ import {
 import { FaUserShield, FaBug, FaLock, FaNetworkWired, FaFileContract } from "react-icons/fa";
 import MonogramPattern from "../components/effects/MonogramPattern";
 import ProblemFitSection from "../components/common/ProblemFitSection";
+import AnimatedProcessTimeline from "../components/common/AnimatedProcessTimeline";
 import { cybersecurityProblemsFit } from "../data/problemFitContent";
 
 const stats = [
@@ -239,33 +240,12 @@ export default function Cybersecurity() {
         </div>
       </section>
 
-      {/* PROCESS */}
-      <section className="py-20 bg-slate-950 text-white relative overflow-hidden">
-        <MonogramPattern opacity={0.035} size={100} />
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-blue-600/10 blur-3xl" />
-        </div>
-        <div className="max-w-7xl mx-auto px-6 relative">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-14">
-            <span className="inline-block text-blue-300 text-xs font-bold uppercase tracking-widest mb-4 bg-blue-800/50 border border-blue-700/30 px-4 py-2 rounded-full">Our Process</span>
-            <h2 className="text-3xl md:text-5xl font-bold mb-3">The MershilTech Security Lifecycle</h2>
-            <p className="text-blue-300/70 max-w-xl mx-auto">5D framework: Discover, Design, Deploy, Defend, Evolve.</p>
-          </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
-            className="grid md:grid-cols-5 gap-4">
-            {process.map((p, i) => (
-              <motion.div key={i} variants={fadeUp} custom={i}
-                className="relative bg-white/[0.05] border border-white/10 rounded-2xl p-6 hover:bg-white/[0.08] hover:border-blue-500/30 transition-all duration-300">
-                <div className="w-10 h-10 rounded-xl bg-blue-600 text-white font-bold flex items-center justify-center mb-4 text-sm">
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-                <h3 className="font-bold text-white mb-2">{p.title}</h3>
-                <p className="text-blue-300/60 text-sm leading-relaxed">{p.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      {/* PROCESS (animated zig-zag timeline) */}
+      <AnimatedProcessTimeline
+        steps={process}
+        heading={<>The MershilTech <span className="text-blue-700">Security Lifecycle</span></>}
+        subtitle="Our 5D framework — Discover, Design, Deploy, Defend, Evolve — is how we keep Australian businesses resilient against a moving threat landscape."
+      />
 
       {/* CERTIFICATIONS */}
       <section className="py-20 bg-white">

@@ -5,12 +5,12 @@ const stdModels = [
 ];
 
 const stdProcess = [
-  "Share Your Requirements",
-  "Review Matched Profiles",
-  "Interview Candidates",
-  "Choose Engagement Model",
-  "Onboard in 48 Hours",
-  "Deliver & Iterate",
+  { title: "Share Your Requirements", desc: "Tell us your stack, team size, timeline, and must-have experience. A Sydney-based account lead scopes the brief with you on a 30-minute call — no paperwork required." },
+  { title: "Review Matched Profiles", desc: "Within 24 hours we send 3-5 pre-vetted senior profiles, each with portfolio, verified work samples, interview feedback, and a short intro video." },
+  { title: "Interview Candidates", desc: "Run technical interviews, pair-programming, or paid trial tasks with your top picks. We arrange everything and sit in on request." },
+  { title: "Choose Engagement Model", desc: "Pick Fixed Price, Time & Material, Dedicated Team, or Bucket Hours. AU MSA, NDA, and 100% IP assignment signed the same day." },
+  { title: "Onboard in 48 Hours", desc: "Access to your repos, Jira, Slack, and tools — plus first standup within 48 hours of contract signing. Momentum from day one." },
+  { title: "Deliver & Iterate", desc: "Weekly demos, transparent GitHub activity, and fortnightly executive reports. Scale the team up or down with 1 week notice — no redundancy." },
 ];
 
 export const hireDeveloperData = {

@@ -8,6 +8,17 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import MonogramPattern from "../components/effects/MonogramPattern";
 import FlexibleHiringModels from "../components/common/FlexibleHiringModels";
+import AnimatedProcessTimeline from "../components/common/AnimatedProcessTimeline";
+
+// Some roles still define process as a flat string array. Normalise both
+// formats to {title, desc} so the timeline component can render them.
+function normaliseProcess(items = []) {
+  return items.map((item) =>
+    typeof item === "string"
+      ? { title: item, desc: "Full transparency at every step — our Sydney-based account team keeps you in the loop with daily standups, weekly demos, and live GitHub visibility." }
+      : item
+  );
+}
 
 const ratings = [
   { name:"Clutch", score:"5.0" },
@@ -574,35 +585,13 @@ export default function HireDeveloper() {
         </div>
       </section>
 
-      {/* ── PROCESS ── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <span className="inline-block text-blue-700 text-sm font-semibold uppercase tracking-wider mb-3 bg-blue-50 px-4 py-1.5 rounded-full">
-              How It Works
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              Step-by-Step Hiring Guide
-            </h2>
-            <p className="text-gray-500 max-w-xl mx-auto">
-              Our streamlined process gets you matched with the right developer and onboarded in as little as 48 hours.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-5">
-            {d.process.map((step, i) => (
-              <div
-                key={i}
-                className="group text-center p-6 rounded-2xl border border-gray-100 bg-white hover:shadow-lg hover:border-blue-100 transition"
-              >
-                <div className="w-12 h-12 mx-auto bg-blue-700 rounded-full flex items-center justify-center text-white font-bold text-lg mb-4 group-hover:scale-110 transition">
-                  {i + 1}
-                </div>
-                <p className="font-bold text-gray-900 group-hover:text-blue-700 transition text-sm">{step}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── PROCESS (animated zig-zag timeline) ── */}
+      <AnimatedProcessTimeline
+        steps={normaliseProcess(d.process)}
+        eyebrow="How It Works"
+        heading={<>Step-by-Step <span className="text-blue-700">Hiring Guide</span></>}
+        subtitle="Our streamlined process gets you matched with the right developer and onboarded in as little as 48 hours — with AU contract, NDA, and 100% IP assignment on day one."
+      />
 
       {/* ── Flexible Hiring Models + Developer Tiers ── */}
       <FlexibleHiringModels roleName={d.title} />

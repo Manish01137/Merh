@@ -4,7 +4,17 @@ import Footer from "../components/common/Footer";
 import { motion } from "framer-motion";
 import MonogramPattern from "../components/effects/MonogramPattern";
 import ProblemFitSection from "../components/common/ProblemFitSection";
+import AnimatedProcessTimeline from "../components/common/AnimatedProcessTimeline";
 import { startupProblemsFit } from "../data/problemFitContent";
+
+const startupProcess = [
+  { title: "Idea Validation Workshop", desc: "A 2-hour founder workshop with our Sydney team — we pressure-test your idea, map the riskiest assumptions, and agree what an MVP actually needs to prove. No fluff, no 40-page decks." },
+  { title: "Lean MVP Scope", desc: "We cut features ruthlessly to the 3-4 that validate your core hypothesis. You walk away with a fixed-scope, fixed-budget plan investors understand and engineers can ship in 10-12 weeks." },
+  { title: "Design & Interactive Prototype", desc: "Clickable Figma prototype tested with 5-10 real users before we write a single line of code. Pivot cheaply, not after 3 months of engineering." },
+  { title: "10-12 Week Agile Build", desc: "Two-week sprints with Friday demos. Jira transparent, GitHub visible, daily standups in your timezone. You see progress every two weeks, not at a single huge reveal." },
+  { title: "Launch & Instrument", desc: "Production deploy with analytics (Mixpanel / Amplitude), crash monitoring (Sentry), feature flags, and A/B tests pre-wired. Your growth team can iterate on day one." },
+  { title: "Iterate to Product-Market Fit", desc: "3 months of included post-launch support plus weekly growth reviews. We stay invested until you hit the metrics that unlock your next round." },
+];
 import {
   Rocket, Zap, Target, TrendingUp, Users, DollarSign,
   ArrowRight, Phone, CheckCircle2, Lightbulb, Clock, Award,
@@ -342,6 +352,14 @@ export default function Startups() {
           </div>
         </div>
       </section>
+
+      {/* Animated startup delivery process */}
+      <AnimatedProcessTimeline
+        steps={startupProcess}
+        eyebrow="Our MVP Delivery Process"
+        heading={<>From Napkin Sketch to <span className="text-blue-700">Shipped MVP</span></>}
+        subtitle="A 10-12 week playbook refined across 350+ projects — purpose-built for Australian founders who need to validate fast, raise confidently, and ship before the runway runs out."
+      />
 
       {/* Problems AU startups face + how MershilTech offshore fits */}
       <ProblemFitSection {...startupProblemsFit} id="startup-fit" />
