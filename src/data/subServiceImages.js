@@ -111,42 +111,47 @@ const POOL = [
   "photo-1512496015851-a90fb38ba796",
 ];
 
-// Sub-services ordered by category. Each takes a unique 5-image slice from POOL
-// with the *most premium* / cinematic photo as showcase (first index).
-// Within any single category the longest run is 9 sub-services (45 slots) ≪ 80,
-// so no sub-service within a category repeats another's image.
+// Sub-services now only use TECH-ONLY indices:
+//   1-4, 8         → device / phone / watch product shots
+//   10-21          → code / laptop / dev / circuit
+//   22-29          → AI / neural / abstract tech
+//   31-38          → blockchain / crypto glossy
+//   40-47          → dark cyber / SOC / monitor
+//   67, 77         → server rack / cloud infrastructure
+// All portrait, team-photo, food, retail, landscape, and nature indices are
+// DISALLOWED (indices 0, 5-7, 9, 45, 48-66, 68-76, 78-79).
 const ORDER = [
-  // ─── mobile (9) ─── showcases: cinematic dark iPhone / Apple Watch / circuit
-  ["android-app-development",      [1, 3, 2, 13, 8]],     // cinematic dark phone + product/hand shots, no portraits
-  ["ios-app-development",          [5, 4, 6, 8, 29]],     // moody iPhone / Apple Watch
-  ["react-native-app-development", [27, 28, 11, 17, 15]], // circuit + dev premium
-  ["flutter-app-development",      [15, 13, 22, 12, 16]], // minimal dark code
-  ["wearable-app-development",     [4, 9, 20, 18, 21]],   // Apple Watch close-up
+  // ─── mobile (9) ─── devices + code only, no humans
+  ["android-app-development",      [1, 3, 2, 13, 8]],
+  ["ios-app-development",          [4, 2, 11, 13, 17]],   // Apple Watch + code + iPhone mockups
+  ["react-native-app-development", [27, 28, 11, 17, 15]],
+  ["flutter-app-development",      [15, 13, 22, 12, 16]],
+  ["wearable-app-development",     [4, 11, 20, 18, 21]],  // Watch + code (no London skyline)
   ["pwa-development",              [10, 17, 14, 11, 3]],
-  ["ar-vr-app-development",        [23, 22, 27, 38, 36]], // AI / abstract
-  ["startup-app-development",      [62, 49, 57, 58, 6]],  // startup team hustle
+  ["ar-vr-app-development",        [23, 22, 27, 38, 36]],
+  ["startup-app-development",      [22, 11, 13, 15, 17]], // pure tech (was team photos)
   ["mobile-app-maintenance",       [12, 14, 11, 16, 3]],
 
-  // ─── website (9) ─── showcases: dark minimal code / circuit
-  ["nextjs-development",           [15, 11, 13, 12, 10]], // minimal dark code
-  ["reactjs-development",          [27, 15, 13, 28, 22]], // circuit / code
+  // ─── website (9) ─── code only, no retail/food
+  ["nextjs-development",           [15, 11, 13, 12, 10]],
+  ["reactjs-development",          [27, 15, 13, 28, 22]],
   ["full-stack-development",       [13, 11, 15, 16, 14]],
   ["laravel-development",          [11, 13, 17, 15, 19]],
   ["wordpress-development",        [17, 18, 16, 19, 14]],
-  ["shopify-development",          [73, 72, 66, 74, 69]],
-  ["ecommerce-development",        [72, 74, 73, 66, 71]],
-  ["nodejs-development",           [14, 13, 63, 15, 11]],
-  ["cms-development",              [19, 15, 18, 16, 66]],
+  ["shopify-development",          [11, 13, 17, 19, 20]], // was retail shots
+  ["ecommerce-development",        [12, 14, 16, 18, 10]], // was retail shots
+  ["nodejs-development",           [14, 13, 15, 11, 20]], // removed team-meeting slot
+  ["cms-development",              [19, 15, 18, 16, 12]],
 
-  // ─── software (5) ─── showcases: analytics / dev / enterprise
-  ["saas-platform-development",    [60, 15, 66, 13, 67]], // analytics dashboard
-  ["erp-development",              [57, 68, 52, 63, 60]], // team collab / boardroom (no solo portraits)
-  ["crm-development",              [60, 68, 53, 51, 61]], // boardroom + office (no solo portraits)
-  ["lms-development",              [49, 62, 6, 75, 58]],
+  // ─── software (5) ─── pure tech (boardroom + team photos removed)
+  ["saas-platform-development",    [15, 11, 13, 67, 14]],
+  ["erp-development",              [11, 13, 14, 15, 17]],
+  ["crm-development",              [12, 13, 14, 18, 19]],
+  ["lms-development",              [15, 11, 13, 17, 14]], // removed nature/leaf + team photos
   ["desktop-app-development",      [11, 15, 13, 14, 16]],
 
-  // ─── ai (7) ─── showcases: pure neural/AI abstract
-  ["generative-ai-development",    [22, 23, 24, 25, 26]], // signature AI shot
+  // ─── ai (7) ─── already pure abstract AI imagery
+  ["generative-ai-development",    [22, 23, 24, 25, 26]],
   ["ai-agent-development",         [23, 27, 24, 22, 28]],
   ["ai-chatbot-development",       [24, 26, 27, 23, 22]],
   ["machine-learning-development", [26, 25, 28, 24, 27]],
@@ -154,33 +159,33 @@ const ORDER = [
   ["llm-development",              [25, 22, 24, 28, 26]],
   ["nlp-development",              [27, 22, 25, 16, 28]],
 
-  // ─── blockchain (5) ─── showcases: glossy crypto
+  // ─── blockchain (5) ─── abstract crypto
   ["smart-contract-development",   [31, 35, 32, 33, 34]],
   ["nft-marketplace-development",  [38, 37, 36, 31, 34]],
   ["defi-protocol-development",    [35, 33, 31, 34, 32]],
   ["metaverse-development",        [36, 37, 31, 38, 33]],
   ["crypto-payment-gateway",       [34, 31, 36, 32, 38]],
 
-  // ─── enterprise (4) ─── showcases: corporate / cloud
-  ["microsoft-azure-consulting",   [67, 21, 11, 60, 14]],
-  ["aws-development",              [21, 67, 77, 65, 14]],
-  ["salesforce-consulting",        [61, 63, 52, 53, 49]], // boardroom / meeting / team (no solo portraits)
-  ["it-staff-augmentation",        [62, 57, 49, 51, 58]],
+  // ─── enterprise (4) ─── cloud/server + code (no corporate team photos)
+  ["microsoft-azure-consulting",   [67, 21, 11, 14, 17]],
+  ["aws-development",              [67, 21, 77, 14, 11]],
+  ["salesforce-consulting",        [15, 13, 11, 67, 14]], // was corporate team photos
+  ["it-staff-augmentation",        [11, 13, 15, 16, 14]], // was team photos
 
-  // ─── on-demand (5) ─── showcases: retail / food / people
-  ["food-delivery-app",            [71, 74, 69, 72, 70]],
-  ["taxi-ride-hailing-app",        [70, 73, 75, 74, 69]],
-  ["grocery-delivery-app",         [74, 73, 71, 69, 66]],
-  ["ewallet-app",                  [72, 73, 71, 70, 74]],
-  ["dating-app-development",       [69, 68, 58, 57, 62]], // team / lifestyle (no solo portraits)
+  // ─── on-demand (5) ─── mobile/app tech (no food/retail/nature)
+  ["food-delivery-app",            [3, 2, 11, 8, 4]],
+  ["taxi-ride-hailing-app",        [13, 2, 3, 8, 17]],
+  ["grocery-delivery-app",         [14, 11, 13, 15, 17]],
+  ["ewallet-app",                  [12, 13, 11, 14, 15]],
+  ["dating-app-development",       [27, 23, 28, 22, 15]], // AI-matching vibe
 
-  // ─── cybersecurity (6) ─── showcases: dark hacker / SOC
-  ["penetration-testing",          [40, 41, 35, 44, 42]], // iconic hacker shot
-  ["security-audit-compliance",    [48, 68, 62, 53, 51]], // team reviews / office (no solo portraits)
+  // ─── cybersecurity (6) ─── dark cyber only (Sydney-harbour landscape removed)
+  ["penetration-testing",          [40, 41, 35, 44, 42]],
+  ["security-audit-compliance",    [42, 40, 41, 46, 47]], // was Sydney landscape + office
   ["managed-soc-services",         [41, 40, 42, 46, 35]],
   ["cloud-security",               [77, 67, 21, 11, 14]],
   ["application-security",         [13, 12, 15, 25, 27]],
-  ["incident-response",            [35, 41, 42, 46, 68]], // dark hacker / SOC (no solo portraits)
+  ["incident-response",            [35, 41, 42, 46, 44]], // removed office ambiance
 ];
 
 function build(indexes) {
