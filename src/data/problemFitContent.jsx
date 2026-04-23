@@ -57,6 +57,20 @@ export const startupProblemsFit = {
     to: "/contact",
     secondary: { label: "See Hiring Models", to: "/hire" },
   },
+  impactStats: [
+    { n: "350+", l: "Startups Launched" },
+    { n: "$500M+", l: "Client Funding Raised" },
+    { n: "10-12 wks", l: "Avg MVP Delivery" },
+    { n: "35%", l: "Founder Discount" },
+  ],
+  featuredQuote: {
+    text: "MershilTech took our napkin sketch and shipped a production-ready MVP in 11 weeks. Investors closed our pre-seed the week after launch. They're the technical co-founder we couldn't afford to hire.",
+    name: "James Richardson",
+    role: "Founder & CEO",
+    company: "FinTech Startup (Sydney)",
+    rating: 5,
+    metric: { value: "$3.2M", label: "Pre-seed Raised" },
+  },
 };
 
 export const offshoreTeamProblemsFit = {
