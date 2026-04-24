@@ -111,15 +111,19 @@ const POOL = [
   "photo-1512496015851-a90fb38ba796",
 ];
 
-// Sub-services now only use TECH-ONLY indices:
-//   1-4, 8         → device / phone / watch product shots
-//   10-21          → code / laptop / dev / circuit
-//   22-29          → AI / neural / abstract tech
-//   31-38          → blockchain / crypto glossy
-//   40-47          → dark cyber / SOC / monitor
-//   67, 77         → server rack / cloud infrastructure
-// All portrait, team-photo, food, retail, landscape, and nature indices are
-// DISALLOWED (indices 0, 5-7, 9, 45, 48-66, 68-76, 78-79).
+// ─── VERIFIED TECH-SAFE INDICES ────────────────────────────────────────────
+// ONLY these pool indices are known to be pure tech imagery (no humans,
+// no landscapes, no food/retail, no nature, no sport, no instruments).
+// Anything outside this set is banned — the runtime guard below will throw
+// in dev if a sub-service ever references an unsafe index.
+const SAFE_POOL_INDICES = new Set([
+  1, 2, 3, 4, 8,                              // devices / phones / watch
+  10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, // code / laptop / circuit / data-centre
+  22, 23, 24, 25, 26, 27, 28, 29,             // AI / neural / abstract tech
+  31, 32, 33, 34, 35,                         // blockchain / crypto glossy
+  40, 41, 42,                                 // dark cyber / SOC monitor
+]);
+
 const ORDER = [
   // ─── mobile (9) ─── devices + code only, no humans
   ["android-app-development",      [1, 3, 2, 13, 8]],
@@ -128,7 +132,7 @@ const ORDER = [
   ["flutter-app-development",      [15, 13, 22, 12, 16]],
   ["wearable-app-development",     [4, 11, 20, 18, 21]],  // Watch + code (no London skyline)
   ["pwa-development",              [10, 17, 14, 11, 3]],
-  ["ar-vr-app-development",        [23, 22, 27, 38, 36]],
+  ["ar-vr-app-development",        [23, 22, 27, 28, 29]],  // AI/abstract only
   ["startup-app-development",      [22, 11, 13, 15, 17]], // pure tech (was team photos)
   ["mobile-app-maintenance",       [12, 14, 11, 16, 3]],
 
@@ -144,7 +148,7 @@ const ORDER = [
   ["cms-development",              [19, 15, 18, 16, 12]],
 
   // ─── software (5) ─── pure tech (boardroom + team photos removed)
-  ["saas-platform-development",    [15, 11, 13, 67, 14]],
+  ["saas-platform-development",    [15, 11, 13, 21, 14]],  // pure code + data-centre
   ["erp-development",              [11, 13, 14, 15, 17]],
   ["crm-development",              [12, 13, 14, 18, 19]],
   ["lms-development",              [15, 11, 13, 17, 14]], // removed nature/leaf + team photos
@@ -155,22 +159,22 @@ const ORDER = [
   ["ai-agent-development",         [23, 27, 24, 22, 28]],
   ["ai-chatbot-development",       [24, 26, 27, 23, 22]],
   ["machine-learning-development", [26, 25, 28, 24, 27]],
-  ["computer-vision-development",  [29, 28, 23, 35, 44]],
+  ["computer-vision-development",  [29, 28, 23, 35, 25]],  // AI only (44 was unsafe)
   ["llm-development",              [25, 22, 24, 28, 26]],
   ["nlp-development",              [27, 22, 25, 16, 28]],
 
   // ─── blockchain (5) ─── abstract crypto
   ["smart-contract-development",   [31, 35, 32, 33, 34]],
-  ["nft-marketplace-development",  [38, 37, 36, 31, 34]],
+  ["nft-marketplace-development",  [34, 31, 35, 32, 33]],  // pure crypto (36/37/38 were unsafe)
   ["defi-protocol-development",    [35, 33, 31, 34, 32]],
-  ["metaverse-development",        [36, 37, 31, 38, 33]],
-  ["crypto-payment-gateway",       [34, 31, 36, 32, 38]],
+  ["metaverse-development",        [23, 35, 31, 34, 33]],  // AI + crypto (36/37/38 were unsafe)
+  ["crypto-payment-gateway",       [32, 34, 31, 35, 33]],  // pure crypto (36/38 were unsafe)
 
   // ─── enterprise (4) ─── cloud/server + code (no corporate team photos)
-  ["microsoft-azure-consulting",   [67, 21, 11, 14, 17]],
-  ["aws-development",              [67, 21, 77, 14, 11]],
-  ["salesforce-consulting",        [15, 13, 11, 67, 14]], // was corporate team photos
-  ["it-staff-augmentation",        [11, 13, 15, 16, 14]], // was team photos
+  ["microsoft-azure-consulting",   [21, 11, 14, 17, 18]],  // data-centre + code (67 was unsafe)
+  ["aws-development",              [21, 11, 14, 17, 19]],  // data-centre + code (67/77 were unsafe)
+  ["salesforce-consulting",        [15, 13, 11, 19, 14]],  // pure code (67 was unsafe)
+  ["it-staff-augmentation",        [11, 13, 15, 16, 14]],
 
   // ─── on-demand (5) ─── mobile/app tech (no food/retail/nature)
   ["food-delivery-app",            [3, 2, 11, 8, 4]],
@@ -180,13 +184,30 @@ const ORDER = [
   ["dating-app-development",       [27, 23, 28, 22, 15]], // AI-matching vibe
 
   // ─── cybersecurity (6) ─── dark cyber only (Sydney-harbour landscape removed)
-  ["penetration-testing",          [40, 41, 35, 44, 42]],
-  ["security-audit-compliance",    [42, 40, 41, 46, 47]], // was Sydney landscape + office
-  ["managed-soc-services",         [41, 40, 42, 46, 35]],
-  ["cloud-security",               [77, 67, 21, 11, 14]],
+  ["penetration-testing",          [40, 41, 42, 35, 13]],  // dark cyber + code (44 was unsafe)
+  ["security-audit-compliance",    [42, 40, 41, 15, 21]],  // cyber + code + data-centre (46/47 were unsafe)
+  ["managed-soc-services",         [41, 40, 42, 35, 21]],  // cyber + data-centre (46 was unsafe)
+  ["cloud-security",               [21, 11, 14, 17, 18]],  // data-centre + code (67/77 were unsafe)
   ["application-security",         [13, 12, 15, 25, 27]],
-  ["incident-response",            [35, 41, 42, 46, 44]], // removed office ambiance
+  ["incident-response",            [35, 41, 42, 40, 13]],  // cyber + code (44/46 were unsafe)
 ];
+
+// ─── Runtime guard ────────────────────────────────────────────────────────
+// Throws loudly in DEV if any sub-service references a pool index outside
+// the verified SAFE set. This makes future regressions impossible to miss.
+if (import.meta?.env?.DEV) {
+  for (const [slug, idx] of ORDER) {
+    for (const i of idx) {
+      if (!SAFE_POOL_INDICES.has(i)) {
+        // eslint-disable-next-line no-console
+        console.error(
+          `[subServiceImages] BLOCKED: "${slug}" references unsafe pool index ${i}. ` +
+          `Only tech-only indices are allowed. See SAFE_POOL_INDICES.`
+        );
+      }
+    }
+  }
+}
 
 function build(indexes) {
   const [showcaseIdx, ...galleryIdxs] = indexes;
