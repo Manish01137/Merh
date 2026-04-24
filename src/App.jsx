@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Home from "./pages/Home";
@@ -44,6 +44,27 @@ function AnimatedRoutes() {
         <Route path="/cybersecurity" element={<PageTransition><Cybersecurity /></PageTransition>} />
         <Route path="/startups" element={<PageTransition><Startups /></PageTransition>} />
         <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+
+        {/* Legacy / alias redirects — preserve SEO + avoid 404s from old links */}
+        <Route path="/home" element={<Navigate to="/" replace />} />
+        <Route path="/index" element={<Navigate to="/" replace />} />
+        <Route path="/index.html" element={<Navigate to="/" replace />} />
+        <Route path="/main" element={<Navigate to="/" replace />} />
+        <Route path="/landing" element={<Navigate to="/" replace />} />
+        <Route path="/hire-developers" element={<Navigate to="/hire" replace />} />
+        <Route path="/hire-developer" element={<Navigate to="/hire" replace />} />
+        <Route path="/our-services" element={<Navigate to="/services" replace />} />
+        <Route path="/about-us" element={<Navigate to="/about" replace />} />
+        <Route path="/contact-us" element={<Navigate to="/contact" replace />} />
+        <Route path="/cyber-security" element={<Navigate to="/cybersecurity" replace />} />
+        <Route path="/security" element={<Navigate to="/cybersecurity" replace />} />
+        <Route path="/startup" element={<Navigate to="/startups" replace />} />
+        {/* Blog placeholder — redirect to home until blog ships */}
+        <Route path="/blog" element={<Navigate to="/" replace />} />
+        <Route path="/blog/*" element={<Navigate to="/" replace />} />
+        <Route path="/latest" element={<Navigate to="/" replace />} />
+        <Route path="/posts" element={<Navigate to="/" replace />} />
+
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>

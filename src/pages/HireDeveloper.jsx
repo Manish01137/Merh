@@ -344,9 +344,9 @@ export default function HireDeveloper() {
       </section>
 
       {/* ── STATS BAR ── */}
-      <section className="py-10 bg-blue-700">
+      <section className="py-12 md:py-14 bg-blue-700">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 text-center text-white">
             {[
               ["500+", "Pre-Vetted Engineers"],
               ["48hrs", "Average Onboarding"],

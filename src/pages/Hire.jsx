@@ -92,7 +92,7 @@ export default function Hire() {
             </Link>
           </motion.div>
           <motion.div initial="hidden" animate="visible" variants={stagger}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-2xl mx-auto">
             {[["500+","Engineers Available"],["48hrs","Onboarding Time"],["98%","Retention Rate"],["3%","Acceptance Rate"]].map(([n,l],i)=>(
               <motion.div key={i} variants={fadeUp} custom={i}>
                 <p className="text-2xl font-bold text-white">{n}</p>

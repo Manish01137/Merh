@@ -89,7 +89,7 @@ export default function Cybersecurity() {
       <Navbar />
 
       {/* HERO */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 text-white relative overflow-hidden">
+      <section className="pt-36 pb-20 bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 text-white relative overflow-hidden">
         <MonogramPattern opacity={0.04} size={110} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-600/10 blur-3xl" />

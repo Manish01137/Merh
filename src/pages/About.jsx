@@ -64,7 +64,7 @@ export default function About() {
       <section className="py-16 bg-blue-700 relative overflow-hidden">
         <MonogramPattern opacity={0.05} size={110} />
         <div className="max-w-7xl mx-auto px-6 relative">
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-6 text-center">
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6 text-center">
             {stats.map(([n,l],i) => (
               <div key={i}><p className="text-3xl font-bold text-white mb-1">{n}</p><p className="text-blue-200 text-xs">{l}</p></div>
             ))}
@@ -104,7 +104,7 @@ export default function About() {
             <span className="inline-block text-blue-700 text-sm font-semibold uppercase tracking-wider mb-3 bg-blue-100 px-4 py-1.5 rounded-full">Core Values</span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">What Drives Us Every Day</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {values.map((v,i) => (
               <div key={i} className="group bg-white rounded-2xl p-7 border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-blue-700 mb-4"><ServiceIcon name={v.icon} className="w-6 h-6"/></div>
