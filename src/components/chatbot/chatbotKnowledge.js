@@ -16,7 +16,7 @@ const CONTEXT = {
   tagline: "Sydney-based software agency",
   hq: "Sydney, Australia",
   address: "54 Regent Street, Chippendale, Sydney NSW 2008",
-  offices: ["Australia (Sydney HQ)", "UK (London)", "India (Mumbai & Bangalore)"],
+  offices: ["Australia (Sydney HQ)", "UK (London)", "India (Jaipur)"],
   phone: "+61 452 565 421",
   email: "info@mershiltech.com",
   linkedin: "https://www.linkedin.com/company/mershil-technologies/",
@@ -240,9 +240,9 @@ export const intents = [
   {
     id: "location",
     priority: 6,
-    match: (t) => has(t, ["location", "office", "offices", "where", "based", "country", "city", "timezone", "india", "uk", "australia", "london", "sydney", "mumbai", "bangalore", "global"]),
+    match: (t) => has(t, ["location", "office", "offices", "where", "based", "country", "city", "timezone", "india", "uk", "australia", "london", "sydney", "jaipur", "global"]),
     answer: () => ({
-      text: `Our HQ is in **Sydney, Australia** — 54 Regent Street, Chippendale.\n\n🇦🇺 **Sydney, Australia** — HQ\n🇬🇧 **London, UK** — European clients\n🇮🇳 **Mumbai & Bangalore, India** — Offshore engineering hub\n\nOur follow-the-sun delivery model provides **round-the-clock engineering coverage** across every timezone.`,
+      text: `Our HQ is in **Sydney, Australia** — 54 Regent Street, Chippendale.\n\n🇦🇺 **Sydney, Australia** — HQ\n🇬🇧 **London, UK** — European clients\n🇮🇳 **Jaipur, India** — Offshore engineering hub\n\nOur follow-the-sun delivery model provides **round-the-clock engineering coverage** across every timezone.`,
       actions: [
         { label: "About MershilTech", to: "/about" },
       ],

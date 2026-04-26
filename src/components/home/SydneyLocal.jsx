@@ -127,7 +127,7 @@ export default function SydneyLocal() {
             >
               Our HQ is a short walk from Central Station. Meet our account
               team in person, sign an AU contract with AU terms, and get
-              engineering delivery from our Sydney, London, and Mumbai hubs —
+              engineering delivery from our Sydney, London, and Jaipur hubs —
               rolled into one seamless experience.
             </motion.p>
 

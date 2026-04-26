@@ -40,7 +40,7 @@ export const startupProblemsFit = {
   ],
   solutions: [
     { icon: Rocket,         title: "Sydney-based engagement, offshore delivery",
-      desc: "Your account lead and architect sit in our Chippendale office. Build team in our London + Mumbai hubs. AU contract, AU invoicing, AU timezone overlap." },
+      desc: "Your account lead and architect sit in our Chippendale office. Build team in our London + Jaipur hubs. AU contract, AU invoicing, AU timezone overlap." },
     { icon: Zap,            title: "Onboarded in 48 hours, not 12 weeks",
       desc: "Pre-vetted senior engineers ready to start. NDA signed same day, first standup within 48 hours of kickoff. Momentum from day one." },
     { icon: Target,         title: "MVP in 10-12 weeks, fixed scope",
@@ -96,7 +96,7 @@ export const offshoreTeamProblemsFit = {
   ],
   solutions: [
     { icon: Briefcase,     title: "Sydney-managed offshore teams",
-      desc: "Account lead, architect, and delivery manager based in Sydney. Your engineers work from our London and Mumbai hubs with 4+ hours daily AU timezone overlap." },
+      desc: "Account lead, architect, and delivery manager based in Sydney. Your engineers work from our London and Jaipur hubs with 4+ hours daily AU timezone overlap." },
     { icon: Layers,        title: "Dedicated team, not project agency",
       desc: "Same engineers, your backlog, your Jira, your GitHub. It's your team — hosted by us — with 100% IP assignment and AU MSA coverage." },
     { icon: Activity,      title: "Full ownership, full transparency",

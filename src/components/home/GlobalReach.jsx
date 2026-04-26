@@ -4,7 +4,7 @@ import { MapPin } from "lucide-react";
 const countries = [
   { name: "Australia", city: "Sydney, NSW (HQ)", img: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=800&q=80", clients: "Headquarters" },
   { name: "United Kingdom", city: "London, England", img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80", clients: "European hub" },
-  { name: "India", city: "Mumbai & Bangalore", img: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80", clients: "Offshore engineering" },
+  { name: "India", city: "Jaipur, Rajasthan", img: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80", clients: "Offshore engineering" },
 ];
 
 const fadeUp = {
@@ -59,7 +59,7 @@ export default function GlobalReach() {
             Engineering Excellence, <span className="text-blue-400">Delivered Worldwide</span>
           </h2>
           <p className="text-white/60 text-base md:text-lg leading-relaxed">
-            Headquartered in Sydney with offshore engineering hubs in London and Mumbai, MershilTech
+            Headquartered in Sydney with offshore engineering hubs in London and Jaipur, MershilTech
             delivers world-class software around the clock. Our follow-the-sun model means your
             product is being built, tested, and shipped 24 hours a day.
           </p>

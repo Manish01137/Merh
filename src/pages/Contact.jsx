@@ -10,7 +10,7 @@ export default function Contact() {
   const offices = [
     { flag:"AU", city:"Sydney, Australia (HQ)", addr:"54 Regent Street, Chippendale, Sydney NSW 2008" },
     { flag:"GB", city:"London, UK", addr:"45 Old Street, Shoreditch, London EC1V 9HW" },
-    { flag:"IN", city:"Mumbai, India", addr:"Offshore Engineering Center" },
+    { flag:"IN", city:"Jaipur, India", addr:"Offshore Engineering Center" },
   ];
 
   return (
