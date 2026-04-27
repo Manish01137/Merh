@@ -1,7 +1,7 @@
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2, Target, Handshake, Globe, Zap, Shield, Rocket } from "lucide-react";
+import { ArrowRight, CheckCircle2, Target, Handshake, Globe, Zap, Shield, Rocket, Eye, Compass, Sparkles } from "lucide-react";
 import { ServiceIcon } from "../utils/serviceIcons";
 import logoWhite from "../assets/logo.png";
 import MonogramPattern from "../components/effects/MonogramPattern";
@@ -92,6 +92,105 @@ export default function About() {
               {["https://images.unsplash.com/photo-1556761175-4b46a572b786?w=400","https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400","https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400","https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400"].map((src,i)=>(
                 <img key={i} src={src} loading="lazy" decoding="async" className="rounded-2xl h-40 w-full object-cover hover:scale-105 transition duration-500" alt="team"/>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & Vision */}
+      <section className="py-20 bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 text-white relative overflow-hidden">
+        <MonogramPattern opacity={0.05} size={120} />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-10 left-1/4 w-96 h-96 rounded-full bg-blue-600/15 blur-3xl" />
+          <div className="absolute bottom-10 right-1/4 w-96 h-96 rounded-full bg-indigo-600/15 blur-3xl" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <span className="inline-flex items-center gap-1.5 bg-blue-500/15 border border-blue-400/30 text-blue-200 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5">
+              <Sparkles size={12} /> Mission & Vision
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+              Building the Future of <span className="text-blue-300">Digital Innovation</span>
+            </h2>
+            <p className="text-blue-100/70 text-lg max-w-3xl mx-auto leading-relaxed">
+              Mershil Tech is a Sydney-based digital product development company delivering end-to-end
+              solutions — from discovery and design to development, support, and maintenance.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-10 items-stretch">
+            {/* Narrative column */}
+            <div className="space-y-5 text-blue-50/85 leading-relaxed text-[15px]">
+              <p>
+                We partner with <span className="text-white font-semibold">startups, SMEs, and global firms</span> to
+                solve complex challenges through reliable, high-quality digital products.
+              </p>
+              <p>
+                With proven experience across industries like <span className="text-white font-semibold">finance, healthcare,
+                real estate, and retail</span>, our agile team uses efficient frameworks to deliver faster, reduce risk,
+                and control costs — without compromising quality.
+              </p>
+              <p>
+                We understand a core challenge: many startups and tech firms have strong product visions but limited
+                capital. To bridge this gap, we leverage offshore capabilities — making world-class technology
+                accessible and financially practical.
+              </p>
+              <div className="pt-4 grid grid-cols-2 gap-3">
+                {[
+                  ["Finance", "🏦"],
+                  ["Healthcare", "⚕️"],
+                  ["Real Estate", "🏘️"],
+                  ["Retail", "🛍️"],
+                ].map(([n, e]) => (
+                  <div key={n} className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5">
+                    <span className="text-lg">{e}</span>
+                    <span className="text-sm font-semibold text-white/85">{n}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Vision + Mission cards */}
+            <div className="space-y-5">
+              {/* Vision */}
+              <div className="group relative bg-gradient-to-br from-white/[0.07] to-white/[0.02] border border-white/10 rounded-2xl p-7 hover:border-blue-400/30 transition-all duration-300 overflow-hidden">
+                <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-blue-500/10 blur-2xl group-hover:bg-blue-500/20 transition" />
+                <div className="relative">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                      <Eye size={22} className="text-white" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-blue-300">Our Vision</p>
+                      <h3 className="text-xl font-bold text-white">Accessible Innovation</h3>
+                    </div>
+                  </div>
+                  <p className="text-blue-50/90 leading-relaxed text-[15px]">
+                    To make <span className="text-white font-semibold">high-quality digital innovation accessible to
+                    every business</span>, regardless of budget.
+                  </p>
+                </div>
+              </div>
+
+              {/* Mission */}
+              <div className="group relative bg-gradient-to-br from-blue-600/20 to-indigo-700/20 border border-blue-400/25 rounded-2xl p-7 hover:border-blue-300/40 transition-all duration-300 overflow-hidden">
+                <div className="absolute -bottom-12 -left-12 w-40 h-40 rounded-full bg-indigo-500/15 blur-2xl group-hover:bg-indigo-500/25 transition" />
+                <div className="relative">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                      <Compass size={22} className="text-white" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-blue-200">Our Mission</p>
+                      <h3 className="text-xl font-bold text-white">Build, Scale, Partner</h3>
+                    </div>
+                  </div>
+                  <p className="text-blue-50/90 leading-relaxed text-[15px]">
+                    To help companies <span className="text-white font-semibold">build and scale powerful tech products
+                    affordably</span> — without sacrificing trust, quality, or long-term partnership.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

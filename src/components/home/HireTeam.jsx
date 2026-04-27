@@ -18,7 +18,7 @@ const models = [
     icon: Layers,
     title: "Dedicated Team",
     desc: "A fully managed offshore team working exclusively on your product.",
-    price: "$12,000",
+    price: "$8,000",
     priceUnit: "/ team of 3 / month",
     saveLabel: "Best value · Tech lead included",
     points: ["Full team ownership", "Sprint-based delivery (2-week)", "Tech lead + PM included", "Scale up/down anytime"],

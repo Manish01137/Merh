@@ -1,171 +1,228 @@
 import { Link } from "react-router-dom";
-import { Phone, ArrowRight, CheckCircle, Star, Zap, Globe, Shield } from "lucide-react";
+import { ArrowRight, MapPin, Play, Star } from "lucide-react";
 import { motion } from "framer-motion";
-import logoWhite from "../../assets/logo.png";
 import CountUp from "../effects/CountUp";
 import MagneticButton from "../effects/MagneticButton";
 
-const badges = ["Sydney-Based Team","15+ Years Experience","Sydney HQ","350+ Projects Completed"];
-const stats = [{n:"350+",l:"Projects"},{n:"130+",l:"Engineers"},{n:"15+",l:"Years"},{n:"98%",l:"Satisfaction"}];
-const fadeUp = { hidden:{opacity:0,y:24}, visible:(i=0)=>({opacity:1,y:0,transition:{duration:0.6,delay:i*0.1,ease:[0.22,1,0.36,1]}}) };
+const stats = [
+  { n: "350+", l: "Projects Shipped" },
+  { n: "130+", l: "Engineers" },
+  { n: "15+",  l: "Years Building" },
+  { n: "98%",  l: "Client Satisfaction" },
+];
 
-export default function Hero(){
-  return(
-    <section className="relative min-h-[100svh] bg-[#050d1a] text-white flex items-center pt-24 overflow-hidden">
-      {/* Animated bg blobs — sized down on mobile, will-change hints GPU layer */}
+const trustLogos = ["NIKE", "Red Bull", "Whirlpool", "Microsoft", "TruuBlue"];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
+
+export default function Hero() {
+  return (
+    <section className="relative min-h-[100svh] bg-[#0a0a0a] text-white flex items-center pt-28 overflow-hidden">
+      {/* Sydney skyline background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-[350px] sm:w-[500px] lg:w-[700px] aspect-square rounded-full bg-blue-600/10 blur-[80px] sm:blur-[100px] lg:blur-[120px] will-change-transform"/>
-        <div className="absolute bottom-0 left-0 w-[280px] sm:w-[400px] lg:w-[500px] aspect-square rounded-full bg-indigo-600/10 blur-[70px] sm:blur-[90px] lg:blur-[100px] will-change-transform"/>
-        <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-cyan-500/5 blur-[80px]"/>
-        {/* Grid */}
-        <svg className="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs><pattern id="hg" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="1"/></pattern></defs>
-          <rect width="100%" height="100%" fill="url(#hg)"/>
+        <img
+          src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=2000&q=90&auto=format&fit=crop&dpr=2"
+          alt="Sydney Opera House and Harbour Bridge at dusk"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover scale-105"
+        />
+        {/* Cinematic dark overlays — neutral, not blue */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-black/30" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.35)_70%,rgba(0,0,0,0.85)_100%)]" />
+
+        {/* Subtle grid texture */}
+        <svg
+          className="absolute inset-0 w-full h-full opacity-[0.05]"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <defs>
+            <pattern id="hg" width="60" height="60" patternUnits="userSpaceOnUse">
+              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="1" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#hg)" />
         </svg>
+
+        {/* Soft warm light hint near bottom */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-40 bg-gradient-to-t from-amber-100/[0.04] to-transparent blur-2xl" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 py-14 sm:py-20 w-full">
-        <div className="grid lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center">
-          {/* Left */}
-          <div>
-            <motion.div initial="hidden" animate="visible" variants={{visible:{transition:{staggerChildren:0.08,delayChildren:0.15}}}}
-              className="flex flex-wrap gap-2 mb-6">
-              {badges.map((b,i)=>(
-                <motion.span key={i} variants={fadeUp} custom={i}
-                  className="flex items-center gap-1.5 text-xs font-semibold bg-white/5 border border-white/10 text-blue-300 px-3 py-1.5 rounded-full">
-                  <CheckCircle size={10} className="text-blue-400"/>{b}
-                </motion.span>
-              ))}
-            </motion.div>
+      {/* Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-6 py-16 sm:py-20 w-full">
+        <div className="max-w-4xl">
+          {/* Eyebrow */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="flex items-center gap-3 mb-7"
+          >
+            <span className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] bg-white/[0.04] backdrop-blur-md border border-white/12 text-stone-200/90 px-3.5 py-2 rounded-full">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75 animate-ping" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-300" />
+              </span>
+              Live in Sydney
+            </span>
+            <span className="hidden sm:flex items-center gap-1.5 text-xs text-stone-400 font-medium tracking-wide">
+              <MapPin size={12} className="text-stone-500" />
+              54 Regent St, Chippendale
+            </span>
+          </motion.div>
 
-            <motion.h1 initial={{opacity:0,y:30}} animate={{opacity:1,y:0}} transition={{duration:0.8,delay:0.2,ease:[0.22,1,0.36,1]}}
-              className="text-[2.25rem] sm:text-5xl md:text-6xl font-bold leading-[1.06] tracking-tight mb-6">
-              Build The Next<br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-300">
-                Big Digital Product
-              </span><br/>
-              With Elite Engineers
-            </motion.h1>
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[5.25rem] font-bold leading-[0.98] tracking-tight mb-7 text-stone-50"
+            style={{ textShadow: "0 2px 30px rgba(0,0,0,0.45)" }}
+          >
+            Crafted in{" "}
+            <span className="italic font-extralight text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-amber-50 to-stone-200">
+              Sydney.
+            </span>
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-stone-50 via-stone-100 to-stone-400/80">
+              Built for the world.
+            </span>
+          </motion.h1>
 
-            <motion.p initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.6,delay:0.35}}
-              className="text-white/60 text-base sm:text-lg leading-relaxed mb-8 max-w-lg">
-              MershilTech is a Sydney-based software agency delivering world-class mobile apps, web platforms, and enterprise software. 350+ projects completed for companies scaling faster.
-            </motion.p>
+          {/* Subhead */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.35 }}
+            className="text-stone-300/85 text-base sm:text-xl leading-relaxed mb-10 max-w-2xl font-light tracking-wide"
+          >
+            Mobile apps, web platforms, AI products and enterprise software —
+            engineered by a senior team from a Chippendale studio.{" "}
+            <span className="text-stone-100 font-normal">Trusted by 350+
+            startups and global brands.</span>
+          </motion.p>
 
-            <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.6,delay:0.45}}
-              className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-10">
-              <MagneticButton as={Link} to="/contact" strength={0.3}
-                className="group flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl font-bold transition shadow-xl shadow-blue-900/40 text-sm sm:text-base">
-                <Phone size={18}/> Book Free Consultation
-                <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform"/>
-              </MagneticButton>
-              <MagneticButton as={Link} to="/services" strength={0.25}
-                className="flex items-center justify-center gap-2 border border-white/15 text-white px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl font-bold hover:bg-white/8 transition text-sm sm:text-base">
-                Explore Services <ArrowRight size={18}/>
-              </MagneticButton>
-            </motion.div>
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-14"
+          >
+            <MagneticButton
+              as={Link}
+              to="/contact"
+              strength={0.3}
+              className="group flex items-center justify-center gap-2 bg-stone-50 text-stone-900 px-7 py-4 rounded-full font-bold text-sm sm:text-base hover:bg-white transition shadow-[0_8px_30px_rgba(245,245,244,0.18)] tracking-tight"
+            >
+              Start Your Project
+              <ArrowRight size={17} className="group-hover:translate-x-1 transition-transform" />
+            </MagneticButton>
+            <MagneticButton
+              as={Link}
+              to="/services"
+              strength={0.25}
+              className="flex items-center justify-center gap-2.5 border border-stone-300/20 backdrop-blur-md bg-stone-50/[0.04] text-stone-100 px-7 py-4 rounded-full font-semibold hover:bg-stone-50/[0.08] hover:border-stone-200/35 transition text-sm sm:text-base tracking-wide"
+            >
+              <span className="w-7 h-7 rounded-full bg-stone-100/15 flex items-center justify-center">
+                <Play size={11} className="text-stone-50 fill-stone-50 ml-0.5" />
+              </span>
+              Watch Our Work
+            </MagneticButton>
+          </motion.div>
 
-            {/* Trust badges */}
-            <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:0.6,delay:0.6}}
-              className="flex flex-wrap items-center gap-x-5 gap-y-2 mb-10">
-              {[{Icon:Shield,label:"NDA Protected"},{Icon:Zap,label:"48hr Onboarding"},{Icon:Globe,label:"Sydney-Based"}].map(({Icon,label},i)=>(
-                <div key={i} className="flex items-center gap-2">
-                  <Icon size={14} className="text-blue-400"/>
-                  <span className="text-xs text-white/50 font-medium">{label}</span>
-                </div>
-              ))}
-            </motion.div>
-
-            <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{duration:0.6,delay:0.7}}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-4 border-t border-white/8 pt-8">
-              {stats.map((s,i)=>(
-                <div key={i}>
-                  <CountUp value={s.n} className="text-xl sm:text-2xl font-bold text-white tabular-nums" />
-                  <p className="text-white/40 text-xs mt-0.5">{s.l}</p>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Right — Form */}
-          <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.8,delay:0.3,ease:[0.22,1,0.36,1]}}
-            className="block">
-            <div className="bg-white/[0.06] backdrop-blur-2xl rounded-2xl sm:rounded-3xl border border-white/10 p-5 sm:p-8 shadow-2xl shadow-black/40">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center overflow-hidden">
-                    <img
-                      src={logoWhite}
-                      alt="MershilTech"
-                      width="24"
-                      height="24"
-                      decoding="async"
-                      fetchPriority="high"
-                      className="w-6 h-6 object-contain"
-                      style={{ filter: "invert(1) brightness(2)", mixBlendMode: "screen" }}
-                    />
-                  </div>
-                  <h3 className="text-white font-bold text-lg">Get A Free Quote</h3>
-                </div>
-                <span className="flex items-center gap-1.5 text-xs bg-green-500/80 text-white px-3 py-1 rounded-full font-semibold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"/>Live
-                </span>
+          {/* Stats strip */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.65 }}
+            className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-10 border-t border-stone-100/10 pt-8 max-w-3xl"
+          >
+            {stats.map((s, i) => (
+              <div key={i}>
+                <CountUp
+                  value={s.n}
+                  className="text-3xl sm:text-4xl font-bold text-stone-50 tabular-nums tracking-tight"
+                />
+                <p className="text-stone-400/80 text-[11px] sm:text-xs mt-1.5 font-medium uppercase tracking-[0.15em]">
+                  {s.l}
+                </p>
               </div>
-              <div className="space-y-3 mb-5">
-                {[{p:"Your Name",t:"text"},{p:"Email Address",t:"email"},{p:"Phone Number",t:"tel"}].map((f,i)=>(
-                  <input key={i} type={f.t} placeholder={f.p}
-                    className="w-full bg-white/[0.07] border border-white/12 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-blue-400/50 transition"/>
-                ))}
-                <select className="w-full bg-white/[0.07] border border-white/12 rounded-xl px-4 py-3 text-white/50 text-sm focus:outline-none transition">
-                  <option className="text-gray-900">Select Service</option>
-                  <option className="text-gray-900">Mobile App Development</option>
-                  <option className="text-gray-900">Website Development</option>
-                  <option className="text-gray-900">AI Development</option>
-                  <option className="text-gray-900">Hire Developers</option>
-                </select>
-                <textarea rows={3} placeholder="Describe your project..."
-                  className="w-full bg-white/[0.07] border border-white/12 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none resize-none"/>
-              </div>
-              <button className="w-full bg-blue-600 hover:bg-blue-500 text-white py-3.5 rounded-xl font-bold transition flex items-center justify-center gap-2 shadow-lg shadow-blue-900/40">
-                Get Free Consultation <ArrowRight size={15}/>
-              </button>
-            </div>
-            <div className="flex gap-3 mt-3">
-              <div className="flex-1 bg-white/[0.06] rounded-2xl border border-white/10 p-4 flex items-center gap-3">
-                <div className="w-10 h-10 bg-yellow-500/15 rounded-xl flex items-center justify-center">
-                  <Star size={16} className="text-yellow-400 fill-yellow-400"/>
-                </div>
-                <div>
-                  <div className="flex gap-0.5 mb-0.5">{[1,2,3,4,5].map(n=><Star key={n} size={9} className="text-yellow-400 fill-yellow-400"/>)}</div>
-                  <p className="text-white font-semibold text-xs">4.9/5 Average Rating</p>
-                  <p className="text-white/40 text-xs">500+ Client Reviews</p>
-                </div>
-              </div>
-              <div className="bg-white/[0.06] rounded-2xl border border-white/10 p-4 flex flex-col justify-center">
-                <p className="text-[10px] text-white/30 font-semibold uppercase mb-1">Official Partner</p>
-                <div className="flex gap-2">
-                  <span className="text-xs font-bold text-white/70">AWS</span>
-                  <span className="text-white/20">|</span>
-                  <span className="text-xs font-bold text-blue-400">Azure</span>
-                  <span className="text-white/20">|</span>
-                  <span className="text-xs font-bold text-green-400">GCP</span>
-                </div>
-              </div>
-            </div>
+            ))}
           </motion.div>
         </div>
 
-        {/* Trusted by */}
-        <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.6,delay:0.9}}
-          className="mt-16 pt-10 border-t border-white/8">
-          <p className="text-white/30 text-xs text-center mb-5 font-semibold uppercase tracking-widest">Trusted by world-class companies</p>
-          <div className="flex items-center justify-center gap-10 flex-wrap">
-            {["NIKE","Red Bull","Whirlpool","WFFA","TruuBlue","Microsoft"].map((b,i)=>(
-              <span key={i} className="text-white/40 font-bold text-sm tracking-wide hover:text-white/70 transition cursor-default">{b}</span>
-            ))}
+        {/* Bottom trust strip */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.85 }}
+          className="mt-14 sm:mt-20 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10"
+        >
+          <div className="flex items-center gap-3">
+            <div className="flex -space-x-2">
+              {[1, 2, 3, 4].map((n) => (
+                <div
+                  key={n}
+                  className="w-8 h-8 rounded-full border-2 border-black/80 bg-gradient-to-br from-stone-200/35 to-stone-300/10 backdrop-blur-md"
+                />
+              ))}
+            </div>
+            <div>
+              <div className="flex items-center gap-1 mb-0.5">
+                {[1, 2, 3, 4, 5].map((n) => (
+                  <Star key={n} size={11} className="text-amber-200 fill-amber-200" />
+                ))}
+                <span className="text-stone-50 text-xs font-bold ml-1.5 tracking-tight">4.9/5</span>
+              </div>
+              <p className="text-stone-400/70 text-[11px] tracking-wide">From 500+ reviews</p>
+            </div>
+          </div>
+
+          <div className="hidden sm:block w-px h-10 bg-stone-200/15" />
+
+          <div className="flex-1">
+            <p className="text-stone-400/60 text-[10px] font-bold uppercase tracking-[0.25em] mb-2.5">
+              Trusted by world-class teams
+            </p>
+            <div className="flex items-center gap-x-8 gap-y-2 flex-wrap">
+              {trustLogos.map((b, i) => (
+                <span
+                  key={i}
+                  className="text-stone-300/65 font-bold text-sm tracking-wider hover:text-stone-100/90 transition cursor-default"
+                >
+                  {b}
+                </span>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
+
+      {/* Scroll cue */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, delay: 1.1 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-stone-300/40"
+      >
+        <span className="text-[10px] uppercase tracking-[0.3em] font-medium">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="w-px h-8 bg-gradient-to-b from-stone-200/45 to-transparent"
+        />
+      </motion.div>
     </section>
   );
 }

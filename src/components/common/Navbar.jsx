@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu, X, ChevronDown, Search, Phone, Mail, MapPin,
   Smartphone, Globe, Code2, Brain, Link2, Building2, Lightbulb, ShieldCheck,
-  ArrowRight, Sparkles,
+  ArrowRight, Sparkles, Users, BookOpen, MessageCircle,
 } from "lucide-react";
 import { ServiceIcon } from "../../utils/serviceIcons";
 import logoWhite from "../../assets/logo.png";
@@ -159,22 +159,29 @@ const hireRoles = [
   { icon: "lock", name: "Hire Cybersecurity Experts", slug: "cybersecurity-experts" },
 ];
 
+const companyLinks = [
+  { label: "About", to: "/about", icon: Users, desc: "Story, team, values" },
+  { label: "Blog", to: "/blog", icon: BookOpen, desc: "Insights & engineering notes" },
+  { label: "Contact", to: "/contact", icon: MessageCircle, desc: "Get in touch with our team" },
+];
+
 const navLinks = [
   { label: "Services", hasDropdown: "services", path: "/services" },
   { label: "Dedicated Developers", hasDropdown: "hire", path: "/hire" },
   { label: "Cybersecurity", path: "/cybersecurity" },
+  { label: "Company", hasDropdown: "company", path: "/about" },
   { label: "Startups", path: "/startups" },
-  { label: "About", path: "/about" },
 ];
 
 const megaSpring = { type: "spring", stiffness: 380, damping: 32, mass: 0.6 };
 
 export default function Navbar() {
-  const [openDropdown, setOpenDropdown] = useState(null); // "services" | "hire" | null
+  const [openDropdown, setOpenDropdown] = useState(null); // "services" | "hire" | "company" | null
   const [activeCat, setActiveCat] = useState(0);
   const [mob, setMob] = useState(false);
   const [mobSvcOpen, setMobSvcOpen] = useState(false);
   const [mobHireOpen, setMobHireOpen] = useState(false);
+  const [mobCompanyOpen, setMobCompanyOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoverIdx, setHoverIdx] = useState(null);
   const dropdownTimer = useRef(null);
@@ -275,36 +282,30 @@ export default function Navbar() {
         />
 
         {/* Main bar */}
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-5 sm:px-6 py-3">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
-            <div className="relative">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-400/40">
-                <img
-                  src={logoWhite}
-                  alt="MershilTech"
-                  width="40"
-                  height="40"
-                  decoding="async"
-                  fetchPriority="high"
-                  className="w-9 h-9 sm:w-10 sm:h-10 object-contain transition-transform duration-500 group-hover:scale-110"
-                  style={{ filter: "invert(1) brightness(2)", mixBlendMode: "screen" }}
-                />
-              </div>
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-blue-500/0 via-blue-400/40 to-cyan-400/30 opacity-0 group-hover:opacity-100 blur-lg transition duration-500 pointer-events-none -z-10" />
-            </div>
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-5 sm:px-6 py-3 relative">
+          {/* LEFT: Logo (anchored to left corner) */}
+          <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0 z-10">
+            <img
+              src={logoWhite}
+              alt="MershilTech"
+              width="44"
+              height="44"
+              decoding="async"
+              fetchPriority="high"
+              className="w-10 h-10 sm:w-11 sm:h-11 object-contain transition-transform duration-300 group-hover:scale-105"
+            />
             <div className="flex items-baseline gap-2">
               <span className="text-gray-900 font-extrabold text-[20px] sm:text-[22px] leading-none tracking-tight">
                 Mershil<span className="text-blue-700">Tech</span>
               </span>
-              <span className="hidden xl:inline-flex items-center gap-1 text-[10px] font-semibold text-blue-700/70 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-full tracking-widest uppercase">
+              <span className="hidden 2xl:inline-flex items-center gap-1 text-[10px] font-semibold text-blue-700/70 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-full tracking-widest uppercase">
                 <MapPin size={9} /> Sydney
               </span>
             </div>
           </Link>
 
-          {/* Nav links with magic underline */}
-          <nav className="hidden lg:flex items-center relative">
+          {/* CENTER: Nav links + Search — absolutely centered, doesn't affect flex flow */}
+          <nav className="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2 top-0 bottom-0">
             {/* Magic underline */}
             {underlineStyle && (
               <motion.div
@@ -351,6 +352,52 @@ export default function Navbar() {
                     <button onClick={() => navigate(link.path)} className="outline-none">
                       {inner}
                     </button>
+
+                    {/* Inline Company dropdown — anchored under the Company link */}
+                    {link.hasDropdown === "company" && (
+                      <AnimatePresence>
+                        {openDropdown === "company" && (
+                          <motion.div
+                            key="dd-company-inline"
+                            initial={{ opacity: 0, y: -8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -6 }}
+                            transition={megaSpring}
+                            className="absolute top-full right-0 pt-2 w-[320px] z-50"
+                          >
+                            <div className="rounded-2xl bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.22)] border border-gray-100 overflow-hidden p-3">
+                              <p className="px-3 pt-1.5 pb-2 text-[10px] font-bold text-blue-700 uppercase tracking-[0.15em]">
+                                Company
+                              </p>
+                              <div className="space-y-0.5">
+                                {companyLinks.map((c, idx) => {
+                                  const Icon = c.icon;
+                                  return (
+                                    <Link
+                                      key={idx}
+                                      to={c.to}
+                                      onClick={() => setOpenDropdown(null)}
+                                      className="group flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-blue-50 transition"
+                                    >
+                                      <div className="w-9 h-9 rounded-lg bg-blue-50 group-hover:bg-blue-600 flex items-center justify-center transition">
+                                        <Icon size={16} className="text-blue-700 group-hover:text-white transition" />
+                                      </div>
+                                      <div className="flex-1 min-w-0">
+                                        <p className="text-[13.5px] font-semibold text-gray-900 group-hover:text-blue-700 transition">
+                                          {c.label}
+                                        </p>
+                                        <p className="text-[11px] text-gray-500 truncate">{c.desc}</p>
+                                      </div>
+                                      <ArrowRight size={13} className="text-gray-300 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all" />
+                                    </Link>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    )}
                   </div>
                 );
               }
@@ -361,15 +408,12 @@ export default function Navbar() {
                 </Link>
               );
             })}
-          </nav>
 
-          {/* Right actions */}
-          <div className="hidden lg:flex items-center gap-2">
-            {/* Search pill with ⌘K */}
+            {/* Search pill with ⌘K — sits inside the centered nav */}
             <button
               onClick={() => window.dispatchEvent(new Event("mershil:open-search"))}
               aria-label="Search"
-              className="group flex items-center gap-2.5 pl-3 pr-2 py-2 rounded-xl border border-gray-200 hover:border-blue-300 bg-white/60 hover:bg-blue-50/40 text-gray-500 hover:text-blue-700 text-sm transition"
+              className="group flex items-center gap-2.5 pl-3 pr-2 py-2 ml-3 rounded-xl border border-gray-200 hover:border-blue-300 bg-white/60 hover:bg-blue-50/40 text-gray-500 hover:text-blue-700 text-sm transition"
             >
               <Search size={14} />
               <span className="hidden xl:inline font-medium">Search</span>
@@ -377,14 +421,10 @@ export default function Navbar() {
                 ⌘K
               </kbd>
             </button>
+          </nav>
 
-            <Link
-              to="/contact"
-              className="px-4 py-2.5 rounded-xl text-gray-700 font-semibold text-sm hover:text-blue-700 hover:bg-blue-50/60 transition"
-            >
-              Contact
-            </Link>
-
+          {/* RIGHT: Hire Now (anchored to right corner) */}
+          <div className="hidden lg:flex items-center z-10">
             <Link
               to="/hire"
               className="relative px-5 py-2.5 rounded-xl bg-gradient-to-br from-blue-700 to-indigo-700 text-white font-bold text-sm shadow-lg shadow-blue-900/20 hover:shadow-xl hover:shadow-blue-900/30 transition-all overflow-hidden group"
@@ -664,6 +704,7 @@ export default function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
+
       </motion.header>
 
       {/* MOBILE MENU — full-screen slide from right */}
@@ -810,9 +851,51 @@ export default function Navbar() {
                 <Link to="/cybersecurity" onClick={() => setMob(false)} className="block py-3 font-bold text-gray-900 text-[15px] hover:text-blue-700 border-b border-gray-100 transition">
                   Cybersecurity <span className="text-[9px] font-bold uppercase tracking-wider bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded ml-1">NEW</span>
                 </Link>
+                {/* Company accordion */}
+                <div className="border-b border-gray-100 pb-1.5">
+                  <button
+                    onClick={() => setMobCompanyOpen((v) => !v)}
+                    className="w-full flex items-center justify-between py-3 font-bold text-gray-900 text-[15px]"
+                  >
+                    Company
+                    <ChevronDown
+                      size={17}
+                      className={`text-gray-400 transition-transform ${mobCompanyOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  <AnimatePresence>
+                    {mobCompanyOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pb-2 space-y-0.5">
+                          {companyLinks.map((c, i) => {
+                            const Icon = c.icon;
+                            return (
+                              <Link
+                                key={i}
+                                to={c.to}
+                                onClick={() => setMob(false)}
+                                className="flex items-center gap-3 pl-2 pr-3 py-2.5 text-[13.5px] text-gray-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition"
+                              >
+                                <div className="w-7 h-7 rounded-md bg-blue-50 flex items-center justify-center">
+                                  <Icon size={14} className="text-blue-700" />
+                                </div>
+                                <span>{c.label}</span>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
                 <Link to="/startups" onClick={() => setMob(false)} className="block py-3 font-bold text-gray-900 text-[15px] hover:text-blue-700 border-b border-gray-100 transition">Startups</Link>
-                <Link to="/about" onClick={() => setMob(false)} className="block py-3 font-bold text-gray-900 text-[15px] hover:text-blue-700 border-b border-gray-100 transition">About</Link>
-                <Link to="/contact" onClick={() => setMob(false)} className="block py-3 font-bold text-gray-900 text-[15px] hover:text-blue-700 transition">Contact</Link>
 
                 {/* CTA */}
                 <Link

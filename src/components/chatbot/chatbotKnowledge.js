@@ -171,7 +171,7 @@ export const intents = [
     priority: 9,
     match: (t) => has(t, ["price", "pricing", "cost", "rate", "how much", "budget", "afford", "fee", "charge", "dollar", "\\$"]),
     answer: () => ({
-      text: `We offer 3 transparent engagement models:\n\n💼 **Staff Augmentation** — from **$3,000/dev/month** (save 60% vs in-house)\n⭐ **Dedicated Team** — from **$12,000/team-of-3/month** (most popular, includes tech lead + PM)\n🏢 **Offshore Dev Center** — from **$40,000/month** (custom, 8+ engineers, your brand)\n\n✓ No recruitment fees · ✓ 1-week risk-free trial · ✓ Cancel with 30-day notice · ✓ NDA before any work`,
+      text: `We offer 3 transparent engagement models:\n\n💼 **Staff Augmentation** — from **$3,000/dev/month** (save 60% vs in-house)\n⭐ **Dedicated Team** — from **$8,000/team-of-3/month** (most popular, includes tech lead + PM)\n🏢 **Offshore Dev Center** — from **$40,000/month** (custom, 8+ engineers, your brand)\n\n✓ No recruitment fees · ✓ 1-week risk-free trial · ✓ Cancel with 30-day notice · ✓ NDA before any work`,
       actions: [
         { label: "View Full Pricing", to: "/hire" },
         { label: "Get a Quote", to: "/contact" },

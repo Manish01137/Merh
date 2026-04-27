@@ -13,6 +13,15 @@ import { MdSmartphone } from "react-icons/md";
 import { BsLightningCharge, BsGear } from "react-icons/bs";
 import MonogramPattern from "../components/effects/MonogramPattern";
 import FlexibleHiringModels from "../components/common/FlexibleHiringModels";
+import AnimatedProcessTimeline from "../components/common/AnimatedProcessTimeline";
+
+const processSteps = [
+  { title: "Share Your Requirements", desc: "Tell us your tech stack, team size, timeline and target outcomes — over a 30-min discovery call. We listen, ask the right questions, and confirm fit before quoting." },
+  { title: "Review Matched Profiles", desc: "Within 24 hours we send 3-5 hand-picked developer profiles with skills, project history, hourly rate and Loom intros — pre-vetted by our engineering leads." },
+  { title: "Interview & Validate", desc: "Run technical assessments and culture-fit interviews. We coordinate scheduling, can sit in if helpful, and only present engineers who'd pass our internal bar." },
+  { title: "Choose & Onboard", desc: "Pick your developer. Sign the NDA + AU MSA, get accounts provisioned, and complete a 48-hour onboarding into your repos, Jira, and Slack." },
+  { title: "Start Building From Day 1", desc: "Your developer joins standups, pushes code, and ships features from week one — backed by our delivery manager, free replacement guarantee, and 1-week risk-free trial." },
+];
 
 const roles = [
   { Icon: FaCode,       name:"Hire Dedicated Developers",  slug:"dedicated-developers",    desc:"Full-stack engineers dedicated exclusively to your project." },
@@ -35,14 +44,6 @@ const roles = [
   { Icon: FaLayerGroup, name:"Hire MEAN Stack Developers",  slug:"mean-stack-developers",    desc:"Full MEAN stack for modern web applications." },
   { Icon: SiSalesforce, name:"Hire Salesforce Developers",  slug:"salesforce-developers",    desc:"Certified Salesforce consultants — Summit-tier partner." },
   { Icon: FaShieldAlt,  name:"Hire Cybersecurity Experts",  slug:"cybersecurity-experts",    desc:"OSCP, CISSP certified security engineers on 24/7 watch." },
-];
-
-const steps = [
-  { Icon: FaCode,      title:"Share Requirements", desc:"Tell us your tech stack, team size, and timeline." },
-  { Icon: Users,       title:"Review Profiles",    desc:"We send matched developer profiles within 24 hours." },
-  { Icon: Shield,      title:"Interview",          desc:"Conduct interviews and technical assessments." },
-  { Icon: CheckCircle, title:"Choose & Onboard",   desc:"Select your developer. Onboard in 48 hours." },
-  { Icon: FaRocket,    title:"Start Building",     desc:"Your developer joins Slack, pushes code on day 1." },
 ];
 
 const fadeUp = {
@@ -134,29 +135,13 @@ export default function Hire() {
         </div>
       </section>
 
-      {/* PROCESS */}
-      <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={fadeUp} className="text-center mb-16">
-            <span className="inline-block text-blue-700 text-xs font-bold uppercase tracking-widest mb-4 bg-blue-50 px-4 py-2 rounded-full">How It Works</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Hire in 5 Simple Steps</h2>
-          </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{once:true}} variants={stagger}
-            className="grid md:grid-cols-5 gap-4">
-            {steps.map(({Icon,title,desc},i) => (
-              <motion.div key={i} variants={fadeUp} custom={i}
-                className="text-center group">
-                <div className="w-14 h-14 mx-auto bg-blue-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-blue-700 transition-all duration-300">
-                  <Icon size={22} className="text-blue-700 group-hover:text-white transition-colors duration-300"/>
-                </div>
-                <div className="w-7 h-7 mx-auto bg-blue-700 rounded-full flex items-center justify-center text-white font-bold text-xs mb-3">{i+1}</div>
-                <h3 className="font-bold text-gray-900 mb-1.5 text-sm group-hover:text-blue-700 transition">{title}</h3>
-                <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      {/* PROCESS — animated zig-zag timeline (shared with service pages) */}
+      <AnimatedProcessTimeline
+        steps={processSteps}
+        eyebrow="How It Works"
+        heading="Hire in 5 Simple Steps"
+        subtitle="From first call to first commit in under a week. Same playbook we've run for 350+ engagements — transparent, predictable, no surprises."
+      />
 
       {/* Flexible Hiring Models + Developer Tiers */}
       <FlexibleHiringModels roleName="Developers" />
