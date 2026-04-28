@@ -22,6 +22,8 @@ const SubServiceDetails = lazy(() => import("./pages/SubServiceDetails"));
 const Cybersecurity = lazy(() => import("./pages/Cybersecurity"));
 const Startups = lazy(() => import("./pages/Startups"));
 const Blog = lazy(() => import("./pages/Blog"));
+const BlogArticle = lazy(() => import("./pages/BlogArticle"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function AnimatedRoutes() {
@@ -46,6 +48,8 @@ function AnimatedRoutes() {
         <Route path="/startups" element={<PageTransition><Startups /></PageTransition>} />
         <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
         <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+        <Route path="/blog/:slug" element={<PageTransition><BlogArticle /></PageTransition>} />
+        <Route path="/portfolio/:slug" element={<PageTransition><ProjectDetail /></PageTransition>} />
 
         {/* Legacy / alias redirects — preserve SEO + avoid 404s from old links */}
         <Route path="/home" element={<Navigate to="/" replace />} />
@@ -61,7 +65,6 @@ function AnimatedRoutes() {
         <Route path="/cyber-security" element={<Navigate to="/cybersecurity" replace />} />
         <Route path="/security" element={<Navigate to="/cybersecurity" replace />} />
         <Route path="/startup" element={<Navigate to="/startups" replace />} />
-        <Route path="/blog/*" element={<Navigate to="/blog" replace />} />
         <Route path="/latest" element={<Navigate to="/blog" replace />} />
         <Route path="/posts" element={<Navigate to="/blog" replace />} />
 

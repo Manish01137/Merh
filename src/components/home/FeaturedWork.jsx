@@ -1,109 +1,30 @@
 import { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { ArrowUpRight, ExternalLink, Pause, Play, Sparkles } from "lucide-react";
 import { motion, useInView } from "framer-motion";
-
-const projects = [
-  {
-    title: "TruuBlue",
-    cat: "Dating App · Mobile",
-    category: "mobile",
-    desc: "Progressive dating app using AI matching. Built with React Native, achieving 4.9★ App Store rating and 50K+ downloads in 3 months.",
-    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80",
-    tags: ["React Native", "AI/ML", "Firebase"],
-    stat: "50K+",
-    statLabel: "Downloads",
-    color: "#3b82f6",
-    ai: true,
-  },
-  {
-    title: "HomesBasket",
-    cat: "On-Demand · Multi-Service",
-    category: "on-demand",
-    desc: "On-demand delivery platform serving food, groceries, and medicines across Miami with real-time GPS tracking.",
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    tags: ["Node.js", "React", "AWS"],
-    stat: "1M+",
-    statLabel: "Deliveries",
-    color: "#06b6d4",
-    ai: false,
-  },
-  {
-    title: "Whirlpool Digital",
-    cat: "Enterprise · B2B Platform",
-    category: "enterprise",
-    desc: "Enterprise catalog management with real-time inventory and multi-region dealer portal for a global appliance giant.",
-    img: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80",
-    tags: ["React", "Microservices", "Azure"],
-    stat: "40%",
-    statLabel: "Cost Reduction",
-    color: "#8b5cf6",
-    ai: false,
-  },
-  {
-    title: "WFFA Sports",
-    cat: "Sports Tech · Real-Time",
-    category: "web",
-    desc: "Live fantasy football platform with real-time scoring, AI recommendations, and 100K+ active users.",
-    img: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=800&q=80",
-    tags: ["WebSockets", "Python", "Redis"],
-    stat: "100K+",
-    statLabel: "Active Users",
-    color: "#f59e0b",
-    ai: true,
-  },
-  {
-    title: "MediAI Diagnostics",
-    cat: "Healthcare · AI",
-    category: "ai",
-    desc: "Computer-vision platform flagging abnormalities in chest X-rays. Deployed across 40+ hospitals with 96% accuracy.",
-    img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
-    tags: ["PyTorch", "FastAPI", "HIPAA"],
-    stat: "96%",
-    statLabel: "Accuracy",
-    color: "#10b981",
-    ai: true,
-  },
-  {
-    title: "CryptoVault",
-    cat: "FinTech · Web3",
-    category: "blockchain",
-    desc: "Institutional-grade crypto custody and DeFi aggregation platform. $500M+ total value secured with zero security incidents.",
-    img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80",
-    tags: ["Solidity", "Next.js", "GraphQL"],
-    stat: "$500M+",
-    statLabel: "TVL Secured",
-    color: "#ec4899",
-    ai: false,
-  },
-];
-
-const filters = [
-  { id: "all", label: "All Work" },
-  { id: "mobile", label: "Mobile" },
-  { id: "web", label: "Web" },
-  { id: "ai", label: "AI & ML" },
-  { id: "enterprise", label: "Enterprise" },
-  { id: "on-demand", label: "On-Demand" },
-  { id: "blockchain", label: "Blockchain" },
-];
+import { projects, projectFilters as filters } from "../../data/projects";
 
 function ProjectCard({ project, featured = false }) {
   return (
-    <div
-      className="group relative rounded-3xl overflow-hidden shadow-2xl shadow-black/50 flex-shrink-0"
+    <Link
+      to={`/portfolio/${project.slug}`}
+      className="group relative rounded-3xl overflow-hidden shadow-2xl shadow-black/50 flex-shrink-0 block"
       style={{
         width: featured ? "min(620px, 85vw)" : "min(460px, 80vw)",
         height: featured ? "clamp(440px, 58vh, 520px)" : "clamp(380px, 52vh, 460px)",
       }}
+      aria-label={`View ${project.title} case study`}
     >
       {/* Image */}
-      <img
-        src={project.img}
-        alt={project.title}
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-      />
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-950">
+        <img
+          src={project.img}
+          alt={project.title}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      </div>
 
       {/* Overlays */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/5" />
@@ -142,7 +63,7 @@ function ProjectCard({ project, featured = false }) {
             {project.title}
           </h3>
           <p className="text-white/60 text-sm leading-relaxed mb-4 max-h-0 group-hover:max-h-40 opacity-0 group-hover:opacity-100 overflow-hidden transition-all duration-500">
-            {project.desc}
+            {project.short || project.desc}
           </p>
           <div className="flex flex-wrap gap-1.5 mb-4">
             {project.tags.slice(0, 3).map((t, j) => (
@@ -165,7 +86,7 @@ function ProjectCard({ project, featured = false }) {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -202,7 +123,7 @@ export default function FeaturedWork() {
   };
 
   return (
-    <section className="relative bg-[#060b16] py-20 overflow-hidden">
+    <section id="featured-work" className="relative bg-[#060b16] py-20 overflow-hidden">
       <style>{`
         @keyframes fw-marquee {
           0%   { transform: translateX(0); }
@@ -240,7 +161,7 @@ export default function FeaturedWork() {
                 Work We're <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Proud Of</span>
               </motion.h2>
               <motion.p variants={fadeUp} className="text-white/45 text-sm mt-3 max-w-lg">
-                Hover to pause · Click any filter below to explore specific domains · Auto-scrolls continuously
+                Click any card to open the case study · Hover to pause auto-scroll · Filter by domain below
               </motion.p>
             </div>
             <motion.div variants={fadeUp} className="flex items-center gap-3">
@@ -250,9 +171,6 @@ export default function FeaturedWork() {
                 className="w-11 h-11 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-white/70 hover:bg-white/10 hover:text-white transition-all"
               >
                 {paused ? <Play size={15} /> : <Pause size={15} />}
-              </button>
-              <button className="hidden md:flex items-center gap-2 border border-white/15 text-white/60 px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-white/[0.06] hover:text-white transition-all">
-                View All <ExternalLink size={13} />
               </button>
             </motion.div>
           </motion.div>
@@ -309,7 +227,7 @@ export default function FeaturedWork() {
             >
               {displayList.map((project, i) => (
                 <ProjectCard
-                  key={`${project.title}-${i}`}
+                  key={`${project.slug}-${i}`}
                   project={project}
                   featured={i % 3 === 0}
                 />

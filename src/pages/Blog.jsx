@@ -5,72 +5,7 @@ import { ArrowRight, Calendar, Clock, Search, Tag } from "lucide-react";
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import MonogramPattern from "../components/effects/MonogramPattern";
-
-const posts = [
-  {
-    slug: "shipping-mvp-in-10-weeks",
-    title: "Shipping a Production-Ready MVP in 10 Weeks (Without Cutting Corners)",
-    excerpt:
-      "Speed and quality are not opposites. Here's the exact playbook our Sydney team uses to take a startup MVP from kickoff to live users in under 12 weeks.",
-    category: "Startups",
-    date: "Apr 18, 2026",
-    readTime: "9 min",
-    img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=900&q=80",
-    featured: true,
-  },
-  {
-    slug: "rag-vs-fine-tuning",
-    title: "RAG vs Fine-Tuning: When To Choose Which (With Real Numbers)",
-    excerpt:
-      "Cost-per-query, latency, and accuracy benchmarks from three production AI deployments. The answer is rarely 'just use a bigger model'.",
-    category: "AI Engineering",
-    date: "Apr 11, 2026",
-    readTime: "12 min",
-    img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=900&q=80",
-  },
-  {
-    slug: "essential-eight-australia",
-    title: "Essential Eight Compliance: A Practical Guide for Aussie SMEs",
-    excerpt:
-      "What ACSC's Essential Eight actually requires, what auditors look for, and how to get to maturity-level 2 without rebuilding your stack.",
-    category: "Cybersecurity",
-    date: "Apr 03, 2026",
-    readTime: "8 min",
-    img: "https://images.unsplash.com/photo-1614064548237-096d2cb9d3e9?w=900&q=80",
-  },
-  {
-    slug: "offshore-team-mistakes",
-    title: "5 Mistakes Companies Make When Hiring Their First Offshore Team",
-    excerpt:
-      "After managing 130+ engineers across three timezones, here are the patterns we see repeatedly — and how to avoid the expensive ones.",
-    category: "Hiring",
-    date: "Mar 26, 2026",
-    readTime: "7 min",
-    img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80",
-  },
-  {
-    slug: "react-native-vs-flutter-2026",
-    title: "React Native vs Flutter in 2026: Which One We Pick for Clients (and Why)",
-    excerpt:
-      "An updated, opinionated comparison based on production app shipping in 2025-26 — performance, hiring pool, ecosystem, and long-term maintenance.",
-    category: "Mobile",
-    date: "Mar 19, 2026",
-    readTime: "10 min",
-    img: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=900&q=80",
-  },
-  {
-    slug: "saas-pricing-architecture",
-    title: "Designing a SaaS Pricing Architecture That Scales (Tech + Billing)",
-    excerpt:
-      "How to structure plans, metering, entitlements, and Stripe webhooks so a $9/mo plan and a $9k/mo plan run on the same code path without breaking.",
-    category: "SaaS",
-    date: "Mar 12, 2026",
-    readTime: "11 min",
-    img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80",
-  },
-];
-
-const categories = ["All", "Startups", "AI Engineering", "Cybersecurity", "Hiring", "Mobile", "SaaS"];
+import { blogPosts as posts, blogCategories as categories } from "../data/blogPosts";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -180,13 +115,12 @@ export default function Blog() {
         <section className="py-12 bg-white">
           <div className="max-w-7xl mx-auto px-6">
             <Link
-              to="#"
-              onClick={(e) => e.preventDefault()}
+              to={`/blog/${featured.slug}`}
               className="group grid lg:grid-cols-2 gap-8 items-center bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl overflow-hidden border border-blue-100 hover:shadow-xl transition"
             >
               <div className="relative h-72 lg:h-full overflow-hidden">
                 <img
-                  src={featured.img}
+                  src={featured.cover}
                   alt={featured.title}
                   loading="lazy"
                   decoding="async"
@@ -227,7 +161,9 @@ export default function Blog() {
           {others.length === 0 ? (
             <div className="text-center py-16">
               <p className="text-gray-500 text-lg">
-                No articles match your search. Try a different keyword or category.
+                {filtered.length === 0
+                  ? "No articles match your search. Try a different keyword or category."
+                  : "More articles coming soon — check back next month."}
               </p>
             </div>
           ) : (
@@ -244,10 +180,10 @@ export default function Blog() {
                   custom={i}
                   className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
-                  <Link to="#" onClick={(e) => e.preventDefault()} className="block">
-                    <div className="relative h-48 overflow-hidden">
+                  <Link to={`/blog/${p.slug}`} className="block">
+                    <div className="relative h-48 overflow-hidden bg-gray-100">
                       <img
-                        src={p.img}
+                        src={p.cover}
                         alt={p.title}
                         loading="lazy"
                         decoding="async"
