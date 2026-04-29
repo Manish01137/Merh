@@ -66,7 +66,7 @@ const offerings = [
   {
     icon: DollarSign,
     title: "Startup-Friendly Pricing",
-    img: "https://images.unsplash.com/photo-1579621908742-d81ba772b1d3?w=800&q=80",
+    img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
     desc: "Up to 35% startup discount, deferred payment options, and equity-for-services arrangements for promising early-stage ventures.",
     bullets: ["35% discount", "Equity partnerships", "Flexible billing"],
   },

@@ -281,10 +281,10 @@ export default function Navbar() {
           }}
         />
 
-        {/* Main bar */}
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-5 sm:px-6 py-3 relative">
-          {/* LEFT: Logo (anchored to left corner) */}
-          <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0 z-10">
+        {/* Main bar — full-width, logo flush to left corner with breathing room */}
+        <div className="flex items-center justify-between px-6 sm:px-10 lg:px-14 py-4 relative">
+          {/* LEFT: Logo (flush to corner) */}
+          <Link to="/" className="flex items-center gap-3 group flex-shrink-0 z-10">
             <img
               src={logoWhite}
               alt="MershilTech"
@@ -294,14 +294,9 @@ export default function Navbar() {
               fetchPriority="high"
               className="w-10 h-10 sm:w-11 sm:h-11 object-contain transition-transform duration-300 group-hover:scale-105"
             />
-            <div className="flex items-baseline gap-2">
-              <span className="text-gray-900 font-extrabold text-[20px] sm:text-[22px] leading-none tracking-tight">
-                Mershil<span className="text-blue-700">Tech</span>
-              </span>
-              <span className="hidden 2xl:inline-flex items-center gap-1 text-[10px] font-semibold text-blue-700/70 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-full tracking-widest uppercase">
-                <MapPin size={9} /> Sydney
-              </span>
-            </div>
+            <span className="text-gray-900 font-extrabold text-[20px] sm:text-[22px] leading-none tracking-tight">
+              Mershil<span className="text-blue-700">Tech</span>
+            </span>
           </Link>
 
           {/* CENTER: Nav links + Search — absolutely centered, doesn't affect flex flow */}
@@ -730,16 +725,13 @@ export default function Navbar() {
             >
               {/* Drawer header */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 sticky top-0 bg-white/95 backdrop-blur-lg z-10">
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 flex items-center justify-center overflow-hidden">
-                    <img
-                      src={logoWhite}
-                      alt=""
-                      width="28" height="28"
-                      className="w-7 h-7 object-contain"
-                      style={{ filter: "invert(1) brightness(2)", mixBlendMode: "screen" }}
-                    />
-                  </div>
+                <div className="flex items-center gap-2.5">
+                  <img
+                    src={logoWhite}
+                    alt="MershilTech"
+                    width="40" height="40"
+                    className="w-10 h-10 object-contain"
+                  />
                   <span className="font-extrabold text-gray-900 text-lg">
                     Mershil<span className="text-blue-700">Tech</span>
                   </span>

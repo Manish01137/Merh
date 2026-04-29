@@ -1,43 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Phone, ArrowRight, BadgeCheck } from "lucide-react";
 import logoWhite from "../assets/logo.png";
 
 /**
- * Intent-based lead capture modal.
+ * Time-based recurring lead capture modal.
  *
- * Shows only when a genuine intent signal fires, respects a 7-day frequency
- * cap, skips pages where the visitor is already transacting, and offers a
- * "remind me later" option.
- *
- * Triggers (any one):
- *   • 40 s on the same page
- *   • 50 % scroll depth
- *   • Exit-intent (desktop: mouse leaves through the top edge)
+ * Shows the first time after 30 s, then re-appears every 60 s after
+ * dismissal until the visitor submits the form (or navigates away).
  *
  * Suppressed if:
- *   • Dismissed in the last 7 days
- *   • "Remind me later" chosen in the last 24 h
  *   • Submitted the form in the last 30 days
  *   • Visitor is on /contact (already a lead surface)
- *   • prefers-reduced-motion is set (be polite)
  */
 
 const STORAGE_KEYS = {
-  dismissedAt: "mershil-lead-modal-dismissed-at",
-  remindAt: "mershil-lead-modal-remind-at",
   submittedAt: "mershil-lead-modal-submitted-at",
 };
 
 const WINDOWS = {
-  dismissDays: 3,
-  remindHours: 12,
   submittedDays: 30,
 };
 
-const TIME_MS = 12 * 1000;      // 12 s on page
-const SCROLL_PCT = 0.25;         // 25 % scroll depth
+const FIRST_SHOW_MS = 30 * 1000;        // first appearance: 30 s
+const RECUR_AFTER_DISMISS_MS = 60 * 1000; // every 60 s after dismiss
 
 const SUPPRESSED_PATHS = ["/contact"];
 
@@ -71,15 +58,8 @@ function withinWindow(storedMs, windowMs) {
 }
 
 function eligibleToShow() {
-  const dismissed = getStoredDate(STORAGE_KEYS.dismissedAt);
-  if (withinWindow(dismissed, WINDOWS.dismissDays * 24 * 60 * 60 * 1000)) return false;
-
-  const remind = getStoredDate(STORAGE_KEYS.remindAt);
-  if (withinWindow(remind, WINDOWS.remindHours * 60 * 60 * 1000)) return false;
-
   const submitted = getStoredDate(STORAGE_KEYS.submittedAt);
   if (withinWindow(submitted, WINDOWS.submittedDays * 24 * 60 * 60 * 1000)) return false;
-
   return true;
 }
 
@@ -87,6 +67,7 @@ export default function LeadCaptureModal() {
   const [show, setShow] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const location = useLocation();
+  const timerRef = useRef(null);
 
   // Manual trigger via custom event — any code (or devtools console) can fire
   // window.dispatchEvent(new Event("mershil:open-lead"))
@@ -103,83 +84,56 @@ export default function LeadCaptureModal() {
       show: () => setShow(true),
       reset: () => {
         Object.values(STORAGE_KEYS).forEach((k) => localStorage.removeItem(k));
-        console.info("[LeadModal] caps reset — refresh the page to retrigger");
       },
       status: () => ({
         eligible: eligibleToShow(),
-        dismissedAt: localStorage.getItem(STORAGE_KEYS.dismissedAt),
-        remindAt: localStorage.getItem(STORAGE_KEYS.remindAt),
         submittedAt: localStorage.getItem(STORAGE_KEYS.submittedAt),
       }),
     };
   }, []);
 
-  // Reset trigger watchers on route change & respect suppressed paths
+  // First show: 30 s after page load. After dismiss: re-show every 60 s.
+  // Submitted within 30 days → permanently suppressed (until that lapses).
   useEffect(() => {
-    // Close if the user navigates (avoids stale modal after page change)
     setShow(false);
     setSubmitted(false);
+    if (timerRef.current) clearTimeout(timerRef.current);
 
-    // ?lead=1 query bypasses suppression + caps + delays
     if (isForceShow()) {
       setShow(true);
       return;
     }
 
     if (SUPPRESSED_PATHS.some((p) => location.pathname.startsWith(p))) return;
-    if (!eligibleToShow()) {
-      if (import.meta?.env?.DEV) {
-        console.info(
-          "[LeadModal] suppressed by frequency cap. Run: window.__lead.reset() then refresh, or visit any URL with ?lead=1"
-        );
-      }
-      return;
-    }
+    if (!eligibleToShow()) return;
 
-    let fired = false;
-    const trigger = (reason) => {
-      if (fired) return;
-      fired = true;
-      setShow(true);
-      if (import.meta?.env?.DEV) console.info("[LeadModal] triggered by:", reason);
-    };
-
-    const timer = setTimeout(() => trigger("time"), TIME_MS);
-
-    const onScroll = () => {
-      const doc = document.documentElement;
-      const scrollable = doc.scrollHeight - window.innerHeight;
-      if (scrollable <= 0) return;
-      if (window.scrollY / scrollable >= SCROLL_PCT) trigger("scroll");
-    };
-
-    const onExit = (e) => {
-      // Desktop only — mouse leaving through top edge signals leaving
-      if (e.clientY <= 0 && e.relatedTarget == null) trigger("exit-intent");
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    document.addEventListener("mouseleave", onExit);
+    timerRef.current = setTimeout(() => setShow(true), FIRST_SHOW_MS);
 
     return () => {
-      clearTimeout(timer);
-      window.removeEventListener("scroll", onScroll);
-      document.removeEventListener("mouseleave", onExit);
+      if (timerRef.current) clearTimeout(timerRef.current);
     };
   }, [location.pathname]);
 
+  const scheduleNext = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      if (eligibleToShow()) setShow(true);
+    }, RECUR_AFTER_DISMISS_MS);
+  };
+
   const dismiss = () => {
-    setStoredNow(STORAGE_KEYS.dismissedAt);
     setShow(false);
+    scheduleNext();
   };
   const remindLater = () => {
-    setStoredNow(STORAGE_KEYS.remindAt);
     setShow(false);
+    scheduleNext();
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     setStoredNow(STORAGE_KEYS.submittedAt);
     setSubmitted(true);
+    if (timerRef.current) clearTimeout(timerRef.current);
     setTimeout(() => setShow(false), 2200);
   };
 

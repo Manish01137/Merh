@@ -58,15 +58,15 @@ export default function Hero() {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-40 bg-gradient-to-t from-amber-100/[0.04] to-transparent blur-2xl" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-5 sm:px-6 py-16 sm:py-20 w-full">
+      {/* Content — left-aligned with logo (matches Navbar's px-6 sm:px-10) */}
+      <div className="relative z-10 w-full px-6 sm:px-10 py-16 sm:py-20">
         <div className="max-w-4xl">
           {/* Eyebrow */}
           <motion.div
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="flex items-center gap-3 mb-7"
+            className="flex items-center gap-3 mb-7 flex-wrap"
           >
             <span className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] bg-white/[0.04] backdrop-blur-md border border-white/12 text-stone-200/90 px-3.5 py-2 rounded-full">
               <span className="relative flex h-2 w-2">
@@ -108,8 +108,8 @@ export default function Hero() {
           >
             Mobile apps, web platforms, AI products and enterprise software —
             engineered by a senior team from a Chippendale studio.{" "}
-            <span className="text-stone-100 font-normal">Trusted by 350+
-            startups and global brands.</span>
+            <span className="text-stone-100 font-normal">Currently shipping for
+            UK fintech, AU startups, and global brands — 350+ projects delivered.</span>
           </motion.p>
 
           {/* CTAs */}
@@ -129,8 +129,13 @@ export default function Hero() {
               <ArrowRight size={17} className="group-hover:translate-x-1 transition-transform" />
             </MagneticButton>
             <MagneticButton
-              as={Link}
-              to="/services"
+              as="button"
+              type="button"
+              onClick={() => {
+                document
+                  .getElementById("featured-work")
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
               strength={0.25}
               className="flex items-center justify-center gap-2.5 border border-stone-300/20 backdrop-blur-md bg-stone-50/[0.04] text-stone-100 px-7 py-4 rounded-full font-semibold hover:bg-stone-50/[0.08] hover:border-stone-200/35 transition text-sm sm:text-base tracking-wide"
             >

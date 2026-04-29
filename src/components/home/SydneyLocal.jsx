@@ -14,18 +14,18 @@ const perks = [
   },
   {
     icon: Sunrise,
-    title: "AEDT / AEST Timezone",
-    desc: "Real-time collaboration with Australian business hours — not midnight Slack messages from overseas.",
+    title: "UK & APAC Timezone Coverage",
+    desc: "Sydney overlaps both London business hours and APAC — your team is online when your stakeholders are.",
   },
   {
     icon: Users,
-    title: "AU Contract & MSA",
-    desc: "Australian-registered entity, GST-invoiced, professional indemnity insurance, and NDA on day one.",
+    title: "AU Contract & Global MSA",
+    desc: "Australian-registered entity, GST-invoiced for AU, VAT-compliant for UK clients, professional indemnity insurance, and NDA on day one.",
   },
   {
     icon: ShieldCheck,
-    title: "OAIC & Privacy Act Ready",
-    desc: "Data handling aligned with Australian Privacy Principles and the Notifiable Data Breaches scheme.",
+    title: "GDPR & Privacy Act Ready",
+    desc: "Data handling aligned with UK GDPR for our London clients and Australian Privacy Principles for AU engagements.",
   },
 ];
 
@@ -77,6 +77,13 @@ export default function SydneyLocal() {
                 </span>
               </div>
 
+              {/* Currently shipping for — UK client highlight */}
+              <div className="absolute top-20 left-5 bg-blue-600/85 backdrop-blur-xl border border-blue-300/30 rounded-full px-4 py-1.5 flex items-center gap-2 shadow-lg shadow-blue-900/40">
+                <span className="text-white text-[10px] font-bold uppercase tracking-widest">
+                  🇬🇧 Currently shipping for London clients
+                </span>
+              </div>
+
               {/* Bottom address card */}
               <div className="absolute bottom-5 left-5 right-5 bg-white/[0.08] backdrop-blur-xl border border-white/15 rounded-2xl p-5">
                 <div className="flex items-start gap-3">
@@ -110,7 +117,7 @@ export default function SydneyLocal() {
               variants={fadeUp}
               className="inline-flex items-center gap-2 text-blue-300 text-xs font-bold uppercase tracking-widest bg-blue-400/10 border border-blue-400/20 px-4 py-2 rounded-full mb-5"
             >
-              🇦🇺 Proudly Australian
+              🇦🇺 Sydney HQ · 🇬🇧 Trusted in London
             </motion.span>
 
             <motion.h2
@@ -118,7 +125,7 @@ export default function SydneyLocal() {
               className="text-3xl md:text-5xl font-bold text-white leading-tight tracking-tight mb-5"
             >
               A Sydney-Based Partner. <br />
-              <span className="text-blue-400">Global Engineering Muscle.</span>
+              <span className="text-blue-400">Currently shipping for London clients.</span>
             </motion.h2>
 
             <motion.p
@@ -126,9 +133,9 @@ export default function SydneyLocal() {
               className="text-white/60 text-base md:text-lg leading-relaxed mb-8 max-w-xl"
             >
               Our HQ is a short walk from Central Station. Meet our account
-              team in person, sign an AU contract with AU terms, and get
+              team in person, sign a contract on AU or UK terms, and get
               engineering delivery from our Sydney, London, and Jaipur hubs —
-              rolled into one seamless experience.
+              actively shipping for UK fintech and global brands.
             </motion.p>
 
             {/* Perks grid */}

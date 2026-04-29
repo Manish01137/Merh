@@ -13,10 +13,10 @@
 // Core company context used across answers
 const CONTEXT = {
   name: "MershilTech",
-  tagline: "Sydney-based software agency",
+  tagline: "Sydney-based software agency serving UK and global clients",
   hq: "Sydney, Australia",
   address: "54 Regent Street, Chippendale, Sydney NSW 2008",
-  offices: ["Australia (Sydney HQ)", "UK (London)", "India (Jaipur)"],
+  offices: ["Australia (Sydney HQ)", "UK clients (London)", "India (Jaipur engineering hub)"],
   phone: "+61 452 565 421",
   email: "info@mershiltech.com",
   linkedin: "https://www.linkedin.com/company/mershil-technologies/",
@@ -58,7 +58,7 @@ export const intents = [
     priority: 6,
     match: (t) => has(t, ["about", "who are you", "who are they", "company", "tell me about"]),
     answer: () => ({
-      text: `${CONTEXT.name} is an ${CONTEXT.tagline} headquartered in Sydney, Australia with ${CONTEXT.experience} years of experience. We've delivered ${CONTEXT.projects} projects worldwide, with a ${CONTEXT.satisfaction} client satisfaction rate. Our team of ${CONTEXT.engineers} engineers works from offices in ${CONTEXT.offices.join(", ")}.`,
+      text: `${CONTEXT.name} is a ${CONTEXT.tagline} headquartered in Sydney, Australia with ${CONTEXT.experience} years of experience. We've delivered ${CONTEXT.projects} projects worldwide and currently ship for UK fintech, AU startups, and global enterprises — with a ${CONTEXT.satisfaction} client satisfaction rate. Our team of ${CONTEXT.engineers} engineers operates from ${CONTEXT.offices.join(", ")}.`,
       actions: [
         { label: "About Us", to: "/about" },
         { label: "Our Work", to: "/" },
@@ -242,7 +242,7 @@ export const intents = [
     priority: 6,
     match: (t) => has(t, ["location", "office", "offices", "where", "based", "country", "city", "timezone", "india", "uk", "australia", "london", "sydney", "jaipur", "global"]),
     answer: () => ({
-      text: `Our HQ is in **Sydney, Australia** — 54 Regent Street, Chippendale.\n\n🇦🇺 **Sydney, Australia** — HQ\n🇬🇧 **London, UK** — European clients\n🇮🇳 **Jaipur, India** — Offshore engineering hub\n\nOur follow-the-sun delivery model provides **round-the-clock engineering coverage** across every timezone.`,
+      text: `Our HQ is in **Sydney, Australia** — 54 Regent Street, Chippendale.\n\n🇦🇺 **Sydney, Australia** — HQ\n🇬🇧 **London, UK** — Active client base (FabPay and other fintechs)\n🇮🇳 **Jaipur, India** — Offshore engineering hub\n\nOur follow-the-sun delivery model provides **round-the-clock engineering coverage** across every timezone.`,
       actions: [
         { label: "About MershilTech", to: "/about" },
       ],

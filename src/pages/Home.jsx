@@ -23,13 +23,13 @@ export default function Home() {
         <Hero />
         <StatsSection />
         <Services />
+        <FeaturedWork />
         <AISection />
         <WhyChoose />
         <ProblemFitSection {...startupProblemsFit} id="for-startups" />
         <HireTeam />
         <ProblemFitSection {...offshoreTeamProblemsFit} id="for-tech-firms" />
         <Technologies />
-        <FeaturedWork />
         <SydneyLocal />
         <GlobalReach />
         <Testimonials />

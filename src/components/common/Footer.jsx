@@ -27,7 +27,7 @@ export default function Footer() {
                 Mershil<span className="text-blue-400">Tech</span>
               </span>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed mb-5">Sydney-based software agency delivering world-class web, mobile & software platforms. Trusted by 350+ clients worldwide.</p>
+            <p className="text-gray-400 text-sm leading-relaxed mb-5">Sydney-based software agency currently shipping for UK fintech, AU startups, and global enterprises. 350+ projects delivered worldwide.</p>
             <div className="flex gap-3">
               {[
                 { Icon: FaLinkedinIn, href: "https://www.linkedin.com/company/mershil-technologies/", label: "LinkedIn" },

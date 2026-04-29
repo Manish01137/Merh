@@ -1,0 +1,3 @@
+# Netlify-style SPA fallback — useful if you ever switch host.
+# (Hostinger uses .htaccess; this file is harmless on Apache.)
+/*    /index.html   200

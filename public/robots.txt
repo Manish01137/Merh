@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap (replace YOUR-DOMAIN with the production hostname after deployment)
+# Sitemap: https://YOUR-DOMAIN/sitemap.xml
